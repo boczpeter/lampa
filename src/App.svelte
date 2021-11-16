@@ -3,10 +3,10 @@
 </svelte:head>
 <script>
 	let nums = [
-		{value:0, img:'/3.png', name:'Első+hátsó'},
-		{value:0, img:'/1.png', name:'Csak első'},
-		{value:0, img:'/2.png', name:'Csak hátsó'},
-		{value:0, img:'/0.png', name:'Egyik sem'},
+		{value:0, img:'3.png', name:'Első+hátsó'},
+		{value:0, img:'1.png', name:'Csak első'},
+		{value:0, img:'2.png', name:'Csak hátsó'},
+		{value:0, img:'0.png', name:'Egyik sem'},
 	],
 	meta = [
 		{value:'', name: 'Neved/Nicked'},
@@ -42,7 +42,7 @@
 		{#each nums as {name, value, img}}
 		<div>{value}</div>
 			<input type="button" value="-" class="dec" on:click="{e => value && --value}">
-			<img src="{img}" title="{name}">
+			<img src="{img}" title="{name}" alt="{name}">
 			<input type="button" value="+" class="inc" on:click="{e => ++value}">
 		{/each}
 		<hr>
