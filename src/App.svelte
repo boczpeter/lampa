@@ -37,17 +37,17 @@
 	<h1>Lámpaszámlálás</h1>
 	<form on:submit|preventDefault="{copy}">
 		<h2>Számolj&hellip;</h2>
+
 		{#each nums as {name, value}}
+		<div>{value}</div>
 			<input type="button" value="-" class="dec" on:click="{e => value && --value}">
-			<div>{value}</div>
 			<div>&#128692;</div>
 			<input type="button" value="+" class="inc" on:click="{e => ++value}">
 		{/each}
-			<div>&#128692;</div>
-			<div>{sum(nums)}</div>
-			<div>&#128692;</div>
-			<div>&#128692;</div>
-	<h2>&hellip;és add meg a hely adatait!</h2>
+		<hr>
+		<div class="sum">{sum(nums)}</div>
+
+		<h2>&hellip;és add meg a hely adatait!</h2>
 		{#each meta as {name, value}, i}
 			<input type="text" bind:value placeholder="{name}">
 		{/each}
@@ -58,38 +58,43 @@
 <style>
 	main {
 		text-align: center;
-		/* padding: 1em; */
-		/* max-width: 240px; */
-		/* margin: 0 auto; */
 	}
-
 	form {
 		display: grid;
-		grid-template-columns: min-content auto min-content min-content;
+		grid-template-columns: 1fr min-content min-content min-content;
 		align-items: center;
 		justify-items: center;
-		width: 30rem;
+		width: 25rem;
 		max-width: 100%;
 		margin: 0 auto;
 		gap: 0.5rem;
 	}
-	input[type="text"], input[type="submit"], h1, h2 {
+	input[type="text"], input[type="submit"], h1, h2, hr {
 		grid-column: 1 / -1;
 		width: 100%;
+		outline: #fff;
+		white-space: nowrap;
 	}
 	input[type="submit"], .inc {
 		cursor: pointer;
-		background-color: #797;
+		background-color: #5a5;
 		color: #fff;
 		border-radius: 0.5rem;
+		font-weight: bold;
+		border: 1px solid #fff;
 	}
 	.dec {
-		background-color: #977;
+		border: 1px solid #fff8;
+		background-color: #a55;
+	}
+	.sum {
+		font-weight: bold;
 	}
 	input[type="button"] {
 		line-height: 1rem;
-		width: 2rem;
+		width: 3rem;
 		height: 2rem;
+		max-width: 10vw;
 		padding: 0.5rem;
 		margin: 0;
 		border-radius: 0.5rem;
@@ -114,11 +119,5 @@
 		font-size: 2em;
 		font-weight: 400;
 		margin: 1rem auto;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
 	}
 </style>
