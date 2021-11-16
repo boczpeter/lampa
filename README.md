@@ -24,8 +24,10 @@ Kérünk terjeszd az akciónk hírét, oszd meg a Facebookon, hogy sok helyen m�
 Korábbi lámpaszámolások eredményeit itt találod: https://kerekparosklub.hu/category/cimkek/lampaszamlalas
 Ha szeretnél, iratkozz fel, hogy emailben szólhassunk a következő alkalmakról:
 https://forms.gle/ZUV2H4FiXehfxhMN9
+
 ➡️ Csatlakozz hozzánk!
 - Lépj be a klubba - tagságoddal a bringás fejlődésért végzett munkát támogatod, biztosítást, kedvezményeket, jogsegélyt kaphatsz - és 264 nyeremény is vár: https://kerekparosklub.hu/tagsagiakcio2021tel
 - Csatlakozz a legközelebbi Kerékpárosklub területi szervezethez: https://kerekparosklub.hu/teruleti-szervezetek
+
 ➡️ Támogasd a munkánkat:
 https://kerekparosklub.hu/tamogass-minket
