@@ -36,9 +36,8 @@
 
 <main>
 	<h1>Lámpaszámlálás</h1>
-	<form on:submit|preventDefault="{copy}">
-		<h2>Számolj&hellip;</h2>
-
+	<h2>Számolj&hellip;</h2>
+	<form on:submit|preventDefault="{copy}" id="main">
 		{#each nums as {name, value, img}}
 		<div>{value}</div>
 			<input type="button" value="-" class="dec" on:click="{e => value && --value}">
@@ -47,13 +46,13 @@
 		{/each}
 		<hr>
 		<div class="sum">{sum(nums)}</div>
+	</form>
 
 		<h2>&hellip;és add meg a további adatokat!</h2>
 		{#each meta as {name, value}}
 			<input type="text" bind:value placeholder="{name}">
 		{/each}
 		<input type="submit" value="Küldés (vágólapra)" disabled="{!cancopy}">
-	</form>
 </main>
 
 <style>
@@ -69,10 +68,10 @@
 		margin: 0 auto;
 		gap: 3vw;
 	}
-	input[type="text"], input[type="submit"], h1, h2, hr {
+	input[type="text"], input[type="submit"], hr {
 		grid-column: 1 / -1;
 		width: 100%;
-		max-width: 100%;
+		max-width: 30rem;
 		overflow-x: hidden;
 	}
 	input[type="submit"], .inc {
@@ -92,7 +91,7 @@
 	}
 	input[type="button"] {
 		line-height: 1ch;
-		font-size: 3ch;
+		font-size: 5vmin;
 		width: 10vmin;
 		height: 10vmin;
 		max-width: 3rem;
@@ -127,5 +126,6 @@
 		font-size: 6vw;
 		font-weight: 400;
 		margin: 1rem auto;
+		white-space: nowrap;
 	}
 </style>
