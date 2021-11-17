@@ -69,10 +69,11 @@
 		gap: 3vw;
 	}
 	input[type="text"], input[type="submit"], hr {
-		grid-column: 1 / -1;
 		width: 100%;
 		max-width: 30rem;
-		overflow-x: hidden;
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
 	}
 	input[type="submit"], .inc {
 		cursor: pointer;
@@ -112,6 +113,7 @@
 	}
 	hr {
 		margin: 0;
+		grid-column: 1 / -1;
 	}
 	h1 {
 		color: rgb(200, 110, 0);
