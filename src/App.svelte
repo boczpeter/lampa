@@ -1,5 +1,6 @@
 <svelte:head>
 	<title>Lámpaszámlálás</title>
+	<meta name="theme-color" content="#333">
 </svelte:head>
 <script>
 	let nums = [
