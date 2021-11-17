@@ -40,22 +40,14 @@ input, button, select, textarea {
 	background-color: #666;
 }
 
-input:disabled {
-	color: #ccc;
+input:disabled, button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed !important;
+}
+input:not(:disabled):active, button:not(:disabled):active {
+	box-shadow: 0 0 0.5rem #c86e00;
 }
 
-button {
+input, button {
 	outline: none;
-}
-
-button:disabled {
-	color: #999;
-}
-
-button:not(:disabled):active {
-	background-color: #ddd;
-}
-
-button:focus {
-	border-color: #666;
 }

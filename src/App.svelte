@@ -20,6 +20,7 @@
 	cancopy = true;
 
 	function copy() {
+		cancopy = false;
 		const text = [
 			...meta.map(line),
 			'Kerékpárosok száma: ' + sum(nums),
@@ -29,8 +30,10 @@
 
 		navigator.clipboard.writeText(text).then(function() {
 			console.log('clipboard successfully set');
+			cancopy = true;
 		}, function() {
 			console.log('clipboard write failed');
+			cancopy = true;
 		});
 	}
 </script>
@@ -69,6 +72,9 @@
 		width: 100%;
 		max-width: 40rem;
 	}
+	input[type="text"]:focus {
+		box-shadow: 0 0 0.5rem #c86e00;
+	}
 	input[type="submit"], .inc {
 		cursor: pointer;
 		background-color: #5a5;
@@ -76,13 +82,6 @@
 		border-radius: 0.5rem;
 		font-weight: bold;
 		border: 1px solid #fffa;
-	}
-	.dec {
-		border: 1px solid #fff4;
-		background-color: #a55;
-	}
-	.sum {
-		font-weight: bold;
 	}
 	input[type="button"] {
 		line-height: 5vmin;
@@ -93,8 +92,13 @@
 		border-radius: 2vmin;
 		cursor: pointer;
 	}
-	input:active {
-		box-shadow: 0 0 0.5rem rgb(200, 110, 0);
+
+	.dec {
+		border: 1px solid #fff4;
+		background-color: #a55;
+	}
+	.sum {
+		font-weight: bold;
 	}
 	form > div {
 		font-size: 200%;
