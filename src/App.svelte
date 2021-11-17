@@ -35,46 +35,39 @@
 	}
 </script>
 
-<main>
-	<h1>Lámpaszámlálás</h1>
-	<h2>Számolj&hellip;</h2>
-	<form on:submit|preventDefault="{copy}" id="main">
-		{#each nums as {name, value, img}}
-		<div>{value}</div>
-			<input type="button" value="-" class="dec" on:click="{e => value && --value}">
-			<img src="{img}" title="{name}" alt="{name}">
-			<input type="button" value="+" class="inc" on:click="{e => ++value}">
-		{/each}
-		<hr>
-		<div class="sum">{sum(nums)}</div>
-	</form>
+<h1>Lámpaszámlálás</h1>
+<h2>Számolj&hellip;</h2>
 
-		<h2>&hellip;és add meg a további adatokat!</h2>
-		{#each meta as {name, value}}
-			<input type="text" bind:value placeholder="{name}">
-		{/each}
-		<input type="submit" value="Küldés (vágólapra)" disabled="{!cancopy}">
-</main>
+<form on:submit|preventDefault="{copy}" id="main">
+	{#each nums as {name, value, img}}
+	<div>{value}</div>
+		<input type="button" value="&#65293;" class="dec" on:click="{e => value && --value}">
+		<img src="{img}" title="{name}" alt="{name}">
+		<input type="button" value="&#65291;" class="inc" on:click="{e => ++value}">
+	{/each}
+	<hr>
+	<div class="sum">{sum(nums)}</div>
+</form>
+
+<h2>&hellip;és add meg a további adatokat!</h2>
+{#each meta as {name, value}}
+	<input type="text" bind:value placeholder="{name}" form="main">
+{/each}
+<input type="submit" value="Küldés (vágólapra)" disabled="{!cancopy}" form="main">
 
 <style>
-	main {
-		text-align: center;
-	}
 	form {
 		display: grid;
 		grid-template-columns: 1fr min-content min-content min-content;
 		align-items: center;
 		justify-items: center;
-		max-width: 30rem;
-		margin: 0 auto;
+		width: 100%;
+		max-width: 40rem;
 		gap: 3vw;
 	}
 	input[type="text"], input[type="submit"], hr {
 		width: 100%;
-		max-width: 30rem;
-		display: block;
-		margin-right: auto;
-		margin-left: auto;
+		max-width: 40rem;
 	}
 	input[type="submit"], .inc {
 		cursor: pointer;
@@ -92,14 +85,11 @@
 		font-weight: bold;
 	}
 	input[type="button"] {
-		line-height: 1ch;
+		line-height: 5vmin;
 		font-size: 5vmin;
 		width: 10vmin;
 		height: 10vmin;
-		max-width: 3rem;
-		max-height: 3rem;
 		padding: 0;
-		margin: 0;
 		border-radius: 2vmin;
 		cursor: pointer;
 	}
@@ -113,7 +103,6 @@
 		max-height: 10vw;
 	}
 	hr {
-		margin: 0;
 		grid-column: 1 / -1;
 	}
 	h1 {
@@ -122,13 +111,13 @@
 		text-transform: uppercase;
 		font-size: 10vw;
 		font-weight: 300;
-		margin: 0 auto 1rem auto;
+		text-align: center;
 	}
 	h2 {
 		color: rgb(200, 110, 0);
 		font-size: 6vw;
 		font-weight: 400;
-		margin: 1rem auto;
 		white-space: nowrap;
+		text-align: center;
 	}
 </style>
