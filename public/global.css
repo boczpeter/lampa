@@ -5,8 +5,8 @@
 html {
 	--hl: #c86e00;
 	--gap: 3vw;
-	--bigfont: 4vw;
-	--hugefont: 6vw;
+	--bigfont: 5vw;
+	--hugefont: 10vw;
 	--radius: 0.5rem;
 	--contour: 0.2vw;
 }

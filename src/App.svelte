@@ -58,13 +58,13 @@
 
 	<form on:submit|preventDefault="{copy}" id="main">
 		{#each nums as {name, value, img}}
-		<div>{value}</div>
+		<output>{value}</output>
 			<input type="button" value="&#65293;" class="dec" on:click="{e => value && --value}">
 			<img src="{img}" title="{name}" alt="{name}">
 			<input type="button" value="&#65291;" class="inc" on:click="{e => ++value}">
 		{/each}
 		<hr>
-		<div class="sum">{sum(nums)}</div>
+		<output class="sum">{sum(nums)}</output> &nbsp;
 	</form>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
@@ -75,45 +75,43 @@
 
 </main>
 
-<section>
-	<pre>{popup}</pre>
+<aside>
+	<code>{popup}</code>
 	<input type="submit" value="Bezárom" on:click|preventDefault="{e => popup = ''}">
-</section>
+</aside>
 
 
 <style>
-	main, section {
+	main, aside {
 		display: grid;
 		gap: var(--gap);
 		padding: var(--gap);
 		justify-items: center;
 		transition: 300ms;
 	}
-	section {
+	aside {
 		position: fixed;
 		align-content: space-between;
 		background-color: #fff;
 		border-radius: var(--gap);
 		box-shadow: 0 0 1rem #000;
 		left: var(--gap);
-		right: var(--gap);
 		bottom: -10vh;
 		opacity: 0;
 		pointer-events: none;
-		font-size: var(--bigfont);
+		max-width: calc(100vw - 2 * var(--gap));
 	}
-	section > pre {
+	aside > code {
 		color: #000;
-		overflow: clip;
-		text-overflow: ellipsis;
 		justify-self: start;
+		white-space: pre-wrap;
 	}
 	main.popup {
 		pointer-events: none;
 		user-select: none;
 		opacity: 0.3;
 	}
-	main.popup + section {
+	main.popup + aside {
 		opacity: 1;
 		bottom: var(--gap);
 		pointer-events: all;
@@ -124,18 +122,28 @@
 		align-items: center;
 		justify-items: center;
 		width: 100%;
-		max-width: 40rem;
+		max-width: 50rem;
 		gap: var(--gap);
 	}
-	form > div {
+	form > output {
 		font-size: var(--hugefont);
 		text-shadow: 0 0 var(--contour) #000;
 	}
-	img {
-		max-height: 10vw;
+	form > * {
+		font-size: var(--bigfont);
+		padding: 0;
+		line-height: 1.5em;
+		max-width: 25vw;
 	}
-	hr {
-		grid-column: 1 / -1;
+	input {
+		cursor: pointer;
+		border: 1px solid #fffa;
+		color: #fff;
+	}
+	input[type="button"] {
+		width: 15vw;
+		height: 15vw;
+		border-radius: var(--radius);
 	}
 	input[type="text"], input[type="submit"], hr {
 		width: 100%;
@@ -145,30 +153,18 @@
 		box-shadow: 0 0 var(--radius) var(--hl);
 	}
 	input[type="submit"], .inc {
-		cursor: pointer;
 		background-color: #5a5;
-		color: #fff;
-		border-radius: var(--radius);
 		font-weight: bold;
-		border: 1px solid #fffa;
-		/* line-height: 1ch; */
-		/* font-size: var(--bigfont); */
-	}
-	input[type="button"] {
-		line-height: 1ch;
-		font-size: var(--bigfont);
-		width: 10vmin;
-		height: 10vmin;
-		padding: 0;
-		border-radius: 2vmin;
-		cursor: pointer;
+		border-radius: var(--radius);
 	}
 	.dec {
-		border: 1px solid #fffa;
 		background-color: #a55;
 	}
 	.sum {
 		font-weight: bold;
+	}
+	hr {
+		grid-column: 1 / -1;
 	}
 	h1, h2 {
 		color: var(--hl);
