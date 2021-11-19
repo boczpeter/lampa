@@ -105,6 +105,7 @@
 		color: #000;
 		justify-self: start;
 		white-space: pre-wrap;
+		font-size: var(--bigfont);
 	}
 	main.popup {
 		pointer-events: none;
@@ -137,7 +138,6 @@
 	}
 	input {
 		cursor: pointer;
-		border: 1px solid #fffa;
 		color: #fff;
 	}
 	input[type="button"] {
@@ -154,6 +154,7 @@
 	}
 	input[type="submit"], .inc {
 		background-color: #5a5;
+		font-size: var(--bigfont);
 		font-weight: bold;
 		border-radius: var(--radius);
 	}
