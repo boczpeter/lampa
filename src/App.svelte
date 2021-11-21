@@ -98,7 +98,7 @@
 		border-radius: var(--gap);
 		box-shadow: 0 0 1rem #000;
 		left: var(--gap);
-		bottom: -20%;
+		top: -20%;
 		opacity: 0;
 		pointer-events: none;
 		max-width: calc(100vw - 2 * var(--gap));
@@ -116,8 +116,8 @@
 	}
 	main.popup + aside {
 		opacity: 1;
-		bottom: var(--gap);
-		pointer-events: all;
+		top: var(--gap);
+		pointer-events: auto;
 	}
 	form {
 		display: grid;
