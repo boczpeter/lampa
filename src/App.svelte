@@ -19,7 +19,7 @@
 			...nums.map(line)
 		].join('\n');	// constants
 
-	let popup = '',	cancopy = true;
+	let popup = false, popuptext = '',	cancopy = true;
 
 	$: document.body.classList.toggle('popup', popup);
 
@@ -28,11 +28,13 @@
 		const text = gettext();
 
 		navigator.clipboard.writeText(text).then(function() {
-			popup = text;
+			popuptext = text;
+			popup = true;
 			cancopy = true;
 		}, function() {
 			console.error('clipboard write failed');
-			popup = 'clipboard write failed';
+			popuptext = 'clipboard write failed';
+			popup = true;
 			cancopy = true;
 		});
 
@@ -40,7 +42,7 @@
 
 	function keydown(e) {
 		if (e.key == 'Escape') {
-			popup = '';
+			popup = false;
 		}
 	}
 </script>
@@ -76,8 +78,8 @@
 </main>
 
 <aside>
-	<code>{popup}</code>
-	<input type="submit" value="Bezárom" on:click|preventDefault="{e => popup = ''}">
+	<code>{popuptext}</code>
+	<input type="submit" value="Bezárom" on:click|preventDefault="{e => popup = false}">
 </aside>
 
 
@@ -96,7 +98,7 @@
 		border-radius: var(--gap);
 		box-shadow: 0 0 1rem #000;
 		left: var(--gap);
-		bottom: -10vh;
+		bottom: -20%;
 		opacity: 0;
 		pointer-events: none;
 		max-width: calc(100vw - 2 * var(--gap));
@@ -105,7 +107,7 @@
 		color: #000;
 		justify-self: start;
 		white-space: pre-wrap;
-		font-size: var(--bigfont);
+		font-size: 1rem;
 	}
 	main.popup {
 		pointer-events: none;

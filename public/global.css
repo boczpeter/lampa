@@ -3,12 +3,12 @@
 	margin: 0;
 }
 html {
-	--hl: #c86e00;
-	--gap: 3vw;
-	--bigfont: min(8vw, 4rem);
-	--hugefont: min(12vw, 6rem);
-	--radius: 0.5em;
-	--contour: 0.2vw;
+	--hl			: #c86e00;
+	--gap			: 3vw;
+	--bigfont : min( 8vw, 4rem, 10vh);
+	--hugefont: min(12vw, 6rem, 15vh);
+	--radius	: 0.5em;
+	--contour	: 0.2vw;
 }
 body {
 	color: #eee;
