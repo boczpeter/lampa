@@ -1,32 +1,30 @@
 <script>
-	const nums = [
-		{value:0, img:'3.png', name:'Első+hátsó'},
-		{value:0, img:'1.png', name:'Csak első '},
-		{value:0, img:'2.png', name:'Csak hátsó'},
-		{value:0, img:'0.png', name:'Egyik sem '},
-	],
-	meta = [
-		{value:'', name: 'Neved/Nicked'},
-		{value:'', name: 'Város'},
-		{value:'', name: 'Lakosságszám'},
-		{value:'', name: 'Helyszín'},
-	],
-	sum = arr => arr.reduce((p, e) => p + e.value, 0),	// return sum of values
-	line = e => `${e.name}: ${e.value}`,
-	gettext = () => [
-			...meta.map(line),
-			'Kerékpárosok száma: ' + sum(nums),
-			...nums.map(line)
-		].join('\n');	// constants
+	const data = {
+		nums : [
+			{value:0, src:'3.png', name:'Első+hátsó'},
+			{value:0, src:'1.png', name:'Csak első '},
+			{value:0, src:'2.png', name:'Csak hátsó'},
+			{value:0, src:'0.png', name:'Egyik sem '},
+		],
+		all : {value:0, name: 'Kerékpárosok száma'},
+		meta : [
+			{value:'', name: 'Neved/Nicked'},
+			{value:'', name: 'Város'},
+			{value:'', name: 'Lakosságszám'},
+			{value:'', name: 'Helyszín'},
+		]
+	},
+	calc = () => data.all.value = data.nums.reduce((p, e) => p + e.value, 0),
+	getdata = () => ['meta','all','nums'].map(k => data[k]).flat();	// constants
 
-	let popup = false, popuptext = '',	cancopy = true;
+	let popup = false, popuptext = '', cancopy = true;
 
 	$: document.body.classList.toggle('popup', popup);
 
 	function copy() {
 		cancopy = false;
-		const text = gettext();
-
+		console.log(getdata());
+		const text = getdata().map(e => `${e.name}: ${e.value}`).join('\n');
 		navigator.clipboard.writeText(text).then(function() {
 			popuptext = text;
 			popup = true;
@@ -54,28 +52,27 @@
 
 <svelte:window on:keydown={keydown}/>
 
-<main class:popup>
+<form class:popup>
 	<h1>Lámpaszámlálás</h1>
 	<h2>Számolj&hellip;</h2>
 
-	<form on:submit|preventDefault="{copy}" id="main">
-		{#each nums as {name, value, img}}
+	<section>
+		{#each data.nums as {name, value, src}}
 		<output>{value}</output>
-			<input type="button" value="&#65293;" class="dec" on:click="{e => value && --value}">
-			<img src="{img}" title="{name}" alt="{name}">
-			<input type="button" value="&#65291;" class="inc" on:click="{e => ++value}">
+			<input type="button" value="&#65293;" class="dec" on:click="{e => {value && --value; calc()}}">
+			<img {src} title="{name}" alt="{name}">
+			<input type="button" value="&#65291;" class="inc" on:click="{e => ++value && calc()}">
 		{/each}
 		<hr>
-		<output class="sum">{sum(nums)}</output> &nbsp;
-	</form>
+		<output class="sum">{data.all.value}</output> &nbsp;
+	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
-	{#each meta as {name, value}}
-		<input type="text" bind:value placeholder="{name}" form="main">
+	{#each data.meta as {name, value}}
+		<input type="text" bind:value placeholder="{name}">
 	{/each}
-	<input type="submit" value="Küldöm (vágólapra)" disabled="{!cancopy}" form="main">
-
-</main>
+	<input type="submit" value="Küldöm (vágólapra)" disabled="{!cancopy}" on:click|preventDefault="{copy}">
+</form>
 
 <aside>
 	<code>{popuptext}</code>
@@ -84,7 +81,7 @@
 
 
 <style>
-	main, aside {
+	form, aside {
 		display: grid;
 		gap: var(--gap);
 		padding: var(--gap);
@@ -109,17 +106,17 @@
 		white-space: pre-wrap;
 		font-size: 1rem;
 	}
-	main.popup {
+	form.popup {
 		pointer-events: none;
 		user-select: none;
 		opacity: 0.3;
 	}
-	main.popup + aside {
+	form.popup + aside {
 		opacity: 1;
 		top: var(--gap);
 		pointer-events: auto;
 	}
-	form {
+	section {
 		display: grid;
 		grid-template-columns: 1fr min-content min-content min-content;
 		align-items: center;
@@ -128,11 +125,11 @@
 		max-width: 50rem;
 		gap: var(--gap);
 	}
-	form > output {
+	output {
 		font-size: var(--hugefont);
 		text-shadow: 0 0 var(--contour) #000;
 	}
-	form > * {
+	section > * {
 		font-size: var(--bigfont);
 		padding: 0;
 		line-height: 1.5em;
