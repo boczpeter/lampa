@@ -1,27 +1,22 @@
 <script>
-	const data = {
-		nums : [
-			{value:0, src:'3.png', name:'Első+hátsó'},
-			{value:0, src:'1.png', name:'Csak első '},
-			{value:0, src:'2.png', name:'Csak hátsó'},
-			{value:0, src:'0.png', name:'Egyik sem '},
-		],
-		all : {value:0, name: 'Kerékpárosok száma'},
-		meta : [
+	const data = new Map([
+		['meta', [
 			{value:'', name: 'Neved/Nicked'},
 			{value:'', name: 'Város'},
 			{value:'', name: 'Lakosságszám'},
 			{value:'', name: 'Helyszín'},
-		]
-	},
-	calc = () => data.all.value = data.nums.reduce((p, e) => p + e.value, 0),
-	getdata = () => ['meta','all','nums'].map(k => data[k]).flat();	// constants
-
-	let popup = false, popuptext = '', cancopy = true;
-
-	$: document.body.classList.toggle('popup', popup);
-
-	function copy() {
+		]],
+		['all', {value:0, name: 'Kerékpárosok száma'}],
+		['nums', [
+			{value:0, src:'3.png', name:'Első+hátsó'},
+			{value:0, src:'1.png', name:'Csak első '},
+			{value:0, src:'2.png', name:'Csak hátsó'},
+			{value:0, src:'0.png', name:'Egyik sem '},
+		]],
+	]),
+	calc = () => data.get('all').value = data.get('nums').reduce((p, e) => p + e.value, 0),
+	getdata = () => [...data.values()].flat(),
+	copy = () => {
 		cancopy = false;
 		console.log(getdata());
 		const text = getdata().map(e => `${e.name}: ${e.value}`).join('\n');
@@ -34,15 +29,17 @@
 			popuptext = 'clipboard write failed';
 			popup = true;
 			cancopy = true;
-		});
-
-	}
-
-	function keydown(e) {
+		})
+	},
+	keydown = e => {
 		if (e.key == 'Escape') {
 			popup = false;
 		}
-	}
+	};	// constants
+
+	let popup = false, popuptext = '', cancopy = true;
+
+	$: document.body.classList.toggle('popup', popup);
 </script>
 
 <svelte:head>
@@ -57,18 +54,18 @@
 	<h2>Számolj&hellip;</h2>
 
 	<section>
-		{#each data.nums as {name, value, src}}
+		{#each data.get('nums') as {name, value, src}}
 		<output>{value}</output>
 			<input type="button" value="&#65293;" class="dec" on:click="{e => {value && --value; calc()}}">
 			<img {src} title="{name}" alt="{name}">
 			<input type="button" value="&#65291;" class="inc" on:click="{e => ++value && calc()}">
 		{/each}
 		<hr>
-		<output class="sum">{data.all.value}</output> &nbsp;
+		<output class="sum">{data.get('all').value}</output> &nbsp;
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
-	{#each data.meta as {name, value}}
+	{#each data.get('meta') as {name, value}}
 		<input type="text" bind:value placeholder="{name}">
 	{/each}
 	<input type="submit" value="Küldöm (vágólapra)" disabled="{!cancopy}" on:click|preventDefault="{copy}">
