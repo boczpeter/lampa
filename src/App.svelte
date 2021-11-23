@@ -19,17 +19,17 @@
 		]],
 	]),
 	getdata = () => [...data.values()].flat(),
-	copy = () => {
-		cancopy = false;
+	send = () => {
+		cansend = false;
 		console.log(getdata());
 		const text = getdata().map(e => `${e.name}: ${e.value}`).join('\n');
 		navigator.clipboard.writeText(text)
 			.then(() => console.info(popuptext = text))
 			.catch(r => console.error(popuptext = 'clipboard write failed'))
-			.finally(() => open = cancopy = true);
+			.finally(() => open = cansend = true);
 	};	// constants
 
-	let open = false, popuptext = '', cancopy = true;
+	let open = false, popuptext = '', cansend = true;
 
 	$: document.body.classList.toggle('popup', open);
 </script>
@@ -41,6 +41,7 @@
 
 <form>
 	<h1>Lámpaszámlálás</h1>
+
 	<h2>Számolj&hellip;</h2>
 
 	<section>
@@ -58,7 +59,7 @@
 	{#each data.get('meta') as {name, value}}
 		<input type="text" bind:value placeholder="{name}">
 	{/each}
-	<input type="submit" value="Küldöm (vágólapra)" disabled="{!cancopy}" on:click|preventDefault="{copy}">
+	<input type="submit" value="Küldöm (vágólapra)" disabled="{!cansend}" on:click|preventDefault="{send}">
 </form>
 
 <Popup bind:open text="{popuptext}"></Popup>

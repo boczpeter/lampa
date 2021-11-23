@@ -1,18 +1,18 @@
 <script>
-	export let text = '', open = false;
-
-  function keydown(e) {
-		if (e.key == 'Escape') {
-			open = false;
-		}
-	}
+  // import { fade } from 'svelte/transition';
+	export let
+    text = '',
+    open = false;
+  const
+    close = () => open = false,
+    keydown = e => e.key == 'Escape' && close();
 </script>
 
 <svelte:window on:keydown={keydown}/>
 
 <aside>
 	<code>{text}</code>
-	<input type="submit" value="Bezárom" on:click|preventDefault="{e => open = false}">
+	<input type="submit" value="Bezárom" on:click|preventDefault="{close}">
 </aside>
 
 <style>
