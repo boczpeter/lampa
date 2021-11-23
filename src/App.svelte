@@ -6,7 +6,10 @@
 			{value:'', name: 'Lakosságszám'},
 			{value:'', name: 'Helyszín'},
 		]],
-		['all', {value:0, name: 'Kerékpárosok száma'}],
+		['all', {
+			get value() { return data.get('nums').reduce((p,e) => p + e.value, 0) },
+			name: 'Kerékpárosok száma'
+		}],
 		['nums', [
 			{value:0, src:'3.png', name:'Első+hátsó'},
 			{value:0, src:'1.png', name:'Csak első '},
@@ -14,7 +17,6 @@
 			{value:0, src:'0.png', name:'Egyik sem '},
 		]],
 	]),
-	calc = () => data.get('all').value = data.get('nums').reduce((p, e) => p + e.value, 0),
 	getdata = () => [...data.values()].flat(),
 	copy = () => {
 		cancopy = false;
@@ -56,9 +58,9 @@
 	<section>
 		{#each data.get('nums') as {name, value, src}}
 		<output>{value}</output>
-			<input type="button" value="&#65293;" class="dec" on:click="{e => {value && --value; calc()}}">
+			<input type="button" value="&#65293;" class="dec" on:click="{e => value && --value}">
 			<img {src} title="{name}" alt="{name}">
-			<input type="button" value="&#65291;" class="inc" on:click="{e => ++value && calc()}">
+			<input type="button" value="&#65291;" class="inc" on:click="{e => ++value}">
 		{/each}
 		<hr>
 		<output class="sum">{data.get('all').value}</output> &nbsp;
