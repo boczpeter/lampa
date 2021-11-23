@@ -1,8 +1,10 @@
 <script>
   // import { fade } from 'svelte/transition';
-	export let
+
+  export let
     text = '',
     open = false;
+
   const
     close = () => open = false,
     keydown = e => e.key == 'Escape' && close();
