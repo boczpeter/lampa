@@ -22,16 +22,10 @@
 		cancopy = false;
 		console.log(getdata());
 		const text = getdata().map(e => `${e.name}: ${e.value}`).join('\n');
-		navigator.clipboard.writeText(text).then(function() {
-			popuptext = text;
-			popup = true;
-			cancopy = true;
-		}, function() {
-			console.error('clipboard write failed');
-			popuptext = 'clipboard write failed';
-			popup = true;
-			cancopy = true;
-		})
+		navigator.clipboard.writeText(text)
+			.then(() => console.info(popuptext = text))
+			.catch(r => console.error(popuptext = 'clipboard write failed'))
+			.finally(() => popup = cancopy = true);
 	},
 	keydown = e => {
 		if (e.key == 'Escape') {
