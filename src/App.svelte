@@ -1,4 +1,5 @@
 <script>
+	import Popup from './Popup.svelte';
 	const data = new Map([
 		['meta', [
 			{value:'', name: 'Neved/Nicked'},
@@ -25,17 +26,12 @@
 		navigator.clipboard.writeText(text)
 			.then(() => console.info(popuptext = text))
 			.catch(r => console.error(popuptext = 'clipboard write failed'))
-			.finally(() => popup = cancopy = true);
-	},
-	keydown = e => {
-		if (e.key == 'Escape') {
-			popup = false;
-		}
+			.finally(() => open = cancopy = true);
 	};	// constants
 
-	let popup = false, popuptext = '', cancopy = true;
+	let open = false, popuptext = '', cancopy = true;
 
-	$: document.body.classList.toggle('popup', popup);
+	$: document.body.classList.toggle('popup', open);
 </script>
 
 <svelte:head>
@@ -43,9 +39,7 @@
 	<meta name="theme-color" content="#333">
 </svelte:head>
 
-<svelte:window on:keydown={keydown}/>
-
-<form class:popup>
+<form>
 	<h1>Lámpaszámlálás</h1>
 	<h2>Számolj&hellip;</h2>
 
@@ -67,47 +61,23 @@
 	<input type="submit" value="Küldöm (vágólapra)" disabled="{!cancopy}" on:click|preventDefault="{copy}">
 </form>
 
-<aside>
-	<code>{popuptext}</code>
-	<input type="submit" value="Bezárom" on:click|preventDefault="{e => popup = false}">
-</aside>
-
+<Popup bind:open text="{popuptext}"></Popup>
 
 <style>
-	form, aside {
-		display: grid;
-		gap: var(--gap);
-		padding: var(--gap);
-		justify-items: center;
-		transition: 300ms;
+	:global(body.popup) {
+		overflow: hidden;
 	}
-	aside {
-		position: fixed;
-		align-content: space-between;
-		background-color: #fff;
-		border-radius: var(--gap);
-		box-shadow: 0 0 1rem #000;
-		left: var(--gap);
-		top: -20%;
-		opacity: 0;
-		pointer-events: none;
-		max-width: calc(100vw - 2 * var(--gap));
-	}
-	aside > code {
-		color: #000;
-		justify-self: start;
-		white-space: pre-wrap;
-		font-size: 1rem;
-	}
-	form.popup {
+	:global(body.popup) form {
 		pointer-events: none;
 		user-select: none;
 		opacity: 0.3;
 	}
-	form.popup + aside {
-		opacity: 1;
-		top: var(--gap);
-		pointer-events: auto;
+	form {
+		display: grid;
+		gap: var(--gap);
+		padding: var(--gap);
+		justify-items: center;
+		transition: var(--trans);
 	}
 	section {
 		display: grid;
@@ -128,50 +98,13 @@
 		line-height: 1.5em;
 		max-width: 25vw;
 	}
-	input {
-		cursor: pointer;
-		color: #fff;
-	}
-	input[type="button"] {
-		width: 15vw;
-		height: 15vw;
-		border-radius: var(--radius);
-	}
-	input[type="text"], input[type="submit"], hr {
-		width: 100%;
-		max-width: 40rem;
-	}
-	input[type="text"]:focus {
-		box-shadow: 0 0 var(--radius) var(--hl);
-	}
-	input[type="submit"], .inc {
-		background-color: #5a5;
-		font-size: var(--bigfont);
-		font-weight: bold;
-		border-radius: var(--radius);
+	hr {
+		grid-column: 1 / -1;
 	}
 	.dec {
 		background-color: #a55;
 	}
 	.sum {
 		font-weight: bold;
-	}
-	hr {
-		grid-column: 1 / -1;
-	}
-	h1, h2 {
-		color: var(--hl);
-		font-weight: 400;
-		text-align: center;
-	}
-	h1 {
-		text-shadow: 0 0 var(--contour) #f00;
-		font-size: 10vw;
-		text-transform: uppercase;
-	}
-	h2 {
-		text-shadow: 0 0 var(--contour) #000;
-		font-size: 6vw;
-		white-space: nowrap;
 	}
 </style>
