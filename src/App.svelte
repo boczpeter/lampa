@@ -1,6 +1,7 @@
 <script>
 	import Form  from './Form.svelte';
 	import Popup from './Popup.svelte';
+	export let title = '', bgcolor = '#fff';
 
 	let open = false, popuptext = '', cansend = true;
 
@@ -12,15 +13,17 @@
 			.finally(() => open = cansend = true);
 	}
 
+	document.body.style.backgroundColor = bgcolor;
+
 	$: document.body.classList.toggle('popup', open);
 </script>
 
 <svelte:head>
-	<title>{popuptext}Lámpaszámlálás</title>
-	<meta name="theme-color" content="#333">
+	<title>{title}</title>
+	<meta name="theme-color" content="{bgcolor}">
 </svelte:head>
 
-<Form bind:cansend on:copy={copy}></Form>
+<Form bind:cansend on:copy={copy} {title}></Form>
 <Popup bind:open text={popuptext}></Popup>
 
 <style>

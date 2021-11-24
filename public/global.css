@@ -13,7 +13,6 @@ html {
 }
 body {
 	color: #eee;
-	background-color: #333;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	padding: 0;
 	width: 100vw;	/* prevent moving content horizontally on scrollbar show/hide */

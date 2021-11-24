@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 
-	export let cansend = true;
+	export let cansend = true, title = '';
 
 	const data = new Map([
 		['meta', [
@@ -31,7 +31,7 @@
 </script>
 
 <form>
-	<h1>Lámpaszámlálás</h1>
+	<h1>{title}</h1>
 
 	<h2>Számolj&hellip;</h2>
 
