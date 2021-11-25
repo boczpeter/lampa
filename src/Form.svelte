@@ -1,8 +1,10 @@
 <script>
+	import Popup from './Popup.svelte';
 	import { createEventDispatcher } from 'svelte';
 
 	export let cansend = true, title = '';
 
+	let help = false;
 	const data = new Map([
 		['meta', [
 			{value:'', name: 'Neved/Nicked'},
@@ -44,6 +46,7 @@
 		{/each}
 		<hr>
 		<output class="sum">{data.get('all').value}</output>
+		<button type="button" class="help" on:click="{e => help = true}" title="Help">?</button>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
@@ -52,6 +55,7 @@
 	{/each}
 	<input type="submit" value="Küldöm (vágólapra)" disabled="{!cansend}" on:click|preventDefault="{send}">
 </form>
+<Popup bind:open={help}/>
 
 <style>
 	:global(body.popup) form {

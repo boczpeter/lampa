@@ -5,6 +5,7 @@
 html {
 	--hl			: #c86e00;
 	--gap			: 3vw;
+	--font    : clamp(0.4em, 2vw, 5vh);
 	--bigfont : min( 8vw, 4rem, 10vh);
 	--hugefont: min(12vw, 6rem, 15vh);
 	--radius	: 0.5em;

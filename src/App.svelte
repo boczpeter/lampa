@@ -14,8 +14,6 @@
 	}
 
 	document.body.style.backgroundColor = bgcolor;
-
-	$: document.body.classList.toggle('popup', open);
 </script>
 
 <svelte:head>
@@ -23,8 +21,8 @@
 	<meta name="theme-color" content="{bgcolor}">
 </svelte:head>
 
-<Form bind:cansend on:copy={copy} {title}></Form>
-<Popup bind:open text={popuptext}></Popup>
+<Form  bind:cansend on:copy={copy} {title}/>
+<Popup bind:open message={popuptext} type={'plain'}/>
 
 <style>
 	:global(body.popup) {
