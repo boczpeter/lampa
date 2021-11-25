@@ -1,11 +1,10 @@
 * {
 	box-sizing: border-box;
-	margin: 0;
 }
 html {
 	--hl			: #c86e00;
 	--gap			: 3vw;
-	--font    : clamp(0.4em, 2vw, 5vh);
+	--font    : clamp(3vmin, 0.8em, 6vmin);
 	--bigfont : min( 8vw, 4rem, 10vh);
 	--hugefont: min(12vw, 6rem, 15vh);
 	--radius	: 0.5em;
@@ -18,6 +17,7 @@ body {
 	color: #eee;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	padding: 0;
+	margin: 0;
 	width: 100vw;	/* prevent moving content horizontally on scrollbar show/hide */
 	overflow-x: hidden;
 }
@@ -56,13 +56,13 @@ input[type="submit"] {
 	font-size: var(--bigfont);
 	font-weight: bold;
 	border-radius: var(--radius);
+	line-height: var(--bigfont);
 }
 
 input, button, select, textarea {
 	font-family: inherit;
 	font-size: max(1rem,2vw);
-	-webkit-padding: 0.4em 0;
-	padding: 0.4em;
+	padding: var(--gap);
 	box-sizing: border-box;
 	border: var(--contour) solid #fff8;
 	color: inherit;
@@ -81,6 +81,7 @@ h1, h2 {
 	color: var(--hl);
 	font-weight: 400;
 	text-align: center;
+	margin: 0;
 }
 h1 {
 	text-shadow: 0 0 var(--contour) #f00;
@@ -91,4 +92,7 @@ h2 {
 	text-shadow: 0 0 var(--contour) #000;
 	font-size: 6vw;
 	white-space: nowrap;
+}
+h3, h4, h5, h6 {
+	margin: 0.5em 0;
 }
