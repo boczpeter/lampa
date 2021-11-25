@@ -107,4 +107,8 @@
 	.sum {
 		font-weight: bold;
 	}
+	.help {
+		border-radius: 50%;
+		grid-column: -3 / -1;
+	}
 </style>
