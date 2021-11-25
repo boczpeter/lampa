@@ -38,12 +38,12 @@
 	<section>
 		{#each data.get('nums') as {name, value, src}}
 		<output>{value}</output>
-			<input type="button" value="&#65293;" class="dec" on:click="{e => value && --value}">
+			<button type="button" class="dec" on:click="{e => value && --value}">&#8722;</button>
 			<img {src} title="{name}" alt="{name}">
-			<input type="button" value="&#65291;" class="inc" on:click="{e => ++value}">
+			<button type="button" class="inc" on:click="{e => ++value}">&#65291;</button>
 		{/each}
 		<hr>
-		<output class="sum">{data.get('all').value}</output> &nbsp;
+		<output class="sum">{data.get('all').value}</output>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
@@ -75,21 +75,30 @@
 		max-width: 50rem;
 		gap: var(--gap);
 	}
-	output {
+	section > output {
 		font-size: var(--hugefont);
 		text-shadow: 0 0 var(--contour) #000;
+		line-height: var(--hugefont);
 	}
 	section > * {
 		font-size: var(--bigfont);
 		padding: 0;
-		line-height: 1.5em;
-		max-width: 25vw;
+		line-height: var(--bigfont);
 	}
 	hr {
 		grid-column: 1 / -1;
 	}
+	button {
+		width : calc(2 * var(--bigfont));
+		height: calc(2 * var(--bigfont));
+		border-radius: var(--radius);
+	}
 	.dec {
-		background-color: #a55;
+		background-color: var(--red);
+	}
+	.inc {
+		background-color: var(--green);
+		font-weight: bold;
 	}
 	.sum {
 		font-weight: bold;

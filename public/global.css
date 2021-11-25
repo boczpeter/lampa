@@ -10,6 +10,8 @@ html {
 	--radius	: 0.5em;
 	--contour	: 0.2vw;
 	--trans 	: 300ms;
+	--green   : #5a5;
+	--red     : #a55;
 }
 body {
 	color: #eee;
@@ -35,14 +37,11 @@ label {
 	display: block;
 }
 
-input {
+input, button {
 	cursor: pointer;
 	color: #fff;
-}
-input[type="button"] {
-	width: 15vw;
-	height: 15vw;
-	border-radius: var(--radius);
+	outline: none;
+	display: inline-block;
 }
 input[type="text"], input[type="submit"], hr {
 	width: 100%;
@@ -51,8 +50,8 @@ input[type="text"], input[type="submit"], hr {
 input[type="text"]:focus {
 	box-shadow: 0 0 var(--radius) var(--hl);
 }
-input[type="submit"], .inc {
-	background-color: #5a5;
+input[type="submit"] {
+	background-color: var(--green);
 	font-size: var(--bigfont);
 	font-weight: bold;
 	border-radius: var(--radius);
@@ -75,9 +74,6 @@ input:disabled, button:disabled {
 }
 input:not(:disabled):active, button:not(:disabled):active {
 	box-shadow: 0 0 var(--radius) var(--hl);
-}
-input, button {
-	outline: none;
 }
 
 h1, h2 {
