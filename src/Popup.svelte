@@ -1,4 +1,5 @@
 <script>
+	import Help  from './Help.svelte';
   export let
     message = '',
     open = false,
@@ -18,7 +19,7 @@
 		{#if message}
 			{message}
 		{:else}
-			 <!-- <Help.hu.md/> -->
+			 <Help/>
 		{/if}
 	</output>
 	<input type="submit" value="Bezárom" on:click|preventDefault="{close}">
@@ -33,7 +34,7 @@
 		max-width : calc(100vw - 2 * var(--gap));
 		max-height: calc(100vh - 2 * var(--gap));
 		justify-items: center;
-		align-content: space-between;
+		/* align-content: space-between; */
 		transition: var(--trans);
 		background-color: #fff;
 		border-radius: var(--gap);
@@ -53,6 +54,8 @@
 		color: #000;
 		font-size: var(--font);
 		justify-self: start;
+		max-height: calc(100vh - 7 * var(--gap) - var(--bigfont) - 2 * var(--contour));
+		overflow-y: auto;
 	}
 	output.plain {
 		white-space: pre-wrap;
