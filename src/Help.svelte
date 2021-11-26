@@ -2,7 +2,8 @@
   import SvelteMarkdown from 'svelte-markdown';
   export let lang = 'hu';
 
-  const source = `
+  const map = new Map([
+    ['hu', `
 ### A feladat nagyon rövid, és egyszerű:
 
 1. A <span>saját</span> településed tetszőleges, de viszonylag forgalmas pontján
@@ -15,18 +16,16 @@ között kell megszámolni az elhaladó bringásokat, és feljegyezni, hányan k
 #### Tudnivalók:
 
 - Az úton és járdán haladók ugyanúgy számítanak
-- Pontosan <time datetime="PT20M">20</time> percig mérj
+- Pontosan <time datetime="PT20M">20 percig</time> mérj
 - Minden haladási irányt számolj
 - Olyan pozíciót keress, hogy haladási iránytól függetlenül jól lásd az első és hátsó lámpát is
 - Csak a világító lámpát számoljuk
 - Forgalmas ponton inkább kérj segítséget
 - Ne torzítsd, becsüld vagy kozmetikázd az adatokat
 - Legyél pontos
-- Ha elrontottad, inkább kezdd újra a <time datetime="PT20M">20</time> percet, de <time datetime="19:30">19:30</time> után már ne fogj bele, mert torzíthatja az eredményt
+- Ha elrontottad, inkább kezdd újra a <time datetime="PT20M">20 percet</time>, de <time datetime="19:30">19:30</time> után már ne fogj bele, mert torzíthatja az eredményt
 - A legkisebb település is számít, de a gyalog tolt bicikli nem.
 Kérünk terjeszd az akciónk hírét, oszd meg a Facebookon, hogy sok helyen mérhessünk, és több bringáshoz jusson el.
-
-Korábbi lámpaszámolások eredményeit [itt találod](https://kerekparosklub.hu/category/cimkek/lampaszamlalas).
 
 Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailben szólhassunk a következő alkalmakról!
 
@@ -36,17 +35,26 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 - [Lépj be a klubba](https://kerekparosklub.hu/tagsagiakcio2021tel) - tagságoddal a bringás fejlődésért végzett munkát támogatod, biztosítást, kedvezményeket, jogsegélyt kaphatsz - és 264 nyeremény is vár!
 - [Csatlakozz a legközelebbi Kerékpárosklub területi szervezethez](https://kerekparosklub.hu/teruleti-szervezetek)!
 - [Támogasd a munkánkat](https://kerekparosklub.hu/tamogass-minket)!
-`;  // end markdown text
+`],
+
+    ['en', `Same in English...`],
+
+  ]);  // end markdown set
 </script>
 
-<SvelteMarkdown {source}/>
-<!-- Elements within SvelteMarkdown output cannot be styled -->
+<SvelteMarkdown source={map.get(lang)}/>
+
+<!-- Elements within SvelteMarkdown output cannot be styled, so we include the following verbatim -->
 <img src="https://kerekparosklub.hu/images/logo.png" alt="MK logo">
 
 <style>
+  /* MK logo */
   img {
     margin: auto;
     display: block;
     max-width: 100%;
+  }
+  time {
+    text-decoration: dotted underline #888;
   }
 </style>
