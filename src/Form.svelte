@@ -1,7 +1,7 @@
 <script>
 	import Popup from './Popup.svelte';
 	import Help  from './Help.svelte';
-	import { createEventDispatcher } from 'svelte';
+	import { clip } from './stores.js';
 
 	export let cansend = true, title = '';
 
@@ -28,9 +28,8 @@
 	send = () => {
 		cansend = false;
 		console.log(getdata());
-		dispatch('copy', { text: getdata().map(e => `${e.name}: ${e.value}`).join('\n') });
-	},
-	dispatch = createEventDispatcher();	// constants
+		clip.set( getdata().map(e => `${e.name}: ${e.value}`).join('\n') );
+	};	// constants
 </script>
 
 <form>
