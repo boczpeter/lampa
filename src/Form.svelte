@@ -93,10 +93,9 @@
 		grid-column: 1 / -1;
 	}
 	button {
-		width : calc(2 * var(--bigfont));
-		height: calc(2 * var(--bigfont));
+		width : calc(2 * var(--gap) + var(--bigfont));
+		height: calc(2 * var(--gap) + var(--bigfont));
 		border-radius: var(--radius);
-		padding: var(--gap);
 	}
 	.dec {
 		background-color: var(--red);

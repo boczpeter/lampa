@@ -53,6 +53,7 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
     margin: auto;
     display: block;
     max-width: 100%;
+    min-width: calc(10 * var(--font));
   }
   time {
     text-decoration: dotted underline #888;
