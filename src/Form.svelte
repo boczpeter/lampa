@@ -96,6 +96,7 @@
 		width : calc(2 * var(--bigfont));
 		height: calc(2 * var(--bigfont));
 		border-radius: var(--radius);
+		padding: var(--gap);
 	}
 	.dec {
 		background-color: var(--red);

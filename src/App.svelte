@@ -19,6 +19,7 @@
 <svelte:head>
 	<title>{title}</title>
 	<meta name="theme-color" content="{bgcolor}">
+	<base target="_blank">
 </svelte:head>
 
 <Form  bind:cansend on:copy={copy} {title}/>

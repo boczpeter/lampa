@@ -46,7 +46,7 @@ input, button {
 }
 input[type="text"], input[type="submit"], hr {
 	width: 100%;
-	max-width: 40rem;
+	max-width: 50rem;
 }
 input[type="text"]:focus {
 	box-shadow: 0 0 var(--radius) var(--hl);
@@ -57,16 +57,17 @@ input[type="submit"] {
 	font-weight: bold;
 	border-radius: var(--radius);
 	line-height: var(--bigfont);
+	padding: var(--gap);
 }
 
 input, button, select, textarea {
 	font-family: inherit;
 	font-size: max(1rem,2vw);
-	padding: var(--gap);
 	box-sizing: border-box;
 	border: var(--contour) solid #fff8;
 	color: inherit;
 	background-color: #666;
+	padding: 0.5em;
 }
 
 input:disabled, button:disabled {
