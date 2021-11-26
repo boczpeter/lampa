@@ -1,9 +1,5 @@
 <script>
-	import Help  from './Help.svelte';
-  export let
-    message = '',
-    open = false,
-		type = '';
+  export let open = false, type = '';
 
   const
 		close = () => open = false,
@@ -16,11 +12,7 @@
 
 <aside class:open>
 	<output class={type}>
-		{#if message}
-			{message}
-		{:else}
-			 <Help/>
-		{/if}
+		<slot>&larr; popup text &rarr;</slot>
 	</output>
 	<input type="submit" value="Bezárom" on:click|preventDefault="{close}">
 </aside>
@@ -34,7 +26,6 @@
 		max-width : calc(100vw - 2 * var(--gap));
 		max-height: calc(100vh - 2 * var(--gap));
 		justify-items: center;
-		/* align-content: space-between; */
 		transition: var(--trans);
 		background-color: #fff;
 		border-radius: var(--gap);

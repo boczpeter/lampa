@@ -4,7 +4,7 @@
 
   const map = new Map([
     ['hu', `
-### A feladat nagyon rövid, és egyszerű:
+### A feladat nagyon rövid és egyszerű:
 
 1. A <span>saját</span> településed tetszőleges, de viszonylag forgalmas pontján
 <time datetime="2021-11-11">november 11-én csütörtökön</time>,
@@ -15,15 +15,15 @@ között kell megszámolni az elhaladó bringásokat, és feljegyezni, hányan k
 
 #### Tudnivalók:
 
-- Az úton és járdán haladók ugyanúgy számítanak
-- Pontosan <time datetime="PT20M">20 percig</time> mérj
-- Minden haladási irányt számolj
-- Olyan pozíciót keress, hogy haladási iránytól függetlenül jól lásd az első és hátsó lámpát is
-- Csak a világító lámpát számoljuk
-- Forgalmas ponton inkább kérj segítséget
-- Ne torzítsd, becsüld vagy kozmetikázd az adatokat
-- Legyél pontos
-- Ha elrontottad, inkább kezdd újra a <time datetime="PT20M">20 percet</time>, de <time datetime="19:30">19:30</time> után már ne fogj bele, mert torzíthatja az eredményt
+- Az úton és járdán haladók ugyanúgy számítanak.
+- Pontosan <time datetime="PT20M">20 percig</time> mérj!
+- Minden haladási irányt számolj!
+- Olyan pozíciót keress, hogy haladási iránytól függetlenül jól lásd az első és hátsó lámpát is!
+- Csak a világító lámpát számoljuk.
+- Forgalmas ponton inkább kérj segítséget!
+- Ne torzítsd, becsüld vagy kozmetikázd az adatokat!
+- Legyél pontos!
+- Ha elrontottad, inkább kezdd újra a <time datetime="PT20M">20 percet</time>, de <time datetime="19:30">19:30</time> után már ne fogj bele, mert torzíthatja az eredményt.
 - A legkisebb település is számít, de a gyalog tolt bicikli nem.
 Kérünk terjeszd az akciónk hírét, oszd meg a Facebookon, hogy sok helyen mérhessünk, és több bringáshoz jusson el.
 

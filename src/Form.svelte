@@ -1,5 +1,6 @@
 <script>
 	import Popup from './Popup.svelte';
+	import Help  from './Help.svelte';
 	import { createEventDispatcher } from 'svelte';
 
 	export let cansend = true, title = '';
@@ -55,7 +56,10 @@
 	{/each}
 	<input type="submit" value="Küldöm (vágólapra)" disabled="{!cansend}" on:click|preventDefault="{send}">
 </form>
-<Popup bind:open={help}/>
+
+<Popup bind:open={help}>
+	<Help/>
+</Popup>
 
 <style>
 	:global(body.popup) form {

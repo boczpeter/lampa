@@ -23,7 +23,8 @@
 </svelte:head>
 
 <Form  bind:cansend on:copy={copy} {title}/>
-<Popup bind:open message={popuptext} type={'plain'}/>
+
+<Popup bind:open type='plain'>{popuptext}</Popup>
 
 <style>
 	:global(body.popup) {
