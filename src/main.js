@@ -4,7 +4,6 @@ const app = new App({
 	target: document.body,
 	props: {
 		title: 'Lámpaszámlálás',
-		bgcolor: '#333',
 	}
 });
 

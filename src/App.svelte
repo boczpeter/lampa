@@ -2,7 +2,7 @@
 	import Form  from './Form.svelte';
 	import Popup from './Popup.svelte';
 	import { clip } from './stores.js';
-	export let title = '', bgcolor = '#fff';
+	export let title = '';
 
 	let open = false, popuptext = '', cansend = true;
 
@@ -12,13 +12,10 @@
 		.catch(r => console.error(popuptext = 'clipboard write failed'))
 		.finally(() => open = cansend = true)
 	);
-	document.body.style.backgroundColor = bgcolor;
 </script>
 
 <svelte:head>
 	<title>{title}</title>
-	<meta name="theme-color" content="{bgcolor}">
-	<base target="_blank">
 </svelte:head>
 
 <Form  bind:cansend {title}/>
