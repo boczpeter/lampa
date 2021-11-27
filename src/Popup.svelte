@@ -10,7 +10,7 @@
 
 <svelte:window on:keydown={keydown}/>
 
-<aside class:open>
+<aside class:open role="dialog" aria-modal="true">
 	<output class={type}>
 		<slot>&larr; popup text &rarr;</slot>
 	</output>
