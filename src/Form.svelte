@@ -13,10 +13,9 @@
 			{value:'', name: 'Lakosságszám'},
 			{value:'', name: 'Helyszín'},
 		]],
-		['all', {
-			get value() { return data.get('nums').reduce((p,e) => p + e.value, 0) },
-			name: 'Kerékpárosok száma'
-		}],
+		['all', [
+			{name: 'Kerékpárosok száma', get value() { return data.get('nums').reduce((p,e) => p+e.value, 0) }}
+		]],
 		['nums', [
 			{value:0, src:'3.png', name:'Első+hátsó'},
 			{value:0, src:'1.png', name:'Csak első '},
@@ -27,7 +26,6 @@
 	getdata = () => [...data.values()].flat(),
 	send = () => {
 		cansend = false;
-		// console.log(getdata());
 		dispatch('copy', { text: getdata().map(e => `${e.name}: ${e.value}`).join('\n') });
 	},
 	dispatch = createEventDispatcher();	// constants
@@ -40,21 +38,23 @@
 
 	<section>
 		{#each data.get('nums') as {name, value, src}}
-		<output>{value}</output>
-			<button type="button" class="dec" on:click="{e => value && --value}">&#8722;</button>
-			<img {src} title="{name}" alt="{name}">
-			<button type="button" class="inc" on:click="{e => ++value}">&#65291;</button>
+			<output>{value}</output>
+			<button type="button" class="dec" on:click={e => value && --value}>&#8722;</button>
+			<img {src} title={name} alt={name}>
+			<button type="button" class="inc" on:click={e => ++value}>&#65291;</button>
 		{/each}
 		<hr>
-		<output class="sum">{data.get('all').value}</output>
-		<button type="button" class="help" on:click="{e => help = true}" title="Help">?</button>
+		{#each data.get('all') as {name, value}}
+			<output class="sum" title={name}>{value}</output>
+		{/each}
+		<button type="button" class="help" on:click={e => help = true} title="Help">?</button>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
 	{#each data.get('meta') as {name, value}}
-		<input type="text" bind:value placeholder="{name}">
+		<input type="text" bind:value placeholder={name}>
 	{/each}
-	<input type="submit" value="Küldöm (vágólapra)" disabled="{!cansend}" on:click|preventDefault="{send}">
+	<input type="submit" value="Küldöm (vágólapra)" disabled={!cansend} on:click|preventDefault={send}>
 </form>
 
 <Popup bind:open={help}>
