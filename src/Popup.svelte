@@ -23,6 +23,7 @@
 		position: fixed;
 		gap: var(--gap);
 		padding: var(--gap);
+		margin: var(--gap);
 		max-width : calc(100vw - 2 * var(--gap));
 		max-height: calc(100vh - 2 * var(--gap));
 		justify-items: center;
@@ -30,16 +31,14 @@
 		background-color: #fff;
 		border-radius: var(--gap);
 		box-shadow: 0 0 1rem #000;
-		left: var(--gap);
+		top: 0;
 		/* will change on open: */
 		opacity: 0;
-		top: -20%;
-		pointer-events: none;
+		transform: translateY(-100vh);
 	}
 	aside.open {
 		opacity: 1;
-		top: var(--gap);
-		pointer-events: auto;
+		transform: translateY(0);
 	}
 	output {
 		color: #000;
