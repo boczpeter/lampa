@@ -1,11 +1,7 @@
 <script>
-	import Popup from './Popup.svelte';
-	import Help  from './Help.svelte';
-	import { createEventDispatcher } from 'svelte';
+	import { popuptext, help, open } from './stores.js';
+	export let title = '';
 
-	export let cansend = true, title = '';
-
-	let help = false;
 	const data = new Map([
 		['meta', [
 			{value:'', name: 'Neved/Nicked'},
@@ -23,12 +19,15 @@
 			{value:0, src:'0.png', name:'Egyik sem '},
 		]],
 	]),
-	getdata = () => [...data.values()].flat(),
 	send = () => {
-		cansend = false;
-		dispatch('copy', { text: getdata().map(e => `${e.name}: ${e.value}`).join('\n') });
-	},
-	dispatch = createEventDispatcher();	// constants
+		const text = [...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n');	// put text in popup
+		$popuptext = text;
+		$open = true;
+		navigator.clipboard.writeText(text)
+			.then(() => console.info(text))
+			.catch(r => console.error('clipboard write failed: '+r));
+	};	// constants
+
 </script>
 
 <form>
@@ -47,19 +46,15 @@
 		{#each data.get('all') as {name, value}}
 			<output class="sum" title={name}>{value}</output>
 		{/each}
-		<button type="button" class="help" on:click={e => help = true} title="Help">?</button>
+		<button type="button" class="help" on:click={e => $help = true} title="Help">?</button>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
 	{#each data.get('meta') as {name, value}}
 		<input type="text" bind:value placeholder={name}>
 	{/each}
-	<input type="submit" value="Küldöm (vágólapra)" disabled={!cansend} on:click|preventDefault={send}>
+	<input type="submit" value="Küldöm (vágólapra)" on:click|preventDefault={send}>
 </form>
-
-<Popup bind:open={help}>
-	<Help/>
-</Popup>
 
 <style>
 	:global(body.popup) form {

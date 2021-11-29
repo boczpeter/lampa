@@ -1,26 +1,21 @@
 <script>
 	import Form  from './Form.svelte';
+	import Help  from './Help.svelte';
 	import Popup from './Popup.svelte';
+	import { popuptext, help, open } from './stores.js';
 	export let title = '';
 
-	let open = false, popuptext = '', cansend = true;
-
-	function copy(e) {	// 'copy' event handler
-		const text = e.detail.text;
-		navigator.clipboard.writeText(text)
-			.then(() => console.info(popuptext = text))
-			.catch(r => console.error(popuptext = 'clipboard write failed'))
-			.finally(() => open = cansend = true);
-	}
 </script>
 
 <svelte:head>
 	<title>{title}</title>
 </svelte:head>
 
-<Form  bind:cansend on:copy={copy} {title}/>
+<Form {title}/>
 
-<Popup bind:open type='plain'>{popuptext}</Popup>
+<Popup bind:open={$help}><Help/></Popup>
+
+<Popup bind:open={$open} type='plain'>{$popuptext}</Popup>
 
 <style>
 	:global(body.popup) {
