@@ -1,10 +1,14 @@
+<script context="module">
+	// export const prerender = true;
+</script>
+
 <script>
+	// import Counter from '$lib/Counter.svelte';
 	import Form  from './Form.svelte';
 	import Help  from './Help.svelte';
 	import Popup from './Popup.svelte';
-	import { popuptext, help, open } from './stores.js';
-	export let title = '';
-
+	import { popuptext, help, open } from '$lib/stores.js';
+	export let title = 'Lámpaszámlálás';
 </script>
 
 <svelte:head>

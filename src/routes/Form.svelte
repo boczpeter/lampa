@@ -1,5 +1,5 @@
 <script>
-	import { popuptext, help, open } from './stores.js';
+	import { popuptext, help, open } from '$lib/stores.js';
 	export let title = '';
 
 	const data = new Map([

@@ -1,11 +1,13 @@
 <script>
+	import { browser } from "$app/env";
+
   export let open = false, type = '';
 
   const
 		close = () => open = false,
     keydown = e => e.key == 'Escape' && close();
 
-	$: document.body.classList.toggle('popup', open);
+	$: if (browser) document.body.classList.toggle('popup', open);
 </script>
 
 <svelte:window on:keydown={keydown}/>

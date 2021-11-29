@@ -1,4 +1,6 @@
 <script>
+import { browser } from '$app/env';
+
   import SvelteMarkdown from 'svelte-markdown';
 
   const map = new Map([
@@ -39,10 +41,11 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
     ['en', `Same in English...`],
 
   ]);  // end markdown set
+
+  let lang = browser ? document.documentElement.lang : map.keys().next().value; // Get lang from document or select 1st key
 </script>
 
-<!-- Get text by site lang if specified or 1st in the map -->
-<SvelteMarkdown source={map.get(document.documentElement.lang) || map.values().next().value}/>
+<SvelteMarkdown source={map.get(lang)}/>
 
 <!-- Elements within SvelteMarkdown output cannot be styled, so we include the following verbatim -->
 <img src="https://kerekparosklub.hu/images/logo.png" alt="MK logo">
