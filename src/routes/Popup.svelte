@@ -1,7 +1,7 @@
 <script>
 	import { browser } from "$app/env";
 
-  export let open = false, type = '';
+  export let open = false, type = 'fullwidth';
 
   const
 		close = () => open = false,
@@ -12,8 +12,8 @@
 
 <svelte:window on:keydown={keydown}/>
 
-<aside class:open role="dialog" aria-modal="true">
-	<output class={type}>
+<aside class:open class={type} role="dialog" aria-modal="true">
+	<output>
 		<slot>&larr; popup text &rarr;</slot>
 	</output>
 	<input type="submit" value="Bezárom" on:click|preventDefault="{close}">
@@ -42,6 +42,9 @@
 		opacity: 1;
 		transform: translateY(0);
 	}
+	aside.fullwidth {
+		width : calc(100vw - 2 * var(--gap));
+	}
 	output {
 		color: #000;
 		font-size: var(--font);
@@ -49,7 +52,7 @@
 		max-height: calc(100vh - 7 * var(--gap) - var(--bigfont) - 2 * var(--contour));
 		overflow-y: auto;
 	}
-	output.plain {
+	.plain output {
 		white-space: pre-wrap;
 		font-family: monospace;
 	}
