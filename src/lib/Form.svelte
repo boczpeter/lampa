@@ -20,11 +20,11 @@
 			{value:0, src:'0.png', name:'Egyik sem '},
 		]],
 	]),
-	go = href => goto(href, {noscroll:true}),
-	send = () => {
+	action = '/send',
+	send = e => {
 		const text = [...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n');	// put text in popup
 		$popuptext = text;
-		go('/send');
+		goto(action, {noscroll:true});
 		navigator.clipboard.writeText(text)
 			.then(() => console.info(text))
 			.catch(r => console.error('clipboard write failed: '+r));
