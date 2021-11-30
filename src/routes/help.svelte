@@ -8,6 +8,3 @@
 </script>
 
 <Popup><Help/></Popup>
-
-<style>
-</style>
