@@ -1,6 +1,6 @@
 <script>
 	import { goto, invalidate, prefetch, prefetchRoutes } from '$app/navigation';
-	import { popuptext, open } from '$lib/stores.js';
+	import { popuptext } from '$lib/stores.js';
 	export let title = '';
 
 	const data = new Map([
@@ -20,11 +20,10 @@
 			{value:0, src:'0.png', name:'Egyik sem '},
 		]],
 	]),
-	go = href => goto(href, {noscroll:true, keepfocus:true}),
+	go = href => goto(href, {noscroll:true}),
 	send = () => {
 		const text = [...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n');	// put text in popup
 		$popuptext = text;
-		// $open = true;
 		go('/send');
 		navigator.clipboard.writeText(text)
 			.then(() => console.info(text))
@@ -49,7 +48,7 @@
 		{#each data.get('all') as {name, value}}
 			<output class="sum" title={name}>{value}</output>
 		{/each}
-		<button type="button" class="help" on:click={e => go('/help')} title="Help">?</button>
+		<a class="help button" href="/help" title="Help" sveltekit:noscroll>?</a>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
@@ -109,7 +108,7 @@
 	.sum {
 		font-weight: bold;
 	}
-	.help {
+	.help.button {
 		border-radius: 50%;
 		grid-column: -3 / -1;
 		padding: var(--gap);
