@@ -36,13 +36,20 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
   ]);  // end markdown set
 
   let lang = browser ? document.documentElement.lang : map.keys().next().value,
-    source = map.get(lang); // Get lang from document or select 1st key
+    source = map.get(lang), // Get lang from document or select 1st key
+    element;   // bound to output html node
+
+  $: if (element) element.querySelectorAll('a').forEach(a => {  // postprocess all links
+    a.rel = 'external';
+    a.target = '_blank';
+  });
 </script>
 
-<SvelteMarkdown {source}/>
-
-<!-- Elements within SvelteMarkdown output cannot be styled, so we include the following verbatim -->
-<img src="https://kerekparosklub.hu/images/logo.png" alt="MK logo">
+<output bind:this={element}>
+  <SvelteMarkdown {source}/>
+  <!-- Elements within SvelteMarkdown output cannot be styled, so we include the following verbatim -->
+  <img src="mklogo.png" alt="MK logo">
+</output>
 
 <style>
   img { /* MK logo */
@@ -54,4 +61,11 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
   time {
     text-decoration: dotted underline #888;
   }
+	output {
+		color: #000;
+		font-size: var(--font);
+		justify-self: start;
+		max-height: calc(100vh - 7 * var(--gap) - var(--bigfont) - 2 * var(--contour));
+		overflow-y: auto;
+	}
 </style>

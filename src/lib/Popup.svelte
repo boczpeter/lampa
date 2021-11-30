@@ -1,20 +1,14 @@
 <script>
-	// import { browser } from "$app/env";
   export let type = 'fullwidth';
-
   const
 		close = () => history.back(),
     keydown = e => e.key == 'Escape' && close();
-
-	// $: if (browser) document.body.classList.toggle('popup', open);
 </script>
 
 <svelte:window on:keydown={keydown}/>
 
 <aside class={type} role="dialog" aria-modal="true">
-	<output>
-		<slot>&larr; popup text &rarr;</slot>
-	</output>
+	<slot>&larr; popup text &rarr;</slot>
 	<input type="submit" value="Bezárom" on:click|preventDefault="{close}">
 </aside>
 
@@ -36,16 +30,5 @@
 	}
 	aside.fullwidth {
 		width : calc(100vw - 2 * var(--gap));
-	}
-	output {
-		color: #000;
-		font-size: var(--font);
-		justify-self: start;
-		max-height: calc(100vh - 7 * var(--gap) - var(--bigfont) - 2 * var(--contour));
-		overflow-y: auto;
-	}
-	.plain output {
-		white-space: pre-wrap;
-		font-family: monospace;
 	}
 </style>

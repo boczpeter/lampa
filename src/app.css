@@ -37,6 +37,12 @@ a:visited {
 a.button:hover {
 	text-decoration: none;
 }
+a[rel="external"]::after {
+	content: "↗";
+	font-size: 80%;
+	vertical-align: top;
+	padding-inline-start: 0.2em;
+}
 
 label {
 	display: block;
