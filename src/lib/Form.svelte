@@ -20,7 +20,7 @@
 			{value:0, src:'0.png', name:'Egyik sem '},
 		]],
 	]),
-	action = '/send',
+	action = 'send',
 	send = e => {
 		const text = [...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n');	// put text in popup
 		$popuptext = text;
@@ -48,7 +48,7 @@
 		{#each data.get('all') as {name, value}}
 			<output class="sum" title={name}>{value}</output>
 		{/each}
-		<a class="help button" href="/help" title="Help" sveltekit:noscroll>?</a>
+		<a class="help button" href="help" title="Help" sveltekit:noscroll>?</a>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
