@@ -1,4 +1,10 @@
 <script>
+	import { onMount } from 'svelte';
+	onMount(() => {
+		document.body.classList.add('popup');
+		return () => document.body.classList.remove('popup');
+	});
+
   export let type = 'fullwidth';
   const
 		close = () => history.back(),
