@@ -34,12 +34,15 @@ a:hover {
 a:visited {
 	color: rgb(0,80,160);
 }
+a.button:hover {
+	text-decoration: none;
+}
 
 label {
 	display: block;
 }
 
-input, button {
+input, button, a.button {
 	cursor: pointer;
 	color: #fff;
 	outline: none;
@@ -61,7 +64,7 @@ input[type="submit"] {
 	padding: var(--gap);
 }
 
-input, button, select, textarea {
+input, button, select, textarea, a.button {
 	font-family: inherit;
 	font-size: max(1rem,2vw);
 	box-sizing: border-box;

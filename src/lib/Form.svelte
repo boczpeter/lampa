@@ -1,5 +1,6 @@
 <script>
-	import { popuptext, help, open } from '$lib/stores.js';
+	import { goto, invalidate, prefetch, prefetchRoutes } from '$app/navigation';
+	import { popuptext, open } from '$lib/stores.js';
 	export let title = '';
 
 	const data = new Map([
@@ -19,10 +20,12 @@
 			{value:0, src:'0.png', name:'Egyik sem '},
 		]],
 	]),
+	go = href => goto(href, {noscroll:true, keepfocus:true}),
 	send = () => {
 		const text = [...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n');	// put text in popup
 		$popuptext = text;
-		$open = true;
+		// $open = true;
+		go('/send');
 		navigator.clipboard.writeText(text)
 			.then(() => console.info(text))
 			.catch(r => console.error('clipboard write failed: '+r));
@@ -46,7 +49,7 @@
 		{#each data.get('all') as {name, value}}
 			<output class="sum" title={name}>{value}</output>
 		{/each}
-		<button type="button" class="help" on:click={e => $help = true} title="Help">?</button>
+		<button type="button" class="help" on:click={e => go('/help')} title="Help">?</button>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
@@ -91,7 +94,7 @@
 	hr {
 		grid-column: 1 / -1;
 	}
-	button {
+	button, a.button {
 		width : calc(2 * var(--gap) + var(--bigfont));
 		height: calc(2 * var(--gap) + var(--bigfont));
 		border-radius: var(--radius);
@@ -109,5 +112,7 @@
 	.help {
 		border-radius: 50%;
 		grid-column: -3 / -1;
+		padding: var(--gap);
+		text-align: center;
 	}
 </style>

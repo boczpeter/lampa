@@ -1,18 +1,17 @@
 <script>
-	import { browser } from "$app/env";
-
-  export let open = false, type = 'fullwidth';
+	// import { browser } from "$app/env";
+  export let type = 'fullwidth';
 
   const
-		close = () => open = false,
+		close = () => history.back(),
     keydown = e => e.key == 'Escape' && close();
 
-	$: if (browser) document.body.classList.toggle('popup', open);
+	// $: if (browser) document.body.classList.toggle('popup', open);
 </script>
 
 <svelte:window on:keydown={keydown}/>
 
-<aside class:open class={type} role="dialog" aria-modal="true">
+<aside class={type} role="dialog" aria-modal="true">
 	<output>
 		<slot>&larr; popup text &rarr;</slot>
 	</output>
@@ -34,13 +33,6 @@
 		border-radius: var(--gap);
 		box-shadow: 0 0 1rem #000;
 		top: 0;
-		/* will change on open: */
-		opacity: 0;
-		transform: translateY(-100vh);
-	}
-	aside.open {
-		opacity: 1;
-		transform: translateY(0);
 	}
 	aside.fullwidth {
 		width : calc(100vw - 2 * var(--gap));

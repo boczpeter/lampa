@@ -1,30 +1,19 @@
 <script>
-	// import Header from '$lib/header/Header.svelte';
 	import '../app.css';
+	import Form  from '$lib/Form.svelte';
+	export let title = 'Lámpaszámlálás';
 </script>
 
-<header>
-</header>
+<svelte:head>
+	<title>{title}</title>
+</svelte:head>
+
+<Form {title}/>
 
 <slot />
 
-<footer>
-</footer>
-
 <style>
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-		}
+	:global(body.popup) {
+		overflow: hidden;
 	}
 </style>
