@@ -1,18 +1,12 @@
 <script>
-import { browser } from '$app/env';
-
+  import { browser } from '$app/env';
   import SvelteMarkdown from 'svelte-markdown';
 
   const map = new Map([
-    ['hu', `
-### A feladat nagyon rövid és egyszerű:
+    ['hu', `### A feladat nagyon rövid és egyszerű:
 
-1. A <span>saját</span> településed tetszőleges, de viszonylag forgalmas pontján
-<time datetime="2021-11-11">november 11-én csütörtökön</time>,
-<time datetime="19:00">19:00</time> és
-<time datetime="19:20">19:20</time>
-között kell megszámolni az elhaladó bringásokat, és feljegyezni, hányan kerékpároztak kivilágítva.
-1. <time datetime="PT0H20M">20</time> perces mérésed eredményét [hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/622147172546653?ref=newsfeed)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
+1. A <span>saját</span> településed tetszőleges, de viszonylag forgalmas pontján <time datetime="2021-11-11">november 11-én csütörtökön</time>, <time datetime="19:00">19:00</time> és <time datetime="19:20">19:20</time> között kell megszámolni az elhaladó bringásokat és feljegyezni, hányan kerékpároztak kivilágítva.
+2. <time datetime="PT0H20M">20</time> perces mérésed eredményét [hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/622147172546653?ref=newsfeed)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
 
 #### Tudnivalók:
 
@@ -30,7 +24,6 @@ Kérünk terjeszd az akciónk hírét, oszd meg a Facebookon, hogy sok helyen m�
 
 Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailben szólhassunk a következő alkalmakról!
 
-
 #### Csatlakozz hozzánk!
 
 - [Lépj be a klubba](https://kerekparosklub.hu/tagsagiakcio2021tel) - tagságoddal a bringás fejlődésért végzett munkát támogatod, biztosítást, kedvezményeket, jogsegélyt kaphatsz - és 264 nyeremény is vár!
@@ -42,17 +35,17 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 
   ]);  // end markdown set
 
-  let lang = browser ? document.documentElement.lang : map.keys().next().value; // Get lang from document or select 1st key
+  let lang = browser ? document.documentElement.lang : map.keys().next().value,
+    source = map.get(lang); // Get lang from document or select 1st key
 </script>
 
-<SvelteMarkdown source={map.get(lang)}/>
+<SvelteMarkdown {source}/>
 
 <!-- Elements within SvelteMarkdown output cannot be styled, so we include the following verbatim -->
 <img src="https://kerekparosklub.hu/images/logo.png" alt="MK logo">
 
 <style>
-  /* MK logo */
-  img {
+  img { /* MK logo */
     margin: auto;
     display: block;
     max-width: 100%;
