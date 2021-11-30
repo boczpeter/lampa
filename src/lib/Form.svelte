@@ -48,7 +48,7 @@
 		{#each data.get('all') as {name, value}}
 			<output class="sum" title={name}>{value}</output>
 		{/each}
-		<a class="help button" href="help" title="Help" sveltekit:noscroll>?</a>
+		<a class="help button" href="help" title="Help" sveltekit:noscroll sveltekit:prefetch>?</a>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
@@ -69,7 +69,7 @@
 		gap: var(--gap);
 		padding: var(--gap);
 		justify-items: center;
-		transition: var(--trans);
+		/* transition: var(--trans); */
 	}
 	section {
 		display: grid;

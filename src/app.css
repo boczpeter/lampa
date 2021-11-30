@@ -9,7 +9,7 @@ html {
 	--hugefont: min(12vw, 6rem, 15vh);
 	--radius	: 0.5em;
 	--contour	: 0.2vw;
-	--time 		: 300ms;
+	--time 		: 200ms;
 	--trans 	: transform var(--time), opacity var(--time);
 	--green   : #5a5;
 	--red     : #a55;
@@ -38,10 +38,8 @@ a.button:hover {
 	text-decoration: none;
 }
 a[rel="external"]::after {
-	content: "↗";
-	font-size: 80%;
-	vertical-align: top;
-	padding-inline-start: 0.2em;
+	content: " ↗";	/* thin non-break space */
+	opacity: 0.7;
 }
 
 label {

@@ -1,4 +1,5 @@
 <script>
+	import { fly, fade, slide, scale } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	onMount(() => {
 		document.body.classList.add('popup');
@@ -13,7 +14,7 @@
 
 <svelte:window on:keydown={keydown}/>
 
-<aside class={type} role="dialog" aria-modal="true">
+<aside class={type} role="dialog" aria-modal="true" transition:fly="{{ y: -500, duration: 300 }}">
 	<slot>&larr; popup text &rarr;</slot>
 	<input type="submit" value="Bezárom" on:click|preventDefault="{close}">
 </aside>
@@ -28,7 +29,7 @@
 		max-width : calc(100vw - 2 * var(--gap));
 		max-height: calc(100vh - 2 * var(--gap));
 		justify-items: center;
-		transition: var(--trans);
+		/* transition: var(--trans); */
 		background-color: #fff;
 		border-radius: var(--gap);
 		box-shadow: 0 0 1rem #000;
