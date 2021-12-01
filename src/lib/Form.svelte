@@ -1,6 +1,8 @@
 <script>
 	import { goto, invalidate, prefetch, prefetchRoutes } from '$app/navigation';
 	import { popuptext } from '$lib/stores.js';
+	import IconHelp from '~icons/fa/question-circle-o';
+
 	export let title = '';
 
 	const data = new Map([
@@ -48,7 +50,7 @@
 		{#each data.get('all') as {name, value}}
 			<output class="sum" title={name}>{value}</output>
 		{/each}
-		<a class="help button" href="help" title="Help" sveltekit:noscroll sveltekit:prefetch>?</a>
+		<a href="help" class="icon help" title="Help" sveltekit:noscroll sveltekit:prefetch><IconHelp/></a>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
@@ -93,7 +95,7 @@
 	hr {
 		grid-column: 1 / -1;
 	}
-	button, a.button {
+	button {
 		width : calc(2 * var(--gap) + var(--bigfont));
 		height: calc(2 * var(--gap) + var(--bigfont));
 		border-radius: var(--radius);
@@ -108,10 +110,8 @@
 	.sum {
 		font-weight: bold;
 	}
-	.help.button {
-		border-radius: 50%;
+	.help {
 		grid-column: -3 / -1;
-		padding: var(--gap);
-		text-align: center;
+		border-radius: 50%;
 	}
 </style>

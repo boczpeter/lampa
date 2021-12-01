@@ -22,31 +22,20 @@ body {
 	width: 100vw;	/* prevent moving content horizontally on scrollbar show/hide */
 	overflow-x: hidden;
 }
-a {
+a, a:visited {
 	color: rgb(0,100,200);
 	text-decoration: none;
 }
-
 a:hover {
 	text-decoration: underline;
 }
 
-a:visited {
-	color: rgb(0,80,160);
-}
-a.button:hover {
-	text-decoration: none;
-}
 a[rel="external"]::after {
 	content: " ↗";	/* thin non-break space */
 	opacity: 0.7;
 }
 
-label {
-	display: block;
-}
-
-input, button, a.button {
+input, button, label {
 	cursor: pointer;
 	color: #fff;
 	outline: none;
@@ -68,7 +57,7 @@ input[type="submit"] {
 	padding: var(--gap);
 }
 
-input, button, select, textarea, a.button {
+input, button, select, textarea {
 	font-family: inherit;
 	font-size: max(1rem,2vw);
 	box-sizing: border-box;
@@ -78,11 +67,23 @@ input, button, select, textarea, a.button {
 	padding: 0.5em;
 }
 
+.icon, .icon:visited {
+	color: inherit;
+}
+.icon:hover, button:hover, input[type="submit"]:hover {
+	color: #fff;
+	text-decoration: none;
+	box-shadow: 0 0 var(--radius) #888;
+}
+.icon > * {
+	display: block;
+}
+
 input:disabled, button:disabled {
 	opacity: 0.5;
 	cursor: not-allowed !important;
 }
-input:not(:disabled):active, button:not(:disabled):active {
+input:not(:disabled):active, button:not(:disabled):active, .icon:active {
 	box-shadow: 0 0 var(--radius) var(--hl);
 }
 
