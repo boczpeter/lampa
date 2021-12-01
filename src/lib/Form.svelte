@@ -1,16 +1,16 @@
 <script>
 	import { goto, invalidate, prefetch, prefetchRoutes } from '$app/navigation';
 	import { popuptext } from '$lib/stores.js';
-	import IconHelp from '~icons/fa/question-circle-o';
+	import Icon from '@iconify/svelte';
 
 	export let title = '';
 
 	const data = new Map([
 		['meta', [
-			{value:'', name: 'Neved/Nicked'},
-			{value:'', name: 'Város'},
-			{value:'', name: 'Lakosságszám'},
-			{value:'', name: 'Helyszín'},
+			{value:'', name: 'Neved/Nicked', icon:'user-circle'},
+			{value:'', name: 'Város', icon:'industry'},
+			{value:'', name: 'Lakosságszám', icon:'group'},
+			{value:'', name: 'Helyszín', icon:'map-marker'},
 		]],
 		['all', [
 			{name: 'Kerékpárosok száma', get value() { return data.get('nums').reduce((p,e) => p+e.value, 0) }}
@@ -39,25 +39,26 @@
 
 	<h2>Számolj&hellip;</h2>
 
-	<section>
+	<section class="full">
 		{#each data.get('nums') as {name, value, src}}
 			<output>{value}</output>
-			<button type="button" class="dec" on:click={e => value && --value}>&#8722;</button>
+			<button type="button" class="dec" on:click={e => value && --value}><Icon icon="fa:minus"/></button>
 			<img {src} title={name} alt={name}>
-			<button type="button" class="inc" on:click={e => ++value}>&#65291;</button>
+			<button type="button" class="inc" on:click={e => ++value}><Icon icon="fa:plus"/></button>
 		{/each}
 		<hr>
 		{#each data.get('all') as {name, value}}
 			<output class="sum" title={name}>{value}</output>
 		{/each}
-		<a href="help" class="icon help" title="Help" sveltekit:noscroll sveltekit:prefetch><IconHelp/></a>
+		<a href="help" class="icon help" title="Help" sveltekit:noscroll sveltekit:prefetch><Icon icon="fa:question-circle-o"/></a>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
-	{#each data.get('meta') as {name, value}}
+	{#each data.get('meta') as {name, value, icon}}
+		<Icon icon="fa:{icon}"/>
 		<input type="text" bind:value placeholder={name}>
 	{/each}
-	<input type="submit" value="Küldöm (vágólapra)" on:click|preventDefault={send}>
+	<input type="submit" value="Küldöm (vágólapra)" on:click|preventDefault={send} class="full">
 </form>
 
 <style>
@@ -68,9 +69,10 @@
 	}
 	form {
 		display: grid;
+		grid-template-columns: 2em 1fr;
 		gap: var(--gap);
 		padding: var(--gap);
-		justify-items: center;
+		place-items: center;
 		/* transition: var(--trans); */
 	}
 	section {
@@ -89,29 +91,34 @@
 	}
 	section > * {
 		font-size: var(--bigfont);
-		padding: 0;
 		line-height: var(--bigfont);
 	}
 	hr {
 		grid-column: 1 / -1;
 	}
 	button {
-		width : calc(2 * var(--gap) + var(--bigfont));
-		height: calc(2 * var(--gap) + var(--bigfont));
 		border-radius: var(--radius);
+		padding: var(--gap);
+		aspect-ratio: 1;
 	}
 	.dec {
 		background-color: var(--red);
 	}
 	.inc {
 		background-color: var(--green);
-		font-weight: bold;
 	}
 	.sum {
 		font-weight: bold;
 	}
 	.help {
-		grid-column: -3 / -1;
+		grid-column: -3 / -2;
 		border-radius: 50%;
+	}
+	input[type="text"] {
+		width: calc(100% - var(--gap));
+		justify-self: start;
+	}
+	input[type="text"]:focus {
+		box-shadow: 0 0 var(--radius) var(--hl);
 	}
 </style>
