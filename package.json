@@ -1,6 +1,6 @@
 {
-  "name": "my-app",
-  "version": "0.0.1",
+  "name": "lampa",
+  "version": "0.5.1",
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
@@ -8,11 +8,13 @@
     "preview": "svelte-kit preview"
   },
   "devDependencies": {
+    "@iconify-json/fa": "^1.0.1",
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/adapter-static": "^1.0.0-next.21",
     "@sveltejs/kit": "next",
     "svelte": "^3.44.0",
-    "svelte-markdown": "^0.1.14"
+    "svelte-markdown": "^0.1.14",
+    "unplugin-icons": "^0.12.22"
   },
   "type": "module",
   "dependencies": {
