@@ -44,6 +44,9 @@ input[type="text"], input[type="submit"], hr {
 	width: 100%;
 	max-width: 50rem;
 }
+input[type="text"]:focus {
+	box-shadow: 0 0 var(--radius) var(--hl);
+}
 input[type="submit"] {
 	background-color: var(--green);
 	font-size: var(--bigfont);
@@ -64,22 +67,28 @@ input, button, select, textarea {
 }
 
 .iconify {
-	font-size: 2em;
+	font-size: var(--font);
 	color: #888;
 }
-button .iconify, a .iconify {
+button .iconify {
 	color: #eee;
-	vertical-align: middle;
+}
+a .iconify {
+	color: #ccc;
+}
+.icon {
+	display: flex;
+	font-size: var(--bigfont);
 }
 
 input:disabled, button:disabled {
 	opacity: 0.5;
 	cursor: not-allowed !important;
 }
-input:not(:disabled):active, button:not(:disabled):active, .icon:active {
+input:not(:disabled):active, button:not(:disabled):active, a.icon:active {
 	box-shadow: 0 0 var(--radius) var(--hl);
 }
-input:not(:disabled):hover, button:not(:disabled):hover, .icon:hover {
+input:not(:disabled):hover, button:not(:disabled):hover, a.icon:hover {
 	box-shadow: 0 0 var(--radius) #888;
 }
 
