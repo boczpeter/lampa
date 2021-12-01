@@ -42,7 +42,7 @@
 	<section class="full">
 		{#each data.get('nums') as {name, value, src}}
 			<output>{value}</output>
-			<button type="button" class="dec" on:click={e => value && --value}><Icon icon="fa:minus"/></button>
+			<button type="button" class="dec" on:click={e => value && --value} disabled={value < 1}><Icon icon="fa:minus"/></button>
 			<img {src} title={name} alt={name}>
 			<button type="button" class="inc" on:click={e => ++value}><Icon icon="fa:plus"/></button>
 		{/each}
@@ -50,13 +50,13 @@
 		{#each data.get('all') as {name, value}}
 			<output class="sum" title={name}>{value}</output>
 		{/each}
-		<a href="help" class="icon help" title="Help" sveltekit:noscroll sveltekit:prefetch><Icon icon="fa:question-circle-o"/></a>
+		<a href="help" class="icon" id="help" title="Help" sveltekit:noscroll sveltekit:prefetch><Icon icon="fa:question-circle-o"/></a>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
-	{#each data.get('meta') as {name, value, icon}}
-		<Icon icon="fa:{icon}"/>
-		<input type="text" bind:value placeholder={name}>
+	{#each data.get('meta') as {name, value, icon}, id}
+		<label class="icon" for="{id}"><Icon icon="fa:{icon}"/></label>
+		<input {id} type="text" bind:value placeholder={name}>
 	{/each}
 	<input type="submit" value="Küldöm (vágólapra)" on:click|preventDefault={send} class="full">
 </form>
@@ -69,7 +69,7 @@
 	}
 	form {
 		display: grid;
-		grid-template-columns: 2em 1fr;
+		grid-template-columns: var(--bigfont) 1fr;
 		gap: var(--gap);
 		padding: var(--gap);
 		place-items: center;
@@ -98,8 +98,7 @@
 	}
 	button {
 		border-radius: var(--radius);
-		padding: var(--gap);
-		aspect-ratio: 1;
+		display: flex;
 	}
 	.dec {
 		background-color: var(--red);
@@ -110,15 +109,14 @@
 	.sum {
 		font-weight: bold;
 	}
-	.help {
-		grid-column: -3 / -2;
+	#help {
+		grid-column: -3 / -1;
 		border-radius: 50%;
+	}
+	#help > :global(*) {
+		font-size: var(--hugefont);
 	}
 	input[type="text"] {
 		width: calc(100% - var(--gap));
-		justify-self: start;
-	}
-	input[type="text"]:focus {
-		box-shadow: 0 0 var(--radius) var(--hl);
 	}
 </style>
