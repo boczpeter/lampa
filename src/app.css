@@ -13,7 +13,7 @@
 	--trans 	: transform var(--time), opacity var(--time);
 	--green   : #5a5;
 	--red     : #a55;
-	--height  : 100vh;
+	--height  : calc(100vh - 2 * var(--gap));
 }
 body {
 	color: #eee;

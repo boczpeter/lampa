@@ -26,7 +26,7 @@
 	send = e => {
 		const text = [...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n');	// put text in popup
 		$popuptext = text;
-		goto(action);
+		goto(action, {noscroll:true});
 		navigator.clipboard.writeText(text)
 			.then(() => console.info(text))
 			.catch(r => console.error('clipboard write failed: '+r));
