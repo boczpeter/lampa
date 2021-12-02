@@ -26,7 +26,7 @@
 	send = e => {
 		const text = [...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n');	// put text in popup
 		$popuptext = text;
-		goto(action, {noscroll:true});
+		goto(action);
 		navigator.clipboard.writeText(text)
 			.then(() => console.info(text))
 			.catch(r => console.error('clipboard write failed: '+r));
@@ -50,13 +50,15 @@
 		{#each data.get('all') as {name, value}}
 			<output class="sum" title={name}>{value}</output>
 		{/each}
-		<a href="help" class="icon" id="help" title="Help" sveltekit:noscroll sveltekit:prefetch><Icon icon="fa:question-circle-o"/></a>
+		<a href="help" class="icon" id="help" title="Help" sveltekit:prefetch><Icon icon="fa:question-circle-o"/></a>
 	</section>
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
-	{#each data.get('meta') as {name, value, icon}, id}
-		<label class="icon" for="{id}"><Icon icon="fa:{icon}"/></label>
-		<input {id} type="text" bind:value placeholder={name}>
+	{#each data.get('meta') as {name, value, icon}}
+		<label class="icon">
+			<Icon icon="fa:{icon}"/>
+			<input type="text" bind:value placeholder={name}>
+		</label>
 	{/each}
 	<input type="submit" value="Küldöm (vágólapra)" on:click|preventDefault={send} class="full">
 </form>
@@ -69,7 +71,7 @@
 	}
 	form {
 		display: grid;
-		grid-template-columns: var(--bigfont) 1fr;
+		/* grid-template-columns: var(--bigfont) 1fr; */
 		gap: var(--gap);
 		padding: var(--gap);
 		place-items: center;
@@ -114,9 +116,18 @@
 		border-radius: 50%;
 	}
 	#help > :global(*) {
-		font-size: var(--hugefont);
+		font-size: 2em;
+	}
+	label {
+		width: 100%;
+		/* padding: 0 var(--gap); */
+	}
+	:global(label.icon > .iconify) {
+		width: max(1em,5vw);
+		height: max(1em,5vw);
 	}
 	input[type="text"] {
-		width: calc(100% - var(--gap));
+		/* width: calc(100% - var(--gap)); */
+		margin: 0 1em;
 	}
 </style>

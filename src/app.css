@@ -1,7 +1,7 @@
 * {
 	box-sizing: border-box;
 }
-html {
+:root {
 	--hl			: #c86e00;
 	--gap			: 3vw;
 	--font    : clamp(3vmin, 0.8em, 6vmin);
@@ -13,6 +13,7 @@ html {
 	--trans 	: transform var(--time), opacity var(--time);
 	--green   : #5a5;
 	--red     : #a55;
+	--height  : 100vh;
 }
 body {
 	color: #eee;
@@ -70,6 +71,7 @@ input, button, select, textarea {
 .iconify {
 	font-size: var(--font);
 	color: #888;
+	width: 1em;
 }
 button .iconify {
 	color: #eee;
@@ -79,6 +81,7 @@ a .iconify {
 }
 .icon {
 	display: flex;
+	place-items: center;
 	font-size: var(--bigfont);
 }
 
@@ -115,4 +118,7 @@ h3, h4, h5, h6 {
 h1, h2, .full {
 	grid-column: 1 / -1;
 	place-self: center;
+}
+ol, ul {
+	padding-left: 2em;
 }

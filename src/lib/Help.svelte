@@ -35,17 +35,14 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 
   ]);  // end markdown set
 
-  let lang = browser ? document.documentElement.lang : map.keys().next().value,
-    source = map.get(lang), // Get lang from document or select 1st key
-    element;   // bound to output html node
+  let lang = browser ? document.documentElement.lang : map.keys().next().value, // Get lang from document or select 1st key
+    source = map.get(lang),
+    out;   // bound to output html node
 
-  $: if (element) element.querySelectorAll('a').forEach(a => {  // postprocess all links
-    a.rel = 'external';
-    a.target = '_blank';
-  });
+  $: if (out) out.querySelectorAll('a').forEach(a => Object.assign(a, {rel:'external', target:'_blank'}));  // postprocess all links
 </script>
 
-<output bind:this={element}>
+<output bind:this={out}>
   <SvelteMarkdown {source}/>
   <!-- Elements within SvelteMarkdown output cannot be styled, so we include the following verbatim -->
   <img src="mklogo.png" alt="MK logo">
@@ -58,14 +55,14 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
     max-width: 100%;
     min-width: calc(10 * var(--font));
   }
-  time {
+  /* time {
     text-decoration: dotted underline #888;
-  }
+  } */
 	output {
 		color: #000;
 		font-size: var(--font);
 		justify-self: start;
-		max-height: calc(100vh - 7 * var(--gap) - var(--bigfont) - 2 * var(--contour));
+		max-height: calc(100vh - 8 * var(--gap) - var(--bigfont));
 		overflow-y: auto;
 	}
 </style>

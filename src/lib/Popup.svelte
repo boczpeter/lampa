@@ -27,7 +27,7 @@
 		padding: var(--gap);
 		margin: var(--gap);
 		max-width : calc(100vw - 2 * var(--gap));
-		max-height: calc(100vh - 2 * var(--gap));
+		/* max-height: calc(100vh - 2 * var(--gap)); */
 		justify-items: center;
 		/* transition: var(--trans); */
 		background-color: #fff;
