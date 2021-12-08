@@ -79,7 +79,7 @@
 	}
 	section {
 		display: grid;
-		grid-template-columns: 1fr min-content min-content min-content;
+		grid-template-columns: 1fr min-content auto min-content;
 		align-items: center;
 		justify-items: center;
 		width: 100%;
@@ -93,7 +93,7 @@
 	}
 	section > * {
 		font-size: var(--bigfont);
-		line-height: var(--bigfont);
+		/* line-height: var(--bigfont); */
 	}
 	hr {
 		grid-column: 1 / -1;
