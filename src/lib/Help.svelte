@@ -5,7 +5,7 @@
   const map = new Map([
     ['hu', `### A feladat nagyon rövid és egyszerű:
 
-1. A <span>saját</span> településed tetszőleges, de viszonylag forgalmas pontján <time datetime="2021-11-11">november 11-én csütörtökön</time>, <time datetime="19:00">19:00</time> és <time datetime="19:20">19:20</time> között kell megszámolni az elhaladó bringásokat és feljegyezni, hányan kerékpároztak kivilágítva.
+1. A saját településed tetszőleges, de viszonylag forgalmas pontján <time datetime="2021-11-11">november 11-én csütörtökön</time>, <time datetime="19:00">19:00</time> és <time datetime="19:20">19:20</time> között kell megszámolni az elhaladó bringásokat és feljegyezni, hányan kerékpároztak kivilágítva.
 2. <time datetime="PT0H20M">20</time> perces mérésed eredményét [hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/622147172546653?ref=newsfeed)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
 
 #### Tudnivalók:
@@ -52,7 +52,6 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
   img { /* MK logo */
     margin: auto;
     display: block;
-    max-width: 100%;
     min-width: calc(10 * var(--font));
   }
   /* time {
@@ -61,8 +60,8 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 	output {
 		color: #000;
 		font-size: var(--font);
-		justify-self: start;
 		max-height: calc(100vh - 8 * var(--gap) - var(--bigfont));
 		overflow-y: auto;
+    overscroll-behavior: none;
 	}
 </style>

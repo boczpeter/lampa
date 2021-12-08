@@ -13,7 +13,7 @@
 <slot />
 
 <style>
-	:global(body.popup) {
+	/* :global(body.popup) {
 		overflow: hidden;
-	}
+	} */
 </style>

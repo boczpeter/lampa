@@ -22,7 +22,7 @@
 <style>
 	aside {
 		display: grid;
-		position: fixed;
+		position: sticky;
 		gap: var(--gap);
 		padding: var(--gap);
 		margin: var(--gap);
@@ -33,9 +33,9 @@
 		background-color: #fff;
 		border-radius: var(--gap);
 		box-shadow: 0 0 1rem #000;
-		bottom: 0;
+		bottom: var(--gap);
 	}
-	aside.fullwidth {
+	/* aside.fullwidth {
 		width : calc(100vw - 2 * var(--gap));
-	}
+	} */
 </style>
