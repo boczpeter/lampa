@@ -71,7 +71,7 @@ input, button, select, textarea {
 .iconify {
 	font-size: var(--font);
 	color: #888;
-	width: 1em;
+	/* width: 1em; */
 }
 button .iconify {
 	color: #eee;

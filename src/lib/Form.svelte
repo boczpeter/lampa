@@ -101,7 +101,9 @@
 	button {
 		border-radius: var(--radius);
 		display: flex;
-	}
+		aspect-ratio: 1;
+		width: calc(1em + var(--font));
+}
 	.dec {
 		background-color: var(--red);
 	}
