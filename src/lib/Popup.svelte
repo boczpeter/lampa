@@ -26,9 +26,9 @@
 		gap: var(--gap);
 		padding: var(--gap);
 		margin: var(--gap);
-		max-width : calc(100vw - 2 * var(--gap));
-		max-height: var(--height);
-		justify-items: center;
+		/* max-width : calc(100vw - 2 * var(--gap)); */
+		/* max-height: var(--height); */
+		/* justify-items: center; */
 		/* transition: var(--trans); */
 		background-color: #fff;
 		border-radius: var(--gap);
