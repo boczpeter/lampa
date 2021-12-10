@@ -10,9 +10,9 @@
       <input type="text" bind:value placeholder={name} id="i{id}">
     </label>
     {#if id === 3}
-      <button type="button" title="Pozíció lekérése">
+      <a href="map" title="Pozíció lekérése" class="hover">
         <Icon icon="{iconset}:crosshairs"/>
-      </button>
+      </a>
     {/if}
   {/each}
 </section>
@@ -42,10 +42,10 @@
 		width: max(1em,5vw);
 		height: max(1em,5vw);
 	}
-	button {
-		display: flex;
+	a {
+    display: flex;
+		font-size: var(--bigfont);
 		border-radius: var(--radius);
-    /* width : var(--font); */
-    /* height: var(--font); */
-	}
+  	color: #ccc;
+  }
 </style>

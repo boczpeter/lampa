@@ -26,16 +26,9 @@
 		gap: var(--gap);
 		padding: var(--gap);
 		margin: var(--gap);
-		/* max-width : calc(100vw - 2 * var(--gap)); */
-		/* max-height: var(--height); */
-		/* justify-items: center; */
-		/* transition: var(--trans); */
 		background-color: #fff;
 		border-radius: var(--gap);
 		box-shadow: 0 0 1rem #000;
 		bottom: var(--gap);
 	}
-	/* aside.fullwidth {
-		width : calc(100vw - 2 * var(--gap));
-	} */
 </style>
