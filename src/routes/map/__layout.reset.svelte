@@ -1,9 +1,6 @@
-<script>
-	export let title = 'Lámpaszámlálás';
-</script>
-
 <svelte:head>
-	<title>{title}</title>
+	<title>Lámpaszámlálás</title>
+  <base target="_blank">
 </svelte:head>
 
 <slot/>
