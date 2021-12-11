@@ -1,14 +1,15 @@
 <script>
+	import { latlng } from '$lib/stores.js';
   import Map from '$lib/Map.svelte';
 	import Icon from '@iconify/svelte';
 	import { fly, fade, slide, scale } from 'svelte/transition';
 
-  let zoom = 18, loc = '', iconset = 'fa-solid', popup = false;
+  let zoom = 18, iconset = 'fa-solid', popup = false;
 
   function ready(map, L) {
     map.locate({setView: true, maxZoom: zoom});
     map.on('move', e => {
-      loc = map.getCenter();
+      $latlng = map.getCenter();
       zoom = map.getZoom();
     });
     popup = true;

@@ -1,6 +1,6 @@
 <script>
 	import { goto, invalidate, prefetch, prefetchRoutes } from '$app/navigation';
-	import { popuptext } from '$lib/stores.js';
+	import { popuptext, latlng } from '$lib/stores.js';
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
@@ -11,7 +11,7 @@
 			{value:'', name: 'Neved/Nicked',	icon:'user-circle'},
 			{value:'', name: 'Város',					icon:'city'},
 			{value:'', name: 'Lakosságszám',	icon:'users'},
-			{value:'', name: 'Helyszín',			icon:'map-marker-alt'},
+			{value:$latlng, name: 'Helyszín',			icon:'map-marker-alt'},
 		]],
 		['all', [
 			{name: 'Kerékpárosok száma', get value() { return data.get('nums').reduce((p,e) => p+e.value, 0) }}
