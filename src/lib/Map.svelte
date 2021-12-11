@@ -7,8 +7,9 @@
     lng = 19.473029,
     zoom = 8,
     minZoom = 7,
-    maxZoom = 20,
-    maxNativeZoom = 19;
+    maxZoom = 18,
+    maxNativeZoom = 19,
+    ready = () => {};
 
   const tileUrl = "https://mapserver.mapy.cz/turist-m/{z}-{x}-{y}",
     tileOptions = { minZoom: minZoom, maxZoom: maxZoom, maxNativeZoom: maxNativeZoom,
@@ -17,17 +18,21 @@
 
   onMount(async () => {
     const L = await import('leaflet');
-    const map = L.map(node).setView([lat, lng], zoom);
+    const map = L.map(node);
     L.tileLayer(tileUrl, tileOptions).addTo(map);
+    map.on('locationerror', e => map.setView([lat, lng], zoom));  // set to default view
+    ready(map, L);
+    return e => map.remove();
   });
 </script>
 <svelte:head><base target="_blank"></svelte:head>
 
-<div bind:this={node}></div>
+<div bind:this={node}><slot/></div>
 
 <style>
   div {
-    height: 100%;
+    flex: 1 0 auto; /* give div a valid height, required by Leaflet */
+    grid-area: map; /* put into "map" area if available */
   }
   :global(.leaflet-control-attribution a::after) {
     content: " ↗";  /* thin non-break space included in content */
