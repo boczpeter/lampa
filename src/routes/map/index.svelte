@@ -4,20 +4,22 @@
 	import Icon from '@iconify/svelte';
 	import { fly, fade, slide, scale } from 'svelte/transition';
 
-  let zoom = 18, iconset = 'fa-solid', popup = false;
+  let zoom = 18, iconset = 'fa-solid', popup = false, out;
 
   function ready(map, L) {
     map.locate({setView: true, maxZoom: zoom});
     map.on('move', e => {
       $latlng = map.getCenter();
-      zoom = map.getZoom();
+      // zoom = map.getZoom();
     });
     popup = true;
   }
+
+$: if (out) out.querySelectorAll('a').forEach(a => Object.assign(a, {rel:'external', target:'_blank'}));  // postprocess all links
 </script>
 
 <main>
-  <Map {ready}/>
+  <Map {ready} bind:this={out}/>
   {#if popup}
     <header transition:fly="{{ y: -500, duration: 300, delay: 2000 }}">
       Tipp: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
