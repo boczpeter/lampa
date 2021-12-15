@@ -1,18 +1,19 @@
 <script>
 	import { latlng, externalLink } from '$lib/stores.js';
+	import { fly, fade, slide, scale } from 'svelte/transition';
   import Map from '$lib/Map.svelte';
 	import Icon from '@iconify/svelte';
-	import { fly, fade, slide, scale } from 'svelte/transition';
 
-  let zoom = 18, iconset = 'fa-solid', popup = false;
+  let popup = false;
 
   function ready(map, L, node) {
-    map.locate({setView: true, maxZoom: zoom});
-    map.on('move', e => {
-      $latlng = map.getCenter();
-      // zoom = map.getZoom();
-    });
+    map.locate({setView: true, maxZoom: 18});
     map.on('load', e => {
+      map.on('move', e => { // .locate emits 'move', so we attach only after 'load'
+        $latlng = map.getCenter();  // feed position back to main data
+        // console.log($latlng.toString());
+        popup = false;  // tear down popup on first map move
+      });
       externalLink(node, '.leaflet-control-attribution a');
       popup = true;
     });
@@ -22,11 +23,11 @@
 <main>
   <Map {ready}/>
   {#if popup}
-    <header transition:fly="{{ y: -500, duration: 300, delay: 2000 }}">
-      Tipp: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
+    <header transition:fly="{{ y: -500, duration: 500, delay: 2000 }}">
+      <b>Tipp</b>: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
     </header>
   {/if}
-  <mark><Icon icon="{iconset}:crosshairs"/></mark>
+  <mark><Icon icon="fa-solid:crosshairs"/></mark>
 </main>
 
 <style>
@@ -37,20 +38,19 @@
     overflow: hidden;
   }
   header, mark {
-    z-index: 1000;
+    /* force them on top of map */
     grid-area: map;
+    z-index: 1000;
   }
   header {
     text-align: center;
-    padding: 1em;
-    margin: 1em;
-    max-width: 80%;
+    padding: var(--gap);
+    margin: var(--gap) 60px;
+		border-radius: var(--gap);
     color: #000;
     background: #fff;
-    justify-self: center;
-    align-self: start;
+    place-self: start center;
     border: var(--contour) solid #000;
-		border-radius: var(--gap);
 		box-shadow: 0 0 1rem #000;
   }
   mark {
