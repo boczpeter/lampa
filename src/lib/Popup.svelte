@@ -26,9 +26,18 @@
 		gap: var(--gap);
 		padding: var(--gap);
 		margin: var(--gap);
-		background-color: #fff;
 		border-radius: var(--gap);
-		box-shadow: 0 0 1rem #000;
 		bottom: var(--gap);
+		background-color: #fff;
+		box-shadow: 0 0 1rem #000;
+		height: calc(100vh - 2 * var(--gap));
+		grid-template-rows: 1fr min-content;
+		grid-template-areas: "popup-content" "button";
+	}
+	aside.plain {	/* do not max out to full screen */
+		height: inherit;
+	}
+	input {
+		grid-area: button;
 	}
 </style>

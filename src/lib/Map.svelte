@@ -28,7 +28,7 @@
 
 <style>
   div {
-    flex: 1 0 auto; /* give div a valid height, required by Leaflet */
-    grid-area: map; /* put into "map" area if available */
+    flex: 1 0 auto; /* give div a valid height if flex-item, required by Leaflet */
+    grid-area: var(--grid-area, map); /* put into specific grid area if available */
   }
 </style>

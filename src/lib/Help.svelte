@@ -61,8 +61,8 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 	output {
 		color: #000;
 		font-size: var(--font);
-		max-height: calc(100vh - 8 * var(--gap) - var(--bigfont));
 		overflow-y: auto;
     overscroll-behavior: none;
+    grid-area: popup-content;
 	}
 </style>

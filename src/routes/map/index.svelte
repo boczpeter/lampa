@@ -1,45 +1,41 @@
 <script>
 	import { latlng, externalLink } from '$lib/stores.js';
 	import { fly, fade, slide, scale } from 'svelte/transition';
-  import Map from '$lib/Map.svelte';
-	import Icon from '@iconify/svelte';
+  import Map   from '$lib/Map.svelte';
+	import Popup from '$lib/Popup.svelte';
+	import Icon  from '@iconify/svelte';
 
-  let popup = false;
+  let popup = false, moved = 0;
 
   function ready(map, L, node) {
     map.locate({setView: true, maxZoom: 18});
     map.on('load', e => {
-      map.on('move', e => { // .locate emits 'move', so we attach only after 'load'
-        $latlng = map.getCenter();  // feed position back to main data
-        // console.log($latlng.toString());
-        popup = false;  // tear down popup on first map move
-      });
       externalLink(node, '.leaflet-control-attribution a');
       popup = true;
+    });
+    map.on('move', e => { // .locate emits 'move', so we attach only after 'load'
+      let center = map.getCenter();  // update position back to main data
+      $latlng = `[${center.lat}, ${center.lng}]`;
+      console.log($latlng, moved);
+      if (4 < ++moved)  popup = false;  // tear down popup after couple of manual map moves
     });
   }
 </script>
 
-<main>
-  <Map {ready}/>
-  {#if popup}
-    <header transition:fly="{{ y: -500, duration: 500, delay: 2000 }}">
-      <b>Tipp</b>: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
-    </header>
-  {/if}
-  <mark><Icon icon="fa-solid:crosshairs"/></mark>
-</main>
+<Popup>
+    <Map {ready} --grid-area="popup-content"/>
+    {#if popup}
+      <header transition:fly="{{ y: -500, duration: 500, delay: 2000 }}">
+        <b>Tipp</b>: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
+      </header>
+    {/if}
+    <mark><Icon icon="fa-solid:crosshairs"/></mark>
+</Popup>
 
 <style>
-  main {
-    display: grid;
-    grid-template-areas: "map";
-    height: 100vh;
-    overflow: hidden;
-  }
   header, mark {
     /* force them on top of map */
-    grid-area: map;
+    grid-area: popup-content;
     z-index: 1000;
   }
   header {
