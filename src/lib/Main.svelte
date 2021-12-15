@@ -1,6 +1,6 @@
 <script>
 	import { goto, invalidate, prefetch, prefetchRoutes } from '$app/navigation';
-	import { popuptext, latlng } from '$lib/stores.js';
+	import { popuptext, latlng, copy } from '$lib/stores.js';
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
@@ -8,9 +8,9 @@
 
 	const data = new Map([
 		['meta', [
-			{value:'', name: 'Neved/Nicked',	icon:'user-circle'},
-			{value:'', name: 'Város',					icon:'city'},
-			{value:'', name: 'Lakosságszám',	icon:'users'},
+			{value:'', 			name: 'Neved/Nicked',	icon:'user-circle'},
+			{value:'', 			name: 'Város',				icon:'city'},
+			{value:'', 			name: 'Lakosságszám',	icon:'users'},
 			{value:$latlng, name: 'Helyszín',			icon:'map-marker-alt'},
 		]],
 		['all', [
@@ -24,12 +24,8 @@
 		]],
 	]),
 	send = e => {
-		const text = [...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n');	// put text in popup
-		$popuptext = text;
+		copy([...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n'), popuptext);
 		goto('send', {noscroll:true});
-		navigator.clipboard.writeText(text)
-			.then(() => console.info(text))
-			.catch(r => console.error('clipboard write failed: '+r));
 	};	// constants
 
 </script>
