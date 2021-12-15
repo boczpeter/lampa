@@ -1,5 +1,6 @@
 <script>
   import { browser } from '$app/env';
+	import { externalLink } from '$lib/stores.js';
   import SvelteMarkdown from 'svelte-markdown';
 
   const map = new Map([
@@ -39,7 +40,7 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
     source = map.get(lang),
     out;   // bound to output html node
 
-  $: if (out) out.querySelectorAll('a').forEach(a => Object.assign(a, {rel:'external', target:'_blank'}));  // postprocess all links
+  $: externalLink(out, 'a');  // postprocess all links
 </script>
 
 <output bind:this={out}>

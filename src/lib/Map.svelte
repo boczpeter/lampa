@@ -21,7 +21,7 @@
     const map = L.map(node);
     L.tileLayer(tileUrl, tileOptions).addTo(map);
     map.on('locationerror', e => map.setView([lat, lng], zoom));  // set to default view
-    ready(map, L);
+    ready(map, L, node);
     return e => map.remove();
   });
 </script>
@@ -33,8 +33,5 @@
   div {
     flex: 1 0 auto; /* give div a valid height, required by Leaflet */
     grid-area: map; /* put into "map" area if available */
-  }
-  :global(.leaflet-control-attribution a::after) {
-    content: " ↗";  /* thin non-break space included in content */
   }
 </style>

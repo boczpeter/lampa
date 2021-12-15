@@ -1,25 +1,26 @@
 <script>
-	import { latlng } from '$lib/stores.js';
+	import { latlng, externalLink } from '$lib/stores.js';
   import Map from '$lib/Map.svelte';
 	import Icon from '@iconify/svelte';
 	import { fly, fade, slide, scale } from 'svelte/transition';
 
-  let zoom = 18, iconset = 'fa-solid', popup = false, out;
+  let zoom = 18, iconset = 'fa-solid', popup = false;
 
-  function ready(map, L) {
+  function ready(map, L, node) {
     map.locate({setView: true, maxZoom: zoom});
     map.on('move', e => {
       $latlng = map.getCenter();
       // zoom = map.getZoom();
     });
-    popup = true;
+    map.on('load', e => {
+      externalLink(node, '.leaflet-control-attribution a');
+      popup = true;
+    });
   }
-
-$: if (out) out.querySelectorAll('a').forEach(a => Object.assign(a, {rel:'external', target:'_blank'}));  // postprocess all links
 </script>
 
 <main>
-  <Map {ready} bind:this={out}/>
+  <Map {ready}/>
   {#if popup}
     <header transition:fly="{{ y: -500, duration: 300, delay: 2000 }}">
       Tipp: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
