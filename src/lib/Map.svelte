@@ -20,7 +20,7 @@
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
     map.on('locationerror', e => map.setView([lat, lng], zoom));  // set to default view
     ready(map, L, node);
-    return e => map.remove();
+    // return e => map.remove();
   });
 </script>
 

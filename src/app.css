@@ -35,40 +35,38 @@ a[rel="external"]::after {	/* thin non-break space included in content */
 	content: " ↗";
 }
 
-input, button, label {
+input, button, label, a.button {
 	cursor: pointer;
 	color: #fff;
 	outline: none;
 	display: inline-block;
+	text-decoration: none;
 }
 input[type="text"]:focus {
 	box-shadow: 0 0 var(--radius) var(--hl);
 }
-input[type="submit"] {
+input[type="submit"], a.button {
 	background-color: var(--green);
 	font-size: var(--bigfont);
 	font-weight: bold;
 	border-radius: var(--radius);
 	line-height: var(--bigfont);
 }
-
-input, button, select, textarea {
+input, button, select, textarea, .button {
 	font-family: inherit;
-	/* font-size: max(1rem,2vw); */
 	box-sizing: border-box;
 	border: var(--contour) solid #fff8;
 	background-color: #666;
 	padding: 0.5em;
 }
-
-input:disabled, button:disabled {
+input:disabled, button:disabled, a.button:disabled {
 	opacity: 0.5;
 	cursor: not-allowed !important;
 }
-input:not(:disabled):active, button:not(:disabled):active, a.hover:active {
+input:not(:disabled):active, button:not(:disabled):active, a.hover:active, a.button:active {
 	box-shadow: 0 0 var(--radius) var(--hl);
 }
-input:not(:disabled):hover, button:not(:disabled):hover, a.hover:hover {
+input:not(:disabled):hover, button:not(:disabled):hover, a.hover:hover, a.button:hover {
 	box-shadow: 0 0 var(--radius) #888;
 }
 

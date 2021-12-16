@@ -1,17 +1,17 @@
 <script>
-	import { goto, invalidate, prefetch, prefetchRoutes } from '$app/navigation';
+	// import { goto, invalidate, prefetch, prefetchRoutes } from '$app/navigation';
 	import { popuptext, latlng, copy } from '$lib/stores.js';
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
-	export let title = '';
+	export let title = '', loc = '';
 
 	const data = new Map([
 		['meta', [
 			{value:'', 			name: 'Neved/Nicked',	icon:'user-circle'},
 			{value:'', 			name: 'Város',				icon:'city'},
 			{value:'', 			name: 'Lakosságszám',	icon:'users'},
-			{value:$latlng, name: 'Helyszín',			icon:'map-marker-alt'},
+			{value:'-',			name: 'Helyszín',			icon:'map-marker-alt'},
 		]],
 		['all', [
 			{name: 'Kerékpárosok száma', get value() { return data.get('nums').reduce((p,e) => p+e.value, 0) }}
@@ -23,10 +23,17 @@
 			{value:0, src:'0.png', name:'Egyik sem '},
 		]],
 	]),
-	send = e => {
-		copy([...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n'), popuptext);
-		goto('send', {noscroll:true});
-	};	// constants
+	// send = e => {
+	// 	copy([...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n'), popuptext);
+	// 	goto('send', {noscroll:true});
+	// }
+	_=1;	// constants
+	latlng.subscribe(v => {
+		console.log(v);
+		data.get('meta')[3].value = v ? `[${v.lat}, ${v.lng}]` : 'x'
+	});
+	// $: console.log('subs', $latlng);
+	// $: $latlng = `[${center.lat}, ${center.lng}]`;
 
 </script>
 
@@ -36,7 +43,10 @@
 	<Counter {data}/>
 	<h2>&hellip;és add meg a további adatokat!</h2>
 	<Form {data}/>
-	<input type="submit" value="Küldöm (vágólapra)" on:click|preventDefault={send} class="full">
+	<a href="send" class="button" role="button"
+	 on:click={e => copy([...data.values()].flat().map(e => `${e.name}: ${e.value}`).join('\n'), popuptext)}>
+	 	Küldöm (vágólapra)
+	</a>
 </form>
 
 <style>

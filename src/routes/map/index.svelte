@@ -5,31 +5,31 @@
 	import Popup from '$lib/Popup.svelte';
 	import Icon  from '@iconify/svelte';
 
-  let popup = false, moved = 0;
+  let popup = false;
 
   function ready(map, L, node) {
     map.locate({setView: true, maxZoom: 18});
     map.on('load', e => {
-      externalLink(node, '.leaflet-control-attribution a');
+      map.on('movestart', e => popup = false);  // .locate fires a 1st move event; we check moves after load only
       popup = true;
+      externalLink(node, '.leaflet-control-attribution a');
     });
-    map.on('move', e => { // .locate emits 'move', so we attach only after 'load'
+    map.on('moveend', e => {
       let center = map.getCenter();  // update position back to main data
-      $latlng = `[${center.lat}, ${center.lng}]`;
-      console.log($latlng, moved);
-      if (4 < ++moved)  popup = false;  // tear down popup after couple of manual map moves
+      console.log(center);
+      $latlng = center;
     });
   }
 </script>
 
 <Popup>
-    <Map {ready} --grid-area="popup-content"/>
-    {#if popup}
-      <header transition:fly="{{ y: -500, duration: 500, delay: 2000 }}">
-        <b>Tipp</b>: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
-      </header>
-    {/if}
-    <mark><Icon icon="fa-solid:crosshairs"/></mark>
+  <Map {ready} --grid-area="popup-content"/>
+  {#if popup}
+    <header transition:fly="{{ y: -500, duration: 500, delay: 2000 }}">
+      <b>Tipp</b>: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
+    </header>
+  {/if}
+  <mark><Icon icon="fa-solid:crosshairs"/></mark>
 </Popup>
 
 <style>
@@ -56,5 +56,6 @@
     width: 2rem;
     height: 2rem;
     place-self: center;
+    pointer-events: none;
   }
 </style>

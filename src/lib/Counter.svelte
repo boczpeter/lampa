@@ -15,7 +15,7 @@
   {#each data.get('all') as {name, value}}
     <output class="sum" title={name}>{value}</output>
   {/each}
-  <a href="help" title="Help" class="hover" sveltekit:prefetch><Icon icon="{iconset}:question-circle"/></a>
+  <a href="help" title="Help" class="hover" role="button" sveltekit:prefetch><Icon icon="{iconset}:question-circle"/></a>
 </section>
 
 <style>

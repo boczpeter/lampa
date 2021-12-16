@@ -10,7 +10,7 @@
       <input type="text" bind:value placeholder={name} id="i{id}">
     </label>
     {#if id === 3}
-      <a href="map" title="Pozíció lekérése" class="hover">
+      <a href="map" title="Pozíció lekérése" class="hover" role="button">
         <Icon icon="{iconset}:crosshairs"/>
       </a>
     {/if}
