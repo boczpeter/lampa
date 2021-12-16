@@ -15,9 +15,9 @@
       externalLink(node, '.leaflet-control-attribution a');
     });
     map.on('moveend', e => {
-      let center = map.getCenter();  // update position back to main data
-      console.log(center);
-      $latlng = center;
+      let c = map.getCenter();  // update position back to main data
+      console.log('set', c);
+      $latlng = `[${c.lat}, ${c.lng}]`;
     });
   }
 </script>
@@ -25,7 +25,7 @@
 <Popup>
   <Map {ready} --grid-area="popup-content"/>
   {#if popup}
-    <header transition:fly="{{ y: -500, duration: 500, delay: 2000 }}">
+    <header transition:fly="{{ y: -500, duration: 500, delay: 1000 }}">
       <b>Tipp</b>: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
     </header>
   {/if}

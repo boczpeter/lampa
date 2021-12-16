@@ -1,21 +1,21 @@
 <script>
 	import Icon from '@iconify/svelte';
-  export let data, iconset = 'fa-solid';
+  export let data;
 </script>
 
 <section>
   {#each data.get('nums') as {name, value, src}}
     <output>{value}</output>
-    <button type="button" class="dec" on:click={e => value && --value} disabled={value < 1}><Icon icon="{iconset}:minus"/></button>
+    <button type="button" class="dec" on:click={e => value && --value} disabled={value < 1}><Icon icon="fa-solid:minus"/></button>
     <img {src} title={name} alt={name}>
-    <button type="button" class="inc" on:click={e => ++value}><Icon icon="{iconset}:plus"/></button>
+    <button type="button" class="inc" on:click={e => ++value}><Icon icon="fa-solid:plus"/></button>
   {/each}
 
   <hr class="full">
   {#each data.get('all') as {name, value}}
     <output class="sum" title={name}>{value}</output>
   {/each}
-  <a href="help" title="Help" class="hover" role="button" sveltekit:prefetch><Icon icon="{iconset}:question-circle"/></a>
+  <a href="help" title="Help" class="hover" role="button" sveltekit:prefetch><Icon icon="fa-solid:question-circle"/></a>
 </section>
 
 <style>

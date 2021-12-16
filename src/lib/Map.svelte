@@ -20,7 +20,7 @@
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
     map.on('locationerror', e => map.setView([lat, lng], zoom));  // set to default view
     ready(map, L, node);
-    // return e => map.remove();
+    return e => map.remove();
   });
 </script>
 
@@ -30,5 +30,6 @@
   div {
     flex: 1 0 auto; /* give div a valid height if flex-item, required by Leaflet */
     grid-area: var(--grid-area, map); /* put into specific grid area if available */
+    border-radius: var(--radius);
   }
 </style>

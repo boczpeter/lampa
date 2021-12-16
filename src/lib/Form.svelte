@@ -1,20 +1,28 @@
 <script>
+	import { latlng } from '$lib/stores.js';
 	import Icon from '@iconify/svelte';
-  export let data, iconset = 'fa-solid';
+  export let data;
+
+	$: {
+		let c = $latlng;
+		console.log('subs', c);
+		data.get('meta')[3].value = c || 'xxx';
+		data = data;
+		// console.log('loc', data.get('meta')[3].value);
+		console.log('data', data);
+	}
 </script>
 
 <section>
   {#each data.get('meta') as {name, value, icon}, id}
     <label class="icon" for="i{id}" id="l{id}">
-      <Icon icon="{iconset}:{icon}"/>
+      <Icon icon="fa-solid:{icon}"/>
       <input type="text" bind:value placeholder={name} id="i{id}">
     </label>
-    {#if id === 3}
-      <a href="map" title="Pozíció lekérése" class="hover" role="button">
-        <Icon icon="{iconset}:crosshairs"/>
-      </a>
-    {/if}
-  {/each}
+	{/each}
+	<a href="map" title="Pozíció lekérése" class="hover" role="button">
+		<Icon icon="fa-solid:crosshairs"/>
+	</a>
 </section>
 
 <style>
