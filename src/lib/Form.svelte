@@ -1,20 +1,20 @@
 <script>
 	import { latlng } from '$lib/stores.js';
 	import Icon from '@iconify/svelte';
-  export let data;
+  export let meta;
 
 	$: {
 		let c = $latlng;
 		console.log('subs', c);
-		data.get('meta')[3].value = c || 'xxx';
-		data = data;
+		meta[3].value = c || 'xxx';
+		// meta = meta;
 		// console.log('loc', data.get('meta')[3].value);
-		console.log('data', data);
+		console.log('meta', meta);
 	}
 </script>
 
 <section>
-  {#each data.get('meta') as {name, value, icon}, id}
+  {#each meta as {name, value, icon}, id}
     <label class="icon" for="i{id}" id="l{id}">
       <Icon icon="fa-solid:{icon}"/>
       <input type="text" bind:value placeholder={name} id="i{id}">

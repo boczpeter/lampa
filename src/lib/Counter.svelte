@@ -1,10 +1,10 @@
 <script>
 	import Icon from '@iconify/svelte';
-  export let data;
+  export let nums, all;
 </script>
 
 <section>
-  {#each data.get('nums') as {name, value, src}}
+  {#each nums as {name, value, src}}
     <output>{value}</output>
     <button type="button" class="dec" on:click={e => value && --value} disabled={value < 1}><Icon icon="fa-solid:minus"/></button>
     <img {src} title={name} alt={name}>
@@ -12,9 +12,8 @@
   {/each}
 
   <hr class="full">
-  {#each data.get('all') as {name, value}}
-    <output class="sum" title={name}>{value}</output>
-  {/each}
+
+  <output class="sum" title={all.name}>{all.value}</output>
   <a href="help" title="Help" class="hover" role="button" sveltekit:prefetch><Icon icon="fa-solid:question-circle"/></a>
 </section>
 
