@@ -1,16 +1,7 @@
 <script>
-	import { latlng } from '$lib/stores.js';
+	// import { latlng } from '$lib/stores.js';
 	import Icon from '@iconify/svelte';
   export let meta;
-
-	$: {
-		let c = $latlng;
-		console.log('subs', c);
-		meta[3].value = c || 'xxx';
-		// meta = meta;
-		// console.log('loc', data.get('meta')[3].value);
-		console.log('meta', meta);
-	}
 </script>
 
 <section>

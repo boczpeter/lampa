@@ -1,26 +1,29 @@
 <script>
-	import { popuptext, copy } from '$lib/stores.js';
+	import { popuptext, copy, latlng } from '$lib/stores.js';
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
 	export let title = '';
 
 	const
-		meta = [
-			{value:'', name: 'Neved/Nicked',	icon:'user-circle'},
-			{value:'', name: 'Város',					icon:'city'},
-			{value:'', name: 'Lakosságszám',	icon:'users'},
-			{value:'', name: 'Helyszín',			icon:'map-marker-alt'},
-		],
-		all = {name: 'Kerékpárosok száma', get value() { return nums.reduce((p,e) => p+e.value, 0) }},
 		nums = [
 			{value:0, src:'3.png', name:'Első+hátsó'},
 			{value:0, src:'1.png', name:'Csak első '},
 			{value:0, src:'2.png', name:'Csak hátsó'},
 			{value:0, src:'0.png', name:'Egyik sem '},
+		],
+		all = {name: 'Kerékpárosok száma', get value() { return nums.reduce((p,e) => p+e.value, 0) }},
+		meta = [
+			{value:'', name: 'Neved/Nicked',	icon:'user-circle'},
+			{value:'', name: 'Város',					icon:'city'},
+			{value:'', name: 'Lakosságszám',	icon:'users'},
+			{value:'', name: 'Helyszín',			icon:'map-marker-alt'},
 		];
-	// function setter(v) {
-	// }
+
+	latlng.subscribe(pos => {
+		meta[3].value = pos;
+		console.log('input', pos);
+	});
 </script>
 
 <form>

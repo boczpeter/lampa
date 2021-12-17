@@ -15,9 +15,9 @@
       externalLink(node, '.leaflet-control-attribution a');
     });
     map.on('moveend', e => {
-      let c = map.getCenter();  // update position back to main data
-      console.log('set', c);
-      $latlng = `[${c.lat}, ${c.lng}]`;
+      let pos = map.getCenter();  // update position back to main data
+      console.log('moveend', pos);
+      $latlng = `[${pos.lat}, ${pos.lng}]`;
     });
   }
 </script>
