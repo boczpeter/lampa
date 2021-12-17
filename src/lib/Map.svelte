@@ -9,6 +9,8 @@
     minZoom = 7,
     maxZoom = 18,
     maxNativeZoom = 19,
+    maximumAge = 60 * 60 * 1000, // 1 hour
+    locate = false,
     ready = () => {};
 
   let node;
@@ -18,8 +20,11 @@
     const map = L.map(node);
     L.tileLayer('https://mapserver.mapy.cz/turist-m/{z}-{x}-{y}', { minZoom:minZoom, maxZoom:maxZoom, maxNativeZoom:maxNativeZoom,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
-    map.on('locationerror', e => map.setView([lat, lng], zoom));  // set to default view
     ready(map, L, node);
+    if (locate) {
+      map.on('locationerror', e => map.setView([lat, lng], zoom));  // set to default view
+      map.locate({setView:true, maxZoom:maxZoom, maximumAge:maximumAge});
+    }
     return e => map.remove();
   });
 </script>

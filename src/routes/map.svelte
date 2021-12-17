@@ -6,9 +6,9 @@
 	import Icon  from '@iconify/svelte';
 
   let popup = false;
+  const round = n => Number(n).toFixed(5);
 
   function ready(map, L, node) {
-    map.locate({setView: true, maxZoom: 18});
     map.on('load', e => {
       map.on('movestart', e => popup = false);  // .locate fires a 1st move event; we check moves after load only
       popup = true;
@@ -17,13 +17,13 @@
     map.on('moveend', e => {
       let pos = map.getCenter();  // update position back to main data
       console.log('moveend', pos);
-      $latlng = `[${pos.lat}, ${pos.lng}]`;
+      $latlng = `[${ round(pos.lat) }, ${ round(pos.lng) }]`;
     });
   }
 </script>
 
 <Popup>
-  <Map {ready} --grid-area="popup-content"/>
+  <Map {ready} locate={true} --grid-area="popup-content"/>
   {#if popup}
     <header transition:fly="{{ y: -500, duration: 500, delay: 1000 }}">
       <b>Tipp</b>: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
