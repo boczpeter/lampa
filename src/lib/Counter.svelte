@@ -6,15 +6,15 @@
 <section>
   {#each nums as {name, value, src}}
     <output>{value}</output>
-    <button type="button" class="dec" on:click={e => value && --value} disabled={value < 1}><Icon icon="fa-solid:minus"/></button>
+    <button type="button" on:click={e => value && --value} disabled={value < 1}><Icon icon="fa-solid:minus"/></button>
     <img {src} title={name} alt={name}>
-    <button type="button" class="inc" on:click={e => ++value}><Icon icon="fa-solid:plus"/></button>
+    <button type="button" on:click={e => ++value}><Icon icon="fa-solid:plus"/></button>
   {/each}
 
   <hr class="full">
 
-  <output class="sum" title={all.name}>{all.value}</output>
-  <a href="help" title="Help" class="hover" role="button" sveltekit:prefetch><Icon icon="fa-solid:question-circle"/></a>
+  <output title={all.name}>{all.value}</output>
+  <a href="help" title="Help" role="button" sveltekit:prefetch><Icon icon="fa-solid:question-circle"/></a>
 </section>
 
 <style>
@@ -30,6 +30,9 @@
     text-shadow: 0 0 var(--contour) #000;
     line-height: var(--hugefont);
   }
+  output:last-of-type {
+		font-weight: bold;
+  }
   img {
     max-width: 3em;
   }
@@ -41,6 +44,10 @@
 		border-radius: var(--radius);
     color: #eee;
     font-size: var(--bigfont);
+		background-color: var(--green);
+  }
+  button:nth-of-type(odd) {
+		background-color: var(--red);
   }
 	a {
     display: flex;
@@ -49,13 +56,4 @@
 		border-radius: 50%;
   	color: #ccc;
   }
-	.dec {
-		background-color: var(--red);
-	}
-	.inc {
-		background-color: var(--green);
-	}
-	.sum {
-		font-weight: bold;
-	}
 </style>

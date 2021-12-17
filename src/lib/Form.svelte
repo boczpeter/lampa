@@ -11,7 +11,7 @@
       <input type="text" bind:value placeholder={name} id="i{id}">
     </label>
 	{/each}
-	<a href="map" title="Pozíció lekérése" class="hover" role="button">
+	<a href="map" title="Pozíció lekérése" role="button">
 		<Icon icon="fa-solid:crosshairs"/>
 	</a>
 </section>

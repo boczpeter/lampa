@@ -63,10 +63,10 @@ input:disabled, button:disabled, a.button:disabled {
 	opacity: 0.5;
 	cursor: not-allowed !important;
 }
-input:not(:disabled):active, button:not(:disabled):active, a.hover:active, a.button:active {
+input:not(:disabled):active, button:not(:disabled):active, a[role="button"]:active, a.button:active {
 	box-shadow: 0 0 var(--radius) var(--hl);
 }
-input:not(:disabled):hover, button:not(:disabled):hover, a.hover:hover, a.button:hover {
+input:not(:disabled):hover, button:not(:disabled):hover, a[role="button"]:hover, a.button:hover {
 	box-shadow: 0 0 var(--radius) #888;
 }
 
