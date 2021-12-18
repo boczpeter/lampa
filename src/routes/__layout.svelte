@@ -1,6 +1,6 @@
 <script>
 	import '../app.css';
-	import Form  from '$lib/Form.svelte';
+	import Main  from '$lib/Main.svelte';
 	export let title = 'Lámpaszámlálás';
 </script>
 
@@ -8,12 +8,12 @@
 	<title>{title}</title>
 </svelte:head>
 
-<Form {title}/>
+<Main {title}/>
 
 <slot />
 
 <style>
-	:global(body.popup) {
+	/* :global(body.popup) {
 		overflow: hidden;
-	}
+	} */
 </style>

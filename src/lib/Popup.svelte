@@ -22,20 +22,22 @@
 <style>
 	aside {
 		display: grid;
-		position: fixed;
-		gap: var(--gap);
-		padding: var(--gap);
-		margin: var(--gap);
-		max-width : calc(100vw - 2 * var(--gap));
-		max-height: var(--height);
-		justify-items: center;
-		/* transition: var(--trans); */
+		grid-template-rows: 1fr min-content;
+		grid-template-areas: "popup-content" "button";
+		position: sticky;
+		gap: 						var(--gap);
+		padding:				var(--gap);
+		margin:					var(--gap);
+		bottom:					var(--gap);
+		border-radius:	var(--gap);
+		height: calc(100vh - 2 * var(--gap));
 		background-color: #fff;
-		border-radius: var(--gap);
 		box-shadow: 0 0 1rem #000;
-		bottom: 0;
 	}
-	aside.fullwidth {
-		width : calc(100vw - 2 * var(--gap));
+	aside.plain {	/* do not max out to full screen */
+		height: inherit;
+	}
+	input {
+		grid-area: button;
 	}
 </style>
