@@ -1,19 +1,22 @@
 <script>
-	// import { latlng } from '$lib/stores.js';
+	import { latlng } from '$lib/stores.js';
 	import Icon from '@iconify/svelte';
   export let meta;
+
+	latlng.subscribe(pos => {
+		console.log('input', pos);
+		if (pos)	meta[3].value = pos;
+	});
 </script>
 
 <section>
   {#each meta as {name, value, icon}, id}
-    <label class="icon" for="i{id}" id="l{id}">
+    <label class="icon" id="l{id}">
       <Icon icon="fa-solid:{icon}"/>
-      <input type="text" bind:value placeholder={name} id="i{id}">
+      <input type="text" bind:value placeholder={name}>
     </label>
 	{/each}
-	<a href="map" title="Pozíció lekérése" role="button">
-		<Icon icon="fa-solid:crosshairs"/>
-	</a>
+	<a href="map" title="Pozíció lekérése" role="button"><Icon icon="fa-solid:crosshairs"/></a>
 </section>
 
 <style>

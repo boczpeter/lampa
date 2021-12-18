@@ -4,11 +4,11 @@
 </script>
 
 <section>
-  {#each nums as {name, value, src}}
+  {#each nums as {name, value, src, inc}}
     <output>{value}</output>
-    <button type="button" on:click={e => value && --value} disabled={value < 1}><Icon icon="fa-solid:minus"/></button>
+    <button type="button" on:click={e => inc=0} disabled={value < 1}><Icon icon="fa-solid:minus"/></button>
     <img {src} title={name} alt={name}>
-    <button type="button" on:click={e => ++value}><Icon icon="fa-solid:plus"/></button>
+    <button type="button" on:click={e => inc=1}><Icon icon="fa-solid:plus"/></button>
   {/each}
 
   <hr class="full">

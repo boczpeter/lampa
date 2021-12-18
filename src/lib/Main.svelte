@@ -1,5 +1,5 @@
 <script>
-	import { popuptext, copy, latlng } from '$lib/stores.js';
+	import { popuptext, copy } from '$lib/stores.js';
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
@@ -7,12 +7,12 @@
 
 	const
 		nums = [
-			{value:0, src:'3.png', name:'Első+hátsó'},
-			{value:0, src:'1.png', name:'Csak első '},
-			{value:0, src:'2.png', name:'Csak hátsó'},
-			{value:0, src:'0.png', name:'Egyik sem '},
+			{src:'3.png', name:'Első+hátsó'},
+			{src:'1.png', name:'Csak első '},
+			{src:'2.png', name:'Csak hátsó'},
+			{src:'0.png', name:'Egyik sem '},
 		],
-		all = {name: 'Kerékpárosok száma', get value() { return nums.reduce((p,e) => p+e.value, 0) }},
+		all = {name: 'Kerékpárosok száma', value: 0},
 		meta = [
 			{value:'', name: 'Neved/Nicked',	icon:'user-circle'},
 			{value:'', name: 'Város',					icon:'city'},
@@ -20,10 +20,19 @@
 			{value:'', name: 'Helyszín',			icon:'map-marker-alt'},
 		];
 
-	latlng.subscribe(pos => {
-		meta[3].value = pos;
-		console.log('input', pos);
-	});
+	nums.forEach(obj => Object.defineProperties(obj, {
+		value: {value: 0, writable: true},
+		inc: {
+			set(v) {
+				if (v) {
+					obj.value++;
+				} else if (obj.value) {
+					obj.value--;
+				}
+				all.value = nums.reduce((s,n) => s+n.value, 0);
+			}
+		}
+	}));
 </script>
 
 <form>
