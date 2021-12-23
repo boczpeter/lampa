@@ -24,6 +24,8 @@
     if (locate) {
       map.on('locationerror', e => map.setView([lat, lng], zoom));  // set to default view
       map.locate({setView:true, maxZoom:maxZoom, maximumAge:maximumAge});
+    } else {
+      map.setView([lat, lng], zoom);
     }
     return e => map.remove();
   });
