@@ -11,9 +11,3 @@
 <Main {title}/>
 
 <slot />
-
-<style>
-	/* :global(body.popup) {
-		overflow: hidden;
-	} */
-</style>
