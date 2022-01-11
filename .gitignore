@@ -1,4 +1,12 @@
-/node_modules/
-/public/build/
-package-lock.json
 .DS_Store
+node_modules
+/build
+/docs
+/static/build
+/.svelte-kit
+/package
+.env
+.env.*
+.vercel
+.output
+package-lock.json

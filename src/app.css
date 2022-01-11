@@ -1,7 +1,7 @@
 * {
 	box-sizing: border-box;
 }
-html {
+:root {
 	--hl			: #c86e00;
 	--gap			: 3vw;
 	--font    : clamp(3vmin, 0.8em, 6vmin);
@@ -9,10 +9,11 @@ html {
 	--hugefont: min(12vw, 6rem, 15vh);
 	--radius	: 0.5em;
 	--contour	: 0.2vw;
-	--time 		: 300ms;
+	--time 		: 200ms;
 	--trans 	: transform var(--time), opacity var(--time);
 	--green   : #5a5;
 	--red     : #a55;
+	--height  : calc(100vh - 2 * var(--gap));
 }
 body {
 	color: #eee;
@@ -22,61 +23,51 @@ body {
 	width: 100vw;	/* prevent moving content horizontally on scrollbar show/hide */
 	overflow-x: hidden;
 }
-a {
+a, a:visited {
 	color: rgb(0,100,200);
 	text-decoration: none;
 }
-
 a:hover {
 	text-decoration: underline;
 }
 
-a:visited {
-	color: rgb(0,80,160);
+a[rel="external"]::after {	/* thin non-break space included in content */
+	content: " ↗";
 }
 
-label {
-	display: block;
-}
-
-input, button {
+input, button, label, a.button {
 	cursor: pointer;
 	color: #fff;
 	outline: none;
 	display: inline-block;
-}
-input[type="text"], input[type="submit"], hr {
-	width: 100%;
-	max-width: 50rem;
+	text-decoration: none;
 }
 input[type="text"]:focus {
 	box-shadow: 0 0 var(--radius) var(--hl);
 }
-input[type="submit"] {
+input[type="submit"], a.button {
 	background-color: var(--green);
 	font-size: var(--bigfont);
 	font-weight: bold;
 	border-radius: var(--radius);
 	line-height: var(--bigfont);
-	padding: var(--gap);
 }
-
-input, button, select, textarea {
+input, button, select, textarea, .button {
 	font-family: inherit;
-	font-size: max(1rem,2vw);
 	box-sizing: border-box;
 	border: var(--contour) solid #fff8;
-	color: inherit;
 	background-color: #666;
 	padding: 0.5em;
 }
-
-input:disabled, button:disabled {
+input:disabled, button:disabled, a.button:disabled {
 	opacity: 0.5;
 	cursor: not-allowed !important;
 }
-input:not(:disabled):active, button:not(:disabled):active {
+input:not(:disabled):active, button:not(:disabled):active, a[role="button"]:active, a.button:active {
 	box-shadow: 0 0 var(--radius) var(--hl);
+}
+input:not(:disabled):hover, button:not(:disabled):hover, a[role="button"]:hover, a.button:hover {
+	box-shadow: 0 0 var(--radius) #888;
 }
 
 h1, h2 {
@@ -97,4 +88,27 @@ h2 {
 }
 h3, h4, h5, h6 {
 	margin: 0.5em 0;
+	color: #444;
+}
+h1, h2, section, .full {
+	grid-column: 1 / -1;
+	place-self: center;
+	width: 100%;
+}
+ol, ul {
+	padding-left: 2em;
+}
+img {
+	object-fit: cover;
+	max-width: 100%;
+}
+.iconify {
+	width: 100%;
+	height: 100%;
+}
+button .iconify, a .iconify {
+	pointer-events: none;
+}
+time {
+	font-weight: 600;
 }
