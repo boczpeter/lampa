@@ -4,7 +4,7 @@
   export let meta;
 
 	latlng.subscribe(pos => {
-		console.log('input', pos);
+		// console.log('input', pos);
 		if (pos)	meta[3].value = pos;
 	});
 </script>
