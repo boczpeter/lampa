@@ -13,12 +13,8 @@
     "@sveltejs/adapter-static": "^1.0.0-next.23",
     "@sveltejs/kit": "^1.0.0-next.206",
     "leaflet": "^1.7.1",
-    "svelte": "^3.44.3",
-    "svelte-markdown": "^0.2.1"
+    "mdsvex": "^0.9.8",
+    "svelte": "^3.44.3"
   },
-  "type": "module",
-  "dependencies": {
-    "@lukeed/uuid": "^2.0.0",
-    "cookie": "^0.4.1"
-  }
+  "type": "module"
 }
