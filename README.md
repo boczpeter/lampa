@@ -1,38 +1,33 @@
-# create-svelte
+# Lámpaszámlálós applet a Magyar Kerékpárosklub felméréséhez
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+Minden év tavasszal és ősszel a Magyar Kerékpárosklub országos lámpaszámlálást végez többé-kevésbé azonos helyszíneken a klub önkéntesei által. Cél a kerékpárosok kivilágításának felmérése és évek távlatában a trendek vizsgálata.
 
-## Creating a project
+Tavaly a lezárások miatt elmaradt a tavaszi és őszi lámpaszámlálás, most viszont újra elővesszük a papírt és tollat, hogy lássuk a felvilágosodásunk trendjeit. Segíts kideríteni, hogy vajon tényleg sokan bringáznak-e lámpa nélkül! 20 perc az egész, és ott mérhetsz, ahol szeretnél.
+November 11-én csütörtökön 19. alkalommal számoljuk meg az ország bringalámpáit. Célunk, hogy felhívjuk a figyelmet a kerékpárok kivilágítására, és adatokkal válaszolhassunk a tévhitekre.
+A feladat nagyon rövid, és egyszerű:
+1.) A saját településed tetszőleges, de viszonylag forgalmas pontján november 11-én csütörtökön, 19:00 és 19:20 között kell megszámolni az elhaladó bringásokat, és feljegyezni, hányan kerékpároztak kivilágítva.
+2.) 20 perces mérésed eredményét [hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/622147172546653?ref=newsfeed)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
 
-If you're seeing this, you've probably already done this step. Congrats!
+Tudnivalók:
+- Az úton és járdán haladók ugyanúgy számítanak
+- Pontosan 20 percig mérj
+- Minden haladási irányt számolj
+- Olyan pozíciót keress, hogy haladási iránytól függetlenül jól lásd az első és hátsó lámpát is
+- Csak a világító lámpát számoljuk
+- ~~Használj papírt és tollat, mert sok bringásnál könnyű belezavarodni~~ Használd az appletet akár mobilról és nem fogsz belezavarodni. :)
+- Forgalmas ponton inkább kérj segítséget
+- Ne torzítsd, becsüld vagy kozmetikázd az adatokat
+- Legyél pontos
+- Ha elrontottad, inkább kezdd újra a 20 percet, de 19:30 után már ne fogj bele, mert torzíthatja az eredményt
+- A legkisebb település is számít, de a gyalog tolt bicikli nem.
+Kérünk terjeszd az akciónk hírét, oszd meg a Facebookon, hogy sok helyen mérhessünk, és több bringáshoz jusson el.
+Korábbi lámpaszámolások eredményeit itt találod: https://kerekparosklub.hu/category/cimkek/lampaszamlalas
+Ha szeretnél, iratkozz fel, hogy emailben szólhassunk a következő alkalmakról:
+https://forms.gle/ZUV2H4FiXehfxhMN9
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+➡️ Csatlakozz hozzánk!
+- Lépj be a klubba - tagságoddal a bringás fejlődésért végzett munkát támogatod, biztosítást, kedvezményeket, jogsegélyt kaphatsz - és 264 nyeremény is vár: https://kerekparosklub.hu/tagsagiakcio2021tel
+- Csatlakozz a legközelebbi Kerékpárosklub területi szervezethez: https://kerekparosklub.hu/teruleti-szervezetek
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
-
-> Note: the `@next` is temporary
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
-
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+➡️ Támogasd a munkánkat:
+https://kerekparosklub.hu/tamogass-minket
