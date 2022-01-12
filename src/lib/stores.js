@@ -6,7 +6,7 @@ export const
   latlng    = writable(null),
 
   // copy text to clipboard
-  copy = text => navigator?.clipboard.writeText(text)
+  copy = text => navigator.clipboard?.writeText(text)
 			.then(() => console.info(text))
 			.catch(r => console.error('clipboard write failed: '+r)),
 
