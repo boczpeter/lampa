@@ -1,20 +1,20 @@
 <script>
-	import Icon from '@iconify/svelte';
+	import Icon from '$lib/Icon.svelte';
   export let nums, all;
 </script>
 
 <section>
   {#each nums as {name, value, src, inc}}
     <output>{value}</output>
-    <button type="button" on:click={e => inc=0} disabled={value < 1}><Icon icon="fa-solid:minus"/></button>
+    <button type="button" on:click={e => inc=0} disabled={value < 1}><Icon icon=minus/></button>
     <img {src} title={name} alt={name}>
-    <button type="button" on:click={e => inc=1}><Icon icon="fa-solid:plus"/></button>
+    <button type="button" on:click={e => inc=1}><Icon icon=plus/></button>
   {/each}
 
   <hr class="full">
 
   <output title={all.name}>{all.value}</output>
-  <a href="help" title="Help" role="button" sveltekit:prefetch><Icon icon="fa-solid:question-circle"/></a>
+  <a href="help" title="Help" role="button" sveltekit:prefetch><Icon icon=question-circle/></a>
 </section>
 
 <style>
@@ -38,6 +38,7 @@
   }
 	button {
 		display: flex;
+    place-items: center;
     width: 2em;
     height: 2em;
 		min-width: calc(1em + var(--font));
@@ -51,6 +52,7 @@
   }
 	a {
     display: flex;
+    place-items: center;
 		font-size: var(--hugefont);
 		grid-column: -3 / -1;
 		border-radius: 50%;

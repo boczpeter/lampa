@@ -3,7 +3,7 @@
 	import { fly, fade, slide, scale } from 'svelte/transition';
   import Map   from '$lib/Map.svelte';
 	import Popup from '$lib/Popup.svelte';
-	import Icon  from '@iconify/svelte';
+	import Icon  from '$lib/Icon.svelte';
 
   let popup = false;
   const round = n => Number(n).toFixed(5);
@@ -29,7 +29,7 @@
       <b>Tipp</b>: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
     </header>
   {/if}
-  <mark><Icon icon="fa-solid:crosshairs"/></mark>
+  <mark><Icon icon=crosshairs/></mark>
 </Popup>
 
 <style>

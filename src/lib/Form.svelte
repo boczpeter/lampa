@@ -1,6 +1,6 @@
 <script>
 	import { latlng } from '$lib/stores.js';
-	import Icon from '@iconify/svelte';
+	import Icon from '$lib/Icon.svelte';
   export let meta;
 
 	latlng.subscribe(pos => {
@@ -12,11 +12,11 @@
 <section>
   {#each meta as {name, value, icon}, id}
     <label class="icon" id="l{id}">
-      <Icon icon="fa-solid:{icon}"/>
+      <Icon {icon}/>
       <input type="text" bind:value placeholder={name}>
     </label>
 	{/each}
-	<a href="map" title="Pozíció lekérése" role="button"><Icon icon="fa-solid:crosshairs"/></a>
+	<a href="map" title="Pozíció lekérése" role="button"><Icon icon=crosshairs/></a>
 </section>
 
 <style>
@@ -46,8 +46,10 @@
 	}
 	a {
     display: flex;
+    place-items: center;
 		font-size: var(--bigfont);
 		border-radius: var(--radius);
   	color: #ccc;
+		margin-block: -1em;
   }
 </style>
