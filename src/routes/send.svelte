@@ -1,9 +1,15 @@
 <script>
 	import Popup from '$lib/Popup.svelte';
 	import { popuptext } from '$lib/stores';
+	import { browser } from '$app/env';
+	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
+
+	let text = $popuptext;
+	if (!text && browser)	goto(base || '/', { replaceState: true });	// back to main page if called from browser nav/reload
 </script>
 
-<Popup type='plain'><output>{$popuptext}</output></Popup>
+<Popup type='plain'><output>{text}</output></Popup>
 
 <style>
 	output {
