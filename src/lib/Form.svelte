@@ -4,7 +4,6 @@
   export let meta;
 
 	latlng.subscribe(pos => {
-		// console.log('input', pos);
 		if (pos)	meta[3].value = pos;
 	});
 </script>
@@ -28,7 +27,6 @@
 	}
 	input {
     width: 100%;
-    margin-left: var(--gap);
 	}
 	#l3 {
 		grid-column-end: span 1;
@@ -39,10 +37,8 @@
     align-items: center;
     justify-content: space-between;
 		grid-column-end: span 2;
-	}
-	:global(label > .iconify) {
-		width: max(1em,5vw);
-		height: max(1em,5vw);
+		font-size: max(1em,5vw);
+    gap: var(--gap);
 	}
 	a {
     display: flex;
