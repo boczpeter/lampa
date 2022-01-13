@@ -52,9 +52,8 @@
   mark {
     color: #f00b;
     background: transparent;
-    display: block;
-    width: 2rem;
-    height: 2rem;
+    display: flex;
+    font-size: 2rem;
     place-self: center;
     pointer-events: none;
   }
