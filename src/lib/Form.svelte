@@ -37,15 +37,15 @@
     align-items: center;
     justify-content: space-between;
 		grid-column-end: span 2;
-		font-size: max(1em,5vw);
+		font-size: var(--fontdyn);
     gap: var(--gap);
 	}
 	a {
     display: flex;
     place-items: center;
-		font-size: var(--bigfont);
+		font-size: var(--font2dyn);
 		border-radius: var(--radius);
   	color: #ccc;
-		margin-block: -1em;
+		margin-block: var(--gap-1);
   }
 </style>

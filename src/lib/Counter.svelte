@@ -29,6 +29,7 @@
     font-size: var(--hugefont);
     text-shadow: 0 0 var(--contour) #000;
     line-height: var(--hugefont);
+		user-select: none;
   }
   output:last-of-type {
 		font-weight: bold;
@@ -39,13 +40,14 @@
 	button {
 		display: flex;
     place-items: center;
-    width: 2em;
-    height: 2em;
-		min-width: calc(1em + var(--font));
+    /* width: 2em; */
+    /* height: 2em; */
+		/* min-width: calc(1em + var(--font)); */
 		border-radius: var(--radius);
     color: #eee;
     font-size: var(--bigfont);
 		background-color: var(--green);
+		user-select: none;
   }
   button:nth-of-type(odd) {
 		background-color: var(--red);
@@ -53,7 +55,7 @@
 	a {
     display: flex;
     place-items: center;
-		font-size: var(--hugefont);
+		font-size: var(--font2dyn);
 		grid-column: -3 / -1;
 		border-radius: 50%;
   	color: #ccc;

@@ -57,11 +57,9 @@
 		gap: var(--gap);
 		padding: var(--gap);
 		place-content: center;
-		user-select: none;
 	}
 	:global(body.popup) > form {
 		pointer-events: none;
-		user-select: none;
 		opacity: 0.3;
 		/* position: fixed; */
 		/* z-index: -1; */
