@@ -5,7 +5,9 @@
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
-    "preview": "svelte-kit preview"
+    "preview": "svelte-kit preview",
+    "reload": "cp -v apache/lampa.conf /etc/apache2/sites-available/ && sudo service apache2 reload",
+    "deploy": "rsync -avi --delete --no-times --checksum build/ /var/www/lampa/"
   },
   "devDependencies": {
     "@iconify/svelte": "^2.1.0",
