@@ -38,10 +38,12 @@
 <form>
 	<h1>{title}</h1>
 	<h2>Számolj&hellip;</h2>
+
 	<Counter {nums} {all} />
+
 	<h2>&hellip;és add meg a további adatokat!</h2>
 	<Form {meta} />
-	<a href="send" class="button" role="button" on:click={e => {
+	<a href="send" class=button role=button sveltekit:noscroll on:click={e => {
 		const text = [meta, all, nums].flat().map(d => `${d.name}: ${d.value}`).join('\n');
 		copy(text);
 		$popuptext = text;
@@ -53,15 +55,13 @@
 <style>
 	form {
 		display: flex;
-		flex-wrap: wrap;
+		flex-direction: column;
 		gap: var(--gap);
 		padding: var(--gap);
-		place-content: center;
+		align-items: center;
 	}
-	:global(body.popup) > form {
+	:global(aside) + form {
 		pointer-events: none;
 		opacity: 0.3;
-		/* position: fixed; */
-		/* z-index: -1; */
 	}
 </style>

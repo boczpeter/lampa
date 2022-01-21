@@ -8,6 +8,5 @@
 	<title>{title}</title>
 </svelte:head>
 
-<Main {title}/>
-
 <slot />
+<Main {title}/>

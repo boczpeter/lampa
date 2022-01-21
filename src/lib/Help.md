@@ -25,3 +25,7 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 - [Lépj be a klubba](https://kerekparosklub.hu/tagsagiakcio2021tel) - tagságoddal a bringás fejlődésért végzett munkát támogatod, biztosítást, kedvezményeket, jogsegélyt kaphatsz - és 264 nyeremény is vár!
 - [Csatlakozz a legközelebbi Kerékpárosklub területi szervezethez](https://kerekparosklub.hu/teruleti-szervezetek)!
 - [Támogasd a munkánkat](https://kerekparosklub.hu/tamogass-minket)!
+
+<style>
+  h3 { color: #444; }
+</style>

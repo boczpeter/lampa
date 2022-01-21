@@ -10,12 +10,12 @@
 
 <section>
   {#each meta as {name, value, icon}, id}
-    <label class="icon" id="l{id}">
+    <label class=icon id="l{id}">
       <Icon {icon}/>
-      <input type="text" bind:value placeholder={name}>
+      <input type=text bind:value placeholder={name}>
     </label>
 	{/each}
-	<a href="map" title="Pozíció lekérése" role="button"><Icon icon=crosshairs/></a>
+	<a href="map" title="Pozíció lekérése" role=button sveltekit:noscroll><Icon icon=crosshairs/></a>
 </section>
 
 <style>

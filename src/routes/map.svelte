@@ -1,6 +1,6 @@
 <script>
 	import { latlng, externalLink } from '$lib/stores.js';
-	import { fly, fade, slide, scale } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
   import Map   from '$lib/Map.svelte';
 	import Popup from '$lib/Popup.svelte';
 	import Icon  from '$lib/Icon.svelte';

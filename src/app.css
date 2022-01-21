@@ -25,6 +25,8 @@ body {
 	margin: 0;
 	width: 100vw;	/* prevent moving content horizontally on scrollbar show/hide */
 	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
 }
 a, a:visited {
 	color: rgb(0,100,200);
@@ -91,7 +93,6 @@ h2 {
 }
 h3, h4, h5, h6 {
 	margin: 0.5em 0;
-	color: #444;
 }
 h1, h2, section, .full {
 	grid-column: 1 / -1;

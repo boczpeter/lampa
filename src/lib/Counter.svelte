@@ -6,15 +6,15 @@
 <section>
   {#each nums as {name, value, src, inc}}
     <output>{value}</output>
-    <button type="button" on:click={e => inc=0} disabled={value < 1}><Icon icon=minus/></button>
+    <button type=button on:click={e => inc=0} disabled={value < 1}><Icon icon=minus/></button>
     <img {src} title={name} alt={name}>
-    <button type="button" on:click={e => inc=1}><Icon icon=plus/></button>
+    <button type=button on:click={e => inc=1}><Icon icon=plus/></button>
   {/each}
 
   <hr class="full">
 
   <output title={all.name}>{all.value}</output>
-  <a href="help" title="Help" role="button" sveltekit:prefetch><Icon icon=question-circle/></a>
+  <a href="help" title=Help role=button sveltekit:prefetch sveltekit:noscroll><Icon icon=question-circle/></a>
 </section>
 
 <style>
