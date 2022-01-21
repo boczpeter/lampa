@@ -73,6 +73,7 @@ input:not(:disabled):active, button:not(:disabled):active, a[role="button"]:acti
 }
 input:not(:disabled):hover, button:not(:disabled):hover, a[role="button"]:hover, a.button:hover {
 	box-shadow: 0 0 var(--radius) #888;
+	text-decoration: none;
 }
 
 h1, h2 {
