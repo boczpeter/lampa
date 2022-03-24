@@ -4,7 +4,7 @@
   export let meta;
 
 	latlng.subscribe(pos => {
-		if (pos)	meta[3].value = pos;
+		if (pos)	meta[4].value = pos;
 	});
 </script>
 
@@ -28,7 +28,7 @@
 	input {
     width: 100%;
 	}
-	#l3 {
+	#l4 {
 		grid-column-end: span 1;
 	}
 	label {

@@ -17,7 +17,8 @@
 			{value:'', name: 'Neved/Nicked',	icon:'user-circle'},
 			{value:'', name: 'Város',					icon:'city'},
 			{value:'', name: 'Lakosságszám',	icon:'users'},
-			{value:'', name: 'Helyszín',			icon:'map-marker-alt'},
+			{value:'', name: 'Helyszín',			icon:'map'},
+			{value:'', name: 'GPS',						icon:'map-marker-alt'},
 		];
 
 	nums.forEach(obj => Object.defineProperties(obj, {
