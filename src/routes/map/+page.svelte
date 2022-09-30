@@ -16,7 +16,6 @@
     });
     map.on('moveend', e => {
       let pos = map.getCenter();  // update position back to main data
-      console.log('moveend', pos);
       $latlng = `[${ round(pos.lat) }, ${ round(pos.lng) }]`;
     });
   }

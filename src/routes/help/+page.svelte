@@ -9,7 +9,7 @@
 <Popup>
 	<output bind:this={out}>
 		<Help/>
-		<img src="mklogo.png" alt="MK logo">
+		<img src="/mklogo.png" alt="MK logo">
 	</output>
 </Popup>
 

@@ -15,7 +15,7 @@
       <input type=text bind:value placeholder={name}>
     </label>
 	{/each}
-	<a href="map" title="Pozíció lekérése" role=button sveltekit:noscroll><Icon icon=crosshairs/></a>
+	<a href="/map" title="Pozíció lekérése" role=button data-sveltekit-noscroll><Icon icon=crosshairs/></a>
 </section>
 
 <style>

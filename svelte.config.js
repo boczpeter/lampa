@@ -1,14 +1,17 @@
-import { mdsvex } from 'mdsvex';
-import adapter from '@sveltejs/adapter-static';
-
+import { mdsvex } from "mdsvex";
+import mdsvexConfig from "./mdsvex.config.js";
+import adapter from "@sveltejs/adapter-static";
 /** @type {import('@sveltejs/kit').Config} */
+
 const config = {
+  extensions: [".svelte", ...mdsvexConfig.extensions],
+
 	kit: {
 		adapter: adapter(),
-		// paths: {base: '/lampa'},
+    trailingSlash: 'always',
 	},
-	extensions: ['.svelte', '.svx', '.md'],
-	preprocess: mdsvex({ extensions: ['.md'] }),
+
+  preprocess: [mdsvex(mdsvexConfig)],
 };
 
 export default config;

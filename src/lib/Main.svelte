@@ -7,10 +7,10 @@
 
 	const
 		nums = [
-			{src:'3.png', name:'Első+hátsó'},
-			{src:'1.png', name:'Csak első '},
-			{src:'2.png', name:'Csak hátsó'},
-			{src:'0.png', name:'Egyik sem '},
+			{src:'/3.png', name:'Első+hátsó'},
+			{src:'/1.png', name:'Csak első '},
+			{src:'/2.png', name:'Csak hátsó'},
+			{src:'/0.png', name:'Egyik sem '},
 		],
 		all = {name: 'Kerékpárosok száma', value: 0},
 		meta = [
@@ -44,7 +44,7 @@
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
 	<Form {meta} />
-	<a href="send" class=button role=button sveltekit:noscroll on:click={e => {
+	<a href="/send" class=button role=button data-sveltekit-noscroll on:click={e => {
 		const text = [meta, all, nums].flat().map(d => `${d.name}: ${d.value}`).join('\n');
 		copy(text);
 		$popuptext = text;
