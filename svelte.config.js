@@ -8,7 +8,7 @@ const config = {
 		// paths: {base: '/lampa'},
 	},
 	extensions: ['.svelte', '.svx', '.md'],
-	preprocess: mdsvex({ extensions: ['.svx', '.md'] }),
+	preprocess: mdsvex({ extensions: ['.md'] }),
 };
 
 export default config;

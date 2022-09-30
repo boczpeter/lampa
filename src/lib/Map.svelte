@@ -1,6 +1,7 @@
 <script>
+  import { onMount } from 'svelte';
+  // import { browser } from '$app/environment';
   import 'leaflet/dist/leaflet.css';
-  import { onMount } from "svelte";
 
   export let
     lat = 47.25,
