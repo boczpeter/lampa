@@ -14,7 +14,7 @@
   <hr class="full">
 
   <output title={all.name}>{all.value}</output>
-  <a href="help" title=Help role=button sveltekit:prefetch sveltekit:noscroll><Icon icon=question-circle/></a>
+  <a href="/help" title=Help role=button data-sveltekit-prefetch data-sveltekit-noscroll><Icon icon=question-circle/></a>
 </section>
 
 <style>

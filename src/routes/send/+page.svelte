@@ -1,7 +1,7 @@
 <script>
 	import Popup from '$lib/Popup.svelte';
 	import { popuptext } from '$lib/stores';
-	import { browser } from '$app/env';
+  import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
 
