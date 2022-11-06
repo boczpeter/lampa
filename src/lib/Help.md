@@ -24,9 +24,9 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 
 #### Csatlakozz hozzánk!
 
-- [Lépj be a klubba](https://kerekparosklub.hu/klubtagsag) - tagságoddal a bringás fejlődésért végzett munkát támogatod, biztosítást, kedvezményeket, jogsegélyt kaphatsz - és 264 nyeremény is vár!
+- [Lépj be a klubba](https://kerekparosklub.hu/tag-regisztracio) - tagságoddal a bringás fejlődésért végzett munkát támogatod, biztosítást, kedvezményeket, jogsegélyt kaphatsz - és 264 nyeremény is vár!
 - [Csatlakozz a legközelebbi Kerékpárosklub területi szervezethez](https://kerekparosklub.hu/teruleti-szervezetek)!
-- [Támogasd a munkánkat](https://kerekparosklub.hu/tamogass-minket)!
+- [Támogasd a munkánkat adód 1%-ával!](https://kerekparosklub.hu/1)
 
 <style>
   h3 { color: #444; }
