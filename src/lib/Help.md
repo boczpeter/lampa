@@ -1,7 +1,9 @@
 ### A feladat nagyon rövid és egyszerű:
 
-1. A saját településed tetszőleges, de viszonylag forgalmas pontján <time datetime="2021-11-11T19:00:00">november 11-én csütörtökön, 19:00 és 19:20</time> között kell megszámolni az elhaladó bringásokat és feljegyezni, hányan kerékpároztak kivilágítva.
-2. 20 perces mérésed eredményét [hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/622147172546653?ref=newsfeed)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
+1. A saját településed tetszőleges, de viszonylag forgalmas pontján<br>
+<time datetime="2022-11-10T19:00:00">november 10-én csütörtökön, 19:00 és 19:20</time><br>
+között kell megszámolni az elhaladó bringásokat és feljegyezni, hányan kerékpároztak kivilágítva.
+2. 20 perces mérésed eredményét [hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/1226007047978999/?active_tab=discussion)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
 
 #### Tudnivalók:
 
@@ -22,7 +24,7 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 
 #### Csatlakozz hozzánk!
 
-- [Lépj be a klubba](https://kerekparosklub.hu/tagsagiakcio2021tel) - tagságoddal a bringás fejlődésért végzett munkát támogatod, biztosítást, kedvezményeket, jogsegélyt kaphatsz - és 264 nyeremény is vár!
+- [Lépj be a klubba](https://kerekparosklub.hu/klubtagsag) - tagságoddal a bringás fejlődésért végzett munkát támogatod, biztosítást, kedvezményeket, jogsegélyt kaphatsz - és 264 nyeremény is vár!
 - [Csatlakozz a legközelebbi Kerékpárosklub területi szervezethez](https://kerekparosklub.hu/teruleti-szervezetek)!
 - [Támogasd a munkánkat](https://kerekparosklub.hu/tamogass-minket)!
 
