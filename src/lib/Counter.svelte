@@ -1,13 +1,16 @@
 <script>
 	import Icon from '$lib/Icon.svelte';
+  import InlineSVG from 'svelte-inline-svg'
   export let nums, all;
+  let svg = '/bike.svg'
 </script>
 
 <section>
-  {#each nums as {name, value, src, inc}}
+  {#each nums as {name, value, src, inc, cls}}
     <output>{value}</output>
     <button type=button on:click={e => inc=0} disabled={value < 1}><Icon icon=minus/></button>
-    <img {src} title={name} alt={name}>
+    <div class={cls} title={name}><InlineSVG src={svg} /></div>
+    <!-- <img {src} title={name} alt={name}> -->
     <button type=button on:click={e => inc=1}><Icon icon=plus/></button>
   {/each}
 
@@ -34,15 +37,16 @@
   output:last-of-type {
 		font-weight: bold;
   }
-  img {
-    max-width: 3em;
+  div {
+    width: var(--hugefont);
+    height: var(--hugefont);
   }
+  /* img {
+    max-width: 3em;
+  } */
 	button {
 		display: flex;
     place-items: center;
-    /* width: 2em; */
-    /* height: 2em; */
-		/* min-width: calc(1em + var(--font)); */
 		border-radius: var(--radius);
     color: #eee;
     font-size: var(--bigfont);

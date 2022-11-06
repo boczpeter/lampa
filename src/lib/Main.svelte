@@ -7,10 +7,10 @@
 
 	const
 		nums = [
-			{src:'/3.png', name:'Első+hátsó'},
-			{src:'/1.png', name:'Csak első '},
-			{src:'/2.png', name:'Csak hátsó'},
-			{src:'/0.png', name:'Egyik sem '},
+			{cls:'both',  name:'Első+hátsó'},
+			{cls:'front', name:'Csak első '},
+			{cls:'back',  name:'Csak hátsó'},
+			{cls:'none',  name:'Egyik sem '},
 		],
 		all = {name: 'Kerékpárosok száma', value: 0},
 		meta = [

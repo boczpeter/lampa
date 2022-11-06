@@ -16,6 +16,7 @@
 	--trans 	: transform var(--time), opacity var(--time);
 	--green   : #5a5;
 	--red     : #a55;
+	--off     : #555;
 	--height  : calc(100vh - 2 * var(--gap));
 }
 body {
@@ -112,4 +113,9 @@ button .iconify, a .iconify {
 }
 time {
 	font-weight: 600;
+}
+
+/* svg bike icon styles */
+.front .back, .back .front, .none .bike {
+	--stroke: var(--off);
 }

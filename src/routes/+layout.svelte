@@ -7,7 +7,7 @@
 <svelte:head>
 	<title>{title}</title>
 	<meta name="description" content="Lámpaszámlálós applet a Magyar Kerékpárosklub felméréséhez" />
-	<link rel="icon" href="/favicon.png" />
+	<link rel="icon" href="/bike.svg" />
 	<meta name="theme-color" content="#333">
 </svelte:head>
 

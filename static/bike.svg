@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<style>
+  .back {
+    --stroke: #ff2828;
+  }
+  .front {
+    --stroke: #fff;
+  }
+  .bike :is(path, circle) {
+    stroke: var(--stroke);
+    fill: none;
+    stroke-width: 8;
+    stroke-miterlimit: 4;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+</style>
+<g transform="translate(-5 20)">
+  <g class="bike back">
+    <circle r="31" cy="102" cx="163.3"/>
+    <path d="M154.252 32.228h-24.757m-16.727 70.467 32.87-70.49m-39.8 63.46 6.93 7.03 50.518-.353L137.96 48.67h-32.122"/>
+  </g>
+  <g class="bike front">
+    <circle cx="47.6" cy="102" r="31"/>
+    <path d="m47.533 102.695 31.05-66.58c4.66-10 8.073-8.234 18.17-8.234"/>
+    <path style="stroke-linecap:butt;" d="M105.839 48.67H72.726M68.70 57.3l37.137 38.364"/>
+  </g>
+</g>
+</svg>
