@@ -31,12 +31,17 @@
   });
 </script>
 
-<div bind:this={node}><slot/></div>
+<article bind:this={node} role=application><slot/></article>
 
 <style>
-  div {
+  article {
     flex: 1 0 auto; /* give div a valid height if flex-item, required by Leaflet */
     grid-area: var(--grid-area, map); /* put into specific grid area if available */
     border-radius: var(--radius);
+    overscroll-behavior: none;
+    min-width: 300px;
+    min-height: 300px;
+    max-height: 100%;
+    background: transparent;
   }
 </style>

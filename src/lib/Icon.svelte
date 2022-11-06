@@ -8,15 +8,13 @@
     icon = full[1];
   }
   let style = `width:${size};height:${size};`;
-  // console.log($$slots)
 </script>
 
 {#if cat && icon}
 {#if wrap}
   <span class={cls}><svelte:self {cat} {icon} {size} wrap={false} ><slot/></svelte:self></span>
-{:else if cat == 'lib'} <!-- our own icon set #fixme -->
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="0.88em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 448 512" {style} class="iconify {cls}"></svg>
-  <slot/>
+{:else if cat == 'lib' && icon == 'empty'} <!-- our own icon set #fixme -->
+  <Icon icon="fa-solid:square-full" {style} class=invisible /><slot/>
 {:else}
   <Icon icon="{cat}:{icon}" {style} class={cls} /><slot/>
 {/if}
