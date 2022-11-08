@@ -1,15 +1,14 @@
 <script>
 	import Popup from '$lib/Popup.svelte';
-	import { popuptext } from '$lib/stores';
+	import { clipboard } from '$lib/stores';
   import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
 
-	let text = $popuptext;
-	if (!text && browser)	goto(base || '/', { replaceState: true });	// back to main page if called from browser nav/reload
+	if (!$clipboard && browser)	goto(base || '/', { replaceState: true });	// back to main page if called from browser nav/reload
 </script>
 
-<Popup type='plain'><output>{text}</output></Popup>
+<Popup type='plain'><output>{$clipboard}</output></Popup>
 
 <style>
 	output {

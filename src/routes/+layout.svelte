@@ -1,6 +1,6 @@
 <script>
 	import '../app.css';
-	import { popuptext, copy } from '$lib/stores.js';
+	import { clipboard } from '$lib/stores.js';
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
@@ -45,7 +45,6 @@
 </svelte:head>
 
 <slot />
-<!-- <Main {title}/> -->
 <form>
 	<h1>{title}</h1>
 	<h2>Számolj&hellip;</h2>
@@ -53,12 +52,12 @@
 	<Counter {rows} {total} />
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
+
 	<Form {meta} />
-	<a href="/send" class=button role=button data-sveltekit-noscroll on:click={e => {
-		const text = [meta, total, rows].flat().map(d => `${d.name}: ${d.value}`).join('\n');
-		copy(text);
-		$popuptext = text;
-	}}>
+
+	<a href="/send" class=button role=button data-sveltekit-noscroll on:click={e =>
+		$clipboard = [meta, total, rows].flat().map(d => `${d.name}: ${d.value}`).join('\n')
+	}>
 	 	Küldöm (vágólapra)
 	</a>
 </form>

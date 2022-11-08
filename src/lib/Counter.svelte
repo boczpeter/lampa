@@ -1,7 +1,9 @@
 <script>
 	import Icon from '$lib/Icon.svelte';
   import InlineSVG from 'svelte-inline-svg'
+
   export let rows, total;
+
   let src = '/bike.svg'
 </script>
 

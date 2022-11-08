@@ -3,9 +3,7 @@
 	import Icon from '$lib/Icon.svelte';
   export let meta;
 
-	latlng.subscribe(pos => {
-		if (pos)	meta[4].value = pos;
-	});
+	$: meta[4].value = $latlng
 </script>
 
 <section>

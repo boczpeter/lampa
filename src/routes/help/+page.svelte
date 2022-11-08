@@ -1,6 +1,6 @@
 <script>
 	import Popup from '$lib/Popup.svelte';
-	import Help  from '$lib/Help.md';
+	import Help  from './Help.md';
 	import { externalLink } from '$lib/stores.js';
   let out;
   $: externalLink(out, 'a');  // postprocess all links in markdown

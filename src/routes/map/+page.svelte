@@ -1,7 +1,7 @@
 <script>
 	import { latlng, externalLink } from '$lib/stores.js';
 	import { fly } from 'svelte/transition';
-  import Map   from '$lib/Map.svelte';
+  import Map   from './Map.svelte';
 	import Popup from '$lib/Popup.svelte';
 	import Icon  from '$lib/Icon.svelte';
 

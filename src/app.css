@@ -110,6 +110,7 @@ img {
 }
 button .iconify, a .iconify {
 	pointer-events: none;
+	vertical-align: top;
 }
 time {
 	font-weight: 600;

@@ -3,7 +3,7 @@
 1. A saját településed tetszőleges, de viszonylag forgalmas pontján<br>
 <time datetime="2022-11-10T19:00:00">november 10-én csütörtökön, 19:00 és 19:20</time><br>
 között kell megszámolni az elhaladó bringásokat és feljegyezni, hányan kerékpároztak kivilágítva.
-2. 20 perces mérésed eredményét [hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/1226007047978999/?active_tab=discussion)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
+2. 20 perces mérésed eredményét [<Icon icon=fa:facebook-square /> hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/1226007047978999/?active_tab=discussion)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
 
 #### Tudnivalók:
 
@@ -24,10 +24,14 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 
 #### Csatlakozz hozzánk!
 
-- [Lépj be a klubba](https://kerekparosklub.hu/tag-regisztracio) - tagságoddal a bringás fejlődésért végzett munkát támogatod, biztosítást, kedvezményeket, jogsegélyt kaphatsz - és 264 nyeremény is vár!
+- [Legyél tagunk!](https://kerekparosklub.hu/tag-regisztracio)
 - [Csatlakozz a legközelebbi Kerékpárosklub területi szervezethez](https://kerekparosklub.hu/teruleti-szervezetek)!
 - [Támogasd a munkánkat adód 1%-ával!](https://kerekparosklub.hu/1)
 
 <style>
   h3 { color: #444; }
 </style>
+
+<script>
+	import Icon from '$lib/Icon.svelte';
+</script>
