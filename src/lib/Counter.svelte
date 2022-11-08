@@ -1,19 +1,21 @@
 <script>
 	import Icon from '$lib/Icon.svelte';
-  export let nums, all;
+  import InlineSVG from 'svelte-inline-svg'
+  export let rows, total;
+  let svg = '/bike.svg'
 </script>
 
 <section>
-  {#each nums as {name, value, src, inc}}
+  {#each rows as {name, value, src, inc, cls}}
     <output>{value}</output>
     <button type=button on:click={e => inc=0} disabled={value < 1}><Icon icon=minus/></button>
-    <img {src} title={name} alt={name}>
+    <div class={cls} title={name} role=img><InlineSVG src={svg} /></div>
     <button type=button on:click={e => inc=1}><Icon icon=plus/></button>
   {/each}
 
   <hr class="full">
 
-  <output title={all.name}>{all.value}</output>
+  <output title={total.name}>{total.value}</output>
   <a href="/help" title=Help role=button data-sveltekit-prefetch data-sveltekit-noscroll><Icon icon=question-circle/></a>
 </section>
 
@@ -34,15 +36,16 @@
   output:last-of-type {
 		font-weight: bold;
   }
-  img {
-    max-width: 3em;
+  div {
+    width : var(--hugefont);
+    height: var(--hugefont);
+  }
+  div.front :global(.back), div.back :global(.front), div.none :global(g){
+    --stroke: var(--off);
   }
 	button {
 		display: flex;
     place-items: center;
-    /* width: 2em; */
-    /* height: 2em; */
-		/* min-width: calc(1em + var(--font)); */
 		border-radius: var(--radius);
     color: #eee;
     font-size: var(--bigfont);
