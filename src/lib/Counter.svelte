@@ -2,14 +2,14 @@
 	import Icon from '$lib/Icon.svelte';
   import InlineSVG from 'svelte-inline-svg'
   export let rows, total;
-  let svg = '/bike.svg'
+  let src = '/bike.svg'
 </script>
 
 <section>
-  {#each rows as {name, value, src, inc, cls}}
+  {#each rows as {name, value, inc, cls}}
     <output>{value}</output>
     <button type=button on:click={e => inc=0} disabled={value < 1}><Icon icon=minus/></button>
-    <div class={cls} title={name} role=img><InlineSVG src={svg} /></div>
+    <div class={cls} title={name} role=img><InlineSVG {src} /></div>
     <button type=button on:click={e => inc=1}><Icon icon=plus/></button>
   {/each}
 
