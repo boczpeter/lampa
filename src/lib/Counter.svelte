@@ -22,7 +22,9 @@
 
   <output title={total.name}>{total.value}</output>
 
-  <a href=/help title=Help role=button data-sveltekit-prefetch data-sveltekit-noscroll><Icon icon=question-circle/></a>
+  <a href=/help title=Help role=button data-sveltekit-prefetch data-sveltekit-noscroll>
+    <Icon icon=question-circle/>
+  </a>
 </section>
 
 <style>
@@ -51,9 +53,7 @@
   }
 	button {
 		display: flex;
-    place-items: center;
 		border-radius: var(--radius);
-    color: #eee;
     font-size: var(--bigfont);
 		background-color: var(--green);
 		user-select: none;

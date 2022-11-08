@@ -4,9 +4,8 @@
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
-	export let title = 'Lámpaszámlálás';
-
 	const
+		title = 'Lámpaszámlálás',
 		rows = [
 			{name:'Első+hátsó' },
 			{name:'Csak első ', cls:'front'},
@@ -22,16 +21,16 @@
 			{value:'', name: 'GPS',						icon:'map-marker-alt'},
 		];
 
-	rows.forEach(obj => Object.defineProperties(obj, {
+	rows.forEach(row => Object.defineProperties(row, {
 		data: {value: 0, writable: true},
 		value: {
-			get: () => obj.data,
+			get: () => row.data,
 			set: v => {
-				if (0 <= obj.data) {
-					total.value += v - obj.data
-					obj.data = v
+				if (0 <= row.data) {
+					total.value += v - row.data
+					row.data = v
 				} else {	// catch for errors
-					obj.data = 0
+					row.data = 0
 				}
 			}
 		}
