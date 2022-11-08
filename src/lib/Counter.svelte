@@ -1,24 +1,28 @@
 <script>
-	import Icon from '$lib/Icon.svelte';
+	import Icon from '$lib/Icon.svelte'
   import InlineSVG from 'svelte-inline-svg'
 
-  export let rows, total;
-
-  let src = '/bike.svg'
+  export let rows, total
 </script>
 
 <section>
-  {#each rows as {name, value, inc, cls}}
+  {#each rows as {name, value, cls}}
     <output>{value}</output>
-    <button type=button on:click={e => inc=0} disabled={value < 1}><Icon icon=minus/></button>
-    <div class={cls} title={name} role=img><InlineSVG {src} /></div>
-    <button type=button on:click={e => inc=1}><Icon icon=plus/></button>
+    <button type=button on:click={e => value--} disabled={value < 1}>
+      <Icon icon=minus/>
+    </button>
+    <div class={cls} title={name} role=img>
+      <InlineSVG src=/bike.svg />
+    </div>
+    <button type=button on:click={e => value++}>
+      <Icon icon=plus/>
+    </button>
   {/each}
-
-  <hr class="full">
+  <hr class=full>
 
   <output title={total.name}>{total.value}</output>
-  <a href="/help" title=Help role=button data-sveltekit-prefetch data-sveltekit-noscroll><Icon icon=question-circle/></a>
+
+  <a href=/help title=Help role=button data-sveltekit-prefetch data-sveltekit-noscroll><Icon icon=question-circle/></a>
 </section>
 
 <style>

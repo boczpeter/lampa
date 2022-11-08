@@ -23,15 +23,16 @@
 		];
 
 	rows.forEach(obj => Object.defineProperties(obj, {
-		value: {value: 0, writable: true},
-		inc: {
-			set(v) {
-				if (v) {
-					obj.value++;
-				} else if (obj.value) {
-					obj.value--;
+		data: {value: 0, writable: true},
+		value: {
+			get: () => obj.data,
+			set: v => {
+				if (0 <= obj.data) {
+					total.value += v - obj.data
+					obj.data = v
+				} else {	// catch for errors
+					obj.data = 0
 				}
-				total.value = rows.reduce((s,n) => s+n.value, 0);
 			}
 		}
 	}));
@@ -39,9 +40,9 @@
 
 <svelte:head>
 	<title>{title}</title>
-	<meta name="description" content="Lámpaszámlálós applet a Magyar Kerékpárosklub felméréséhez" />
-	<link rel="icon" href="/bike.svg" />
-	<meta name="theme-color" content="#333">
+	<meta name=description content="Lámpaszámlálós applet a Magyar Kerékpárosklub felméréséhez" />
+	<link rel=icon href=/bike.svg />
+	<meta name=theme-color content=#333>
 </svelte:head>
 
 <slot />
@@ -55,7 +56,7 @@
 
 	<Form {meta} />
 
-	<a href="/send" class=button role=button data-sveltekit-noscroll on:click={e =>
+	<a href=/send class=button role=button data-sveltekit-noscroll on:click={e =>
 		$clipboard = [meta, total, rows].flat().map(d => `${d.name}: ${d.value}`).join('\n')
 	}>
 	 	Küldöm (vágólapra)
