@@ -6,13 +6,13 @@
 	export let title = '';
 
 	const
-		nums = [
-			{cls:'both',  name:'Első+hátsó'},
-			{cls:'front', name:'Csak első '},
-			{cls:'back',  name:'Csak hátsó'},
-			{cls:'none',  name:'Egyik sem '},
+		rows = [
+			{name:'Első+hátsó' },
+			{name:'Csak első ', cls:'front'},
+			{name:'Csak hátsó', cls:'back' },
+			{name:'Egyik sem ', cls:'none' },
 		],
-		all = {name: 'Kerékpárosok száma', value: 0},
+		total = {name: 'Kerékpárosok száma', value: 0},
 		meta = [
 			{value:'', name: 'Neved/Nicked',	icon:'user-circle'},
 			{value:'', name: 'Város',					icon:'city'},
@@ -21,7 +21,7 @@
 			{value:'', name: 'GPS',						icon:'map-marker-alt'},
 		];
 
-	nums.forEach(obj => Object.defineProperties(obj, {
+	rows.forEach(obj => Object.defineProperties(obj, {
 		value: {value: 0, writable: true},
 		inc: {
 			set(v) {
@@ -30,7 +30,7 @@
 				} else if (obj.value) {
 					obj.value--;
 				}
-				all.value = nums.reduce((s,n) => s+n.value, 0);
+				total.value = rows.reduce((s,n) => s+n.value, 0);
 			}
 		}
 	}));
@@ -40,12 +40,12 @@
 	<h1>{title}</h1>
 	<h2>Számolj&hellip;</h2>
 
-	<Counter {nums} {all} />
+	<Counter {rows} {total} />
 
 	<h2>&hellip;és add meg a további adatokat!</h2>
 	<Form {meta} />
 	<a href="/send" class=button role=button data-sveltekit-noscroll on:click={e => {
-		const text = [meta, all, nums].flat().map(d => `${d.name}: ${d.value}`).join('\n');
+		const text = [meta, total, rows].flat().map(d => `${d.name}: ${d.value}`).join('\n');
 		copy(text);
 		$popuptext = text;
 	}}>

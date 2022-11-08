@@ -114,8 +114,3 @@ button .iconify, a .iconify {
 time {
 	font-weight: 600;
 }
-
-/* svg bike icon styles */
-.front .back, .back .front, .none .bike {
-	--stroke: var(--off);
-}
