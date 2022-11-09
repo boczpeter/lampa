@@ -12,42 +12,49 @@
 </script>
 <svelte:window on:keydown={keydown}/>
 
-<aside class={type} role=dialog aria-modal=true transition:fly={{y:500,duration:300}}>
-	<output bind:this={out}>
-		<slot>&larr; popup text &rarr;</slot>
-	</output>
-	<input type=submit value="Bezárom" on:click|preventDefault={close}>
-</aside>
+<section transition:fly={{y:500,duration:300}}>
+	<aside class={type} role=dialog aria-modal=true>
+		<output bind:this={out}>
+			<slot>&larr; popup text &rarr;</slot>
+		</output>
+		<input type=submit value="Bezárom" on:click|preventDefault={close}>
+	</aside>
+</section>
 
 <style>
+	section {
+		position: fixed;
+		overflow: hidden;
+		height: 100vh;
+		display: flex;
+		flex-direction: column-reverse;
+	}
 	aside {
-		display: grid;
+		display: flex;
+		flex-direction: column;
 		grid-template-columns: auto;
 		grid-template-rows: 1fr min-content;
 		grid-template-areas: "popup-content" "button";
-		position: fixed;
-		z-index: 10;
 		gap: 						var(--gap);
 		padding:				var(--gap);
 		margin:					var(--gap);
 		border-radius:	var(--gap);
-		bottom:	0;
-		left: 0;
-		right: 0;
 		max-height: calc(100vh - 2 * var(--gap));
 		background-color: #fff;
 		box-shadow: 0 0 1rem #000;
-    overscroll-behavior: none;
+    overscroll-behavior: contain;
 	}
 	output {
 		color: #000;
 		font-size: var(--font);
 	}
 	aside.map {
-		height: 100vh;
+		flex-grow: 1;
 	}
 	aside.map > output {
-		display: contents;
+		display: grid;
+		grid-template-areas: "map";
+		flex-grow: 1;
 	}
 	aside.plain > output {
 		font-family: monospace;

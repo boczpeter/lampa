@@ -22,7 +22,7 @@
 </script>
 
 <Popup type=map>
-  <Map {ready} locate={true} --grid-area="popup-content"/>
+  <Map {ready} locate={true}/>
   {#if popup}
     <header transition:fly="{{ y: -500, duration: 500, delay: 1000 }}">
       <b>Tipp</b>: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
@@ -34,7 +34,7 @@
 <style>
   header, mark {
     /* force them on top of map */
-    grid-area: popup-content;
+    grid-area: map;
     z-index: 1000;
   }
   header {

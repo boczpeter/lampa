@@ -69,16 +69,9 @@
 	</a>
 </form>
 
-{#if popup}
-	<section><slot /></section>
-{/if}
+<slot />
 
 <style>
-	section {
-		position: fixed;
-		overflow: hidden;
-		height: 100vh;
-	}
 	form {
 		display: flex;
 		flex-direction: column;
