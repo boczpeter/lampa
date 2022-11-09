@@ -37,7 +37,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-a[rel="external"]::after {	/* thin non-break space included in content */
+a[rel^="external"]::after, a[target="_blank"] {	/* thin non-break space included in content */
 	content: " ↗";
 }
 

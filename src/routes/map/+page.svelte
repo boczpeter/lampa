@@ -21,7 +21,7 @@
   }
 </script>
 
-<Popup>
+<Popup type=map>
   <Map {ready} locate={true} --grid-area="popup-content"/>
   {#if popup}
     <header transition:fly="{{ y: -500, duration: 500, delay: 1000 }}">
