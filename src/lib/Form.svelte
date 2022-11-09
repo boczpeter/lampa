@@ -1,19 +1,25 @@
 <script>
-	import { latlng } from '$lib/stores.js';
+	import { latlng, save } from '$lib/stores.js';
 	import Icon from '$lib/Icon.svelte';
   export let meta;
 
-	$: meta[4].value = $latlng
+	latlng.subscribe(pos => {
+		if (!pos) return;
+		meta[4].value = pos
+		save(meta[4])
+	})
 </script>
 
 <section>
-  {#each meta as {name, value, icon}, id}
-    <label class=icon id="l{id}">
-      <Icon {icon}/>
-      <input type=text bind:value placeholder={name}>
+  {#each meta as m}
+    <label class=icon>
+      <Icon icon={m.icon}/>
+      <input type=text bind:value={m.value} placeholder={m.name} on:change={e=>save(m)}>
     </label>
 	{/each}
-	<a href="/map" title="Pozíció lekérése" role=button data-sveltekit-noscroll><Icon icon=crosshairs/></a>
+	<a href="/map" title="Pozíció lekérése" role=button data-sveltekit-noscroll>
+		<Icon icon=crosshairs/>
+	</a>
 </section>
 
 <style>
@@ -24,10 +30,7 @@
     align-items: center;
 	}
 	input {
-    width: 100%;
-	}
-	#l4 {
-		grid-column-end: span 1;
+    flex-grow: 1;
 	}
 	label {
 		display: flex;
@@ -37,6 +40,9 @@
 		grid-column-end: span 2;
 		font-size: var(--fontdyn);
     gap: var(--gap);
+	}
+	label:last-of-type {
+		grid-column-end: span 1;
 	}
 	a {
     display: flex;

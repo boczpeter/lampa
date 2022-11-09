@@ -1,40 +1,10 @@
 <script>
 	import '../app.css';
-	import { clipboard } from '$lib/stores.js';
+	import { clipboard, rows, total, meta, fields } from '$lib/stores.js';
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
-	const
-		title = 'Lámpaszámlálás',
-		rows = [
-			{name:'Első+hátsó' },
-			{name:'Csak első ', cls:'front'},
-			{name:'Csak hátsó', cls:'back' },
-			{name:'Egyik sem ', cls:'none' },
-		],
-		total = {name: 'Kerékpárosok száma', value: 0},
-		meta = [
-			{value:'', name: 'Neved/Nicked',	icon:'user-circle'},
-			{value:'', name: 'Város',					icon:'city'},
-			{value:'', name: 'Lakosságszám',	icon:'users'},
-			{value:'', name: 'Helyszín',			icon:'map'},
-			{value:'', name: 'GPS',						icon:'map-marker-alt'},
-		];
-
-	rows.forEach(row => Object.defineProperties(row, {
-		data: {value: 0, writable: true},
-		value: {
-			get: () => row.data,
-			set: v => {
-				if (0 <= row.data) {
-					total.value += v - row.data
-					row.data = v
-				} else {	// catch for errors
-					row.data = 0
-				}
-			}
-		}
-	}));
+	const title = 'Lámpaszámlálás'
 </script>
 
 <svelte:head>
@@ -56,7 +26,7 @@
 	<Form {meta} />
 
 	<a href=/send class=button role=button data-sveltekit-noscroll on:click={e =>
-		$clipboard = [meta, total, rows].flat().map(d => `${d.name}: ${d.value}`).join('\n')
+		$clipboard = fields.map(f => `${f.name}: ${f.value}`).join('\n')
 	}>
 	 	Küldöm (vágólapra)
 	</a>
