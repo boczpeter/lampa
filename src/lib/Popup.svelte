@@ -25,7 +25,7 @@
 	section {
 		position: fixed;
 		overflow: hidden;
-		height: 100vh;
+		height: 100%;
 		display: flex;
 		flex-direction: column-reverse;
 	}
@@ -39,7 +39,7 @@
 		padding:				var(--gap);
 		margin:					var(--gap);
 		border-radius:	var(--gap);
-		max-height: calc(100vh - 2 * var(--gap));
+		max-height: calc(100% - 2 * var(--gap));
 		background-color: #fff;
 		box-shadow: 0 0 1rem #000;
     overscroll-behavior: contain;
@@ -59,6 +59,7 @@
 	aside.plain > output {
 		font-family: monospace;
 		white-space: pre-line;
+		font-size: 1rem;
 	}
 	aside.help > output {
 		overflow-y: auto;

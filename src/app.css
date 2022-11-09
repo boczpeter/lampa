@@ -17,7 +17,6 @@
 	--green   : #5a5;
 	--red     : #a55;
 	--off     : #555;
-	--height  : calc(100vh - 2 * var(--gap));
 }
 body {
 	color: #eee;
