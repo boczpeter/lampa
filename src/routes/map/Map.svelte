@@ -3,8 +3,7 @@
   import 'leaflet/dist/leaflet.css';
 
   export let
-    lat = 47.25,
-    lng = 19.5,
+    center = { lat: 47.25, lng: 19.5 },
     zoom = 8,
     minZoom = 7,
     maxZoom = 18,
@@ -22,10 +21,11 @@
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
     ready(map, L, node);
     if (locate) {
-      map.on('locationerror', e => map.setView([lat, lng], zoom));  // set to default view
-      map.locate({setView:true, maxZoom:maxZoom, maximumAge:maximumAge});
+      map.on('locationerror', e => map.setView(center, zoom));  // set to default view
+      map.locate({setView:true, maximumAge:maximumAge});
+      map.setZoom(zoom);
     } else {
-      map.setView([lat, lng], zoom);
+      map.setView(center, zoom);
     }
     return e => map.remove();
   });
