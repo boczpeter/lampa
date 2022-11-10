@@ -8,6 +8,7 @@
 
 	latlng.subscribe(pos => {
 		if (!pos) return;
+		// console.log(pos)
 		meta[4].value = `[${ round(pos.lat) }, ${ round(pos.lng) }]`
 		save(meta[4])
 	})

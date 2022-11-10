@@ -16,7 +16,7 @@
     map.on('moveend', e => $latlng = map.getCenter())  // update position back to main data
     map.on('zoomend', e => $zoom   = map.getZoom())
     map.setZoom($zoom);
-    map.setMaxBounds([[49, 16], [45.5, 23.5]]);
+    map.setMaxBounds([[40, 5], [55, 35]]);
   }
 </script>
 
