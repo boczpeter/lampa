@@ -23,7 +23,6 @@
     if (locate) {
       map.on('locationerror', e => map.setView(center, zoom));  // set to default view
       map.locate({setView:true, maximumAge:maximumAge});
-      map.setZoom(zoom);
     } else {
       map.setView(center, zoom);
     }
