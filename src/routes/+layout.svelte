@@ -49,6 +49,7 @@
 	<title>{title}</title>
 	<meta name=description content="Lámpaszámlálós applet a Magyar Kerékpárosklub felméréséhez" />
 	<link rel=icon href=/bike.svg />
+	<link rel="apple-touch-icon" sizes="300x300" href=/bike.svg>
 	<meta name=theme-color content=#333>
 </svelte:head>
 
