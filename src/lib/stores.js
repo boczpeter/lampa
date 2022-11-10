@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-const session = browser && sessionStorage;
+const session = browser && localStorage;
 export const
   latlng    = writable(''),
   clipboard = writable(''),
