@@ -8,8 +8,9 @@ export const
   zoom      = writable(0),
 
   // Make node's selected links external to prevent Router from handling them
-  externalLink = (node, sel) => node?.querySelectorAll(sel).forEach(
+  externalLink = (node, sel) => node.querySelectorAll(sel).forEach(
     a => Object.assign(a, {rel:'external noopener', target:'_blank'})),
+
   round = n => Number(n).toFixed(5),
 
   save = obj => session && session.setItem(obj.id, obj.value),

@@ -4,9 +4,6 @@
 
 	export let type
 
-	let out
-  $: externalLink(out, 'a')  // postprocess all links in markdown
-
   const	close = () => history.back(),
 			keydown = e => e.key == 'Escape' && close()
 </script>
@@ -14,7 +11,7 @@
 
 <section transition:fly={{y:500,duration:300}}>
 	<aside class={type} role=dialog aria-modal=true>
-		<output bind:this={out}>
+		<output use:externalLink={'a'}>
 			<slot>&larr; popup text &rarr;</slot>
 		</output>
 		<input type=submit value="Bezárom" on:click|preventDefault={close}>
