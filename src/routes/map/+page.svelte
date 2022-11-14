@@ -21,7 +21,7 @@
 </script>
 
 <Popup type=map>
-  <Map {ready} locate center={$latlng} />
+  <Map {ready} locate />
   {#if popup}
     <header transition:fly="{{ y: -500, duration: 500, delay: 1000 }}">
       <b>Tipp</b>: a térkép csúsztatásával pontosíthatod a helyszín pozícióját.
