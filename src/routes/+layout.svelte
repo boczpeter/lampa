@@ -42,7 +42,7 @@
 
 	let popup
 
-	afterNavigate(e => popup = e?.to?.routeId)
+	afterNavigate(nav => popup = 1 < nav?.to?.route?.id?.length)
 </script>
 
 <svelte:head>
