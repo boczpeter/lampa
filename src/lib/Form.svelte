@@ -1,10 +1,8 @@
 <script>
-	import { latlng, save } from '$lib/stores.js';
+	import { latlng, save, round } from '$lib/stores.js';
 	import Icon from '$lib/Icon.svelte';
 
 	export let meta;
-
-	const round = n => Number(n).toFixed(5);
 
 	latlng.subscribe(pos => {
 		if (!pos) return;
