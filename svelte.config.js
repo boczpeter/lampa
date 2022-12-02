@@ -8,7 +8,6 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
-    trailingSlash: 'never',
 	},
 
   preprocess: [mdsvex(mdsvexConfig)],
