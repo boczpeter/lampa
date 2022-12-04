@@ -5,7 +5,7 @@
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
-	const title = 'Lámpaszámlálás - Magyar Kerékpárosklub',
+	const
 		rows = [
 			{name:'Első+hátsó' },
 			{name:'Csak első ', cls:'front'},
@@ -46,7 +46,7 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>Lámpaszámlálás - Magyar Kerékpárosklub</title>
 	<meta name=description content="Lámpaszámlálós applet a Magyar Kerékpárosklub felméréséhez" />
 	<link rel=icon href=/bike.svg />
 	<link rel="apple-touch-icon" sizes="300x300" href=/bike.svg>
@@ -54,7 +54,7 @@
 </svelte:head>
 
 <form class:popup data-sveltekit-prefetch>
-	<h1>{title}</h1>
+	<h1>Lámpaszámlálás</h1>
 	<h2>Számolj&hellip;</h2>
 
 	<Counter {rows} {total} />
