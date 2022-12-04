@@ -5,7 +5,7 @@
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
-	const title = 'Lámpaszámlálás',
+	const title = 'Lámpaszámlálás - Magyar Kerékpárosklub',
 		rows = [
 			{name:'Első+hátsó' },
 			{name:'Csak első ', cls:'front'},
