@@ -4,7 +4,7 @@
 
   export let
     center = { lat: 47.25, lng: 19.5 },
-    zoom = 8,
+    zoom = 14,
     minZoom = 7,
     maxZoom = 18,
     maxNativeZoom = 19,
@@ -17,7 +17,7 @@
   onMount(async () => {
     const L = await import('leaflet');
     const map = L.map(node);
-    L.tileLayer('https://mapserver.mapy.cz/turist-m/{z}-{x}-{y}', { minZoom:minZoom, maxZoom:maxZoom, maxNativeZoom:maxNativeZoom,
+    L.tileLayer('https://b.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', { minZoom:minZoom, maxZoom:maxZoom, maxNativeZoom:maxNativeZoom,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
     ready(map, L, node);
     if (locate) {
