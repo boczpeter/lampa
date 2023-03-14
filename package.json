@@ -9,16 +9,17 @@
     "reload": "cp -v apache/lampa.conf /etc/apache2/sites-available/ && sudo service apache2 reload",
     "live": "rsync -avi --no-times --checksum build/ bp:/var/www/lampa/",
     "clean": "rsync -avi --no-times --checksum --delete build/ bp:/var/www/lampa/",
-    "compare": "rsync -navi --no-times --checksum build/ bp:/var/www/lampa/"
+    "compare": "rsync -navi --no-times --checksum build/ bp:/var/www/lampa/",
+    "reset": "rm -rf build/ node_modules/ .svelte-kit/ package-lock.json && echo Run \\'npn install\\'!"
   },
   "devDependencies": {
-    "@sveltejs/kit": "^1.0.0",
-    "@sveltejs/adapter-static": "^1.0.0",
+    "@sveltejs/kit": "1.7.2",
+    "@sveltejs/adapter-static": "^2.0.0",
     "svelte": "^3.55.0",
     "@iconify/svelte": "^3.0.0",
     "mdsvex": "^0.10.6",
     "svelte-inline-svg": "^1.2.0",
-    "vite": "^4.0.0"
+    "vite": "^4.1.0"
   },
   "type": "module",
   "dependencies": {
