@@ -46,10 +46,10 @@
 </script>
 
 <svelte:head>
-	<title>Lámpaszámlálás - Magyar Kerékpárosklub</title>
+	<title>Lámpaszámlálás &mdash; Magyar Kerékpárosklub</title>
 	<meta name=description content="Lámpaszámlálós applet a Magyar Kerékpárosklub felméréséhez" />
 	<link rel=icon href=/bike.svg />
-	<link rel="apple-touch-icon" sizes="300x300" href=/bike.svg>
+	<link rel="apple-touch-icon" sizes="200x200" href=/bike.png>
 	<meta name=theme-color content=#333>
 </svelte:head>
 

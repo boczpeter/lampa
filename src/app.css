@@ -5,6 +5,7 @@
 	--hl			: #c86e00;
 	--gap			: 3vw;
 	--gap-1		: -3vw;
+	--gap2x		: 6vw;
 	--font    : clamp(2vw, 1em, 4vw);
 	--bigfont : min( 8vw, 4rem, 10vh);
 	--hugefont: min(12vw, 6rem, 15vh);

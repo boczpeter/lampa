@@ -31,15 +31,16 @@
 	section {
 		display: grid;
 		place-items: center;
-		max-width: 50rem;
+    width: fit-content;
+		max-width: 100%;
 		grid-template-columns: 1fr auto auto auto;
 		gap: var(--gap);
 	}
   output {
     font-size: var(--hugefont);
     text-shadow: 0 0 var(--contour) #000;
-    line-height: var(--hugefont);
 		user-select: none;
+		padding-right:var(--gap2x);
   }
   output:last-of-type {
 		font-weight: bold;
@@ -49,7 +50,7 @@
     height: var(--hugefont);
   }
   div.front :global(.back), div.back :global(.front), div.none :global(g){
-    --stroke: var(--off);
+    stroke: var(--off);
   }
 	button {
 		display: flex;
