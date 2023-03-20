@@ -2,7 +2,7 @@
 	import Icon from '$lib/Icon.svelte'
   import InlineSVG from 'svelte-inline-svg'
 
-  export let rows, total
+  export let rows = [], total = {}
 </script>
 
 <section>

@@ -2,7 +2,7 @@
 	import { latlng, save, round } from '$lib/stores.js';
 	import Icon from '$lib/Icon.svelte';
 
-	export let meta;
+	export let meta = [];
 
 	latlng.subscribe(pos => {
 		if (!pos) return;

@@ -2,7 +2,7 @@
 	import { externalLink } from '$lib/stores.js';
 	import { fly } from 'svelte/transition';
 
-	export let type
+	export let type = '' // popup class type
 
   const	close = () => history.back(),
 			keydown = e => e.key == 'Escape' && close()

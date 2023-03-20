@@ -40,7 +40,7 @@
 
 	fields.forEach((f, i) => load(Object.assign(f, {id: i})));	// add ID and load saved data
 
-	let popup
+	let popup = false // popup is shown above page
 
 	afterNavigate(nav => popup = 1 < nav?.to?.route?.id?.length)
 </script>
