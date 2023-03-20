@@ -1,7 +1,11 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
-const session = browser && localStorage;
+const
+  version = 202302,
+  session = browser ? localStorage : null,
+  stored = session?.getItem('version')
+
 export const
   latlng    = writable(''),
   clipboard = writable(''),
@@ -13,8 +17,14 @@ export const
 
   round = n => Number(n).toFixed(5),
 
-  save = obj => session && session.setItem(obj.id, obj.value),
-  load = obj => obj.value = session && session.getItem(obj.id) || obj.value
+  save = obj => session?.setItem(obj.id, obj.value),
+  load = obj => obj.value = session?.getItem(obj.id) || obj.value
 ;
+
+if (version != stored) { // storage should be reset + store new version id
+  console.log(stored, version)
+  session?.clear()
+  session?.setItem('version', version)
+}
 
 clipboard.subscribe(value => browser && value && navigator.clipboard?.writeText(value));
