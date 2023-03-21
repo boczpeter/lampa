@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
+import PocketBase from 'pocketbase';
 
 const
   version = 202302,
@@ -7,9 +8,10 @@ const
   stored = session?.getItem('version')
 
 export const
-  latlng    = writable(''),
-  clipboard = writable(''),
-  zoom      = writable(0),
+  latlng  = writable(''),
+  payload = writable(''),
+  zoom    = writable(0),
+  pb      = new PocketBase('http://127.0.0.1:8090'),
 
   // Make node's selected links external to prevent Router from handling them
   externalLink = (node, sel) => node.querySelectorAll(sel).forEach(
@@ -18,13 +20,13 @@ export const
   round = n => Number(n).toFixed(5),
 
   save = obj => session?.setItem(obj.id, obj.value),
-  load = obj => obj.value = session?.getItem(obj.id) || obj.value
-;
+  load = obj => obj.value = session?.getItem(obj.id) || obj.value;
 
+// console.debug(pb)
 if (version != stored) { // storage should be reset + store new version id
   console.log(stored, version)
   session?.clear()
   session?.setItem('version', version)
 }
 
-clipboard.subscribe(value => browser && value && navigator.clipboard?.writeText(value));
+// payload.subscribe(value => browser && value && navigator.clipboard?.writeText(value)) // also copy to clipboard

@@ -1,11 +1,14 @@
 <script>
 	import '../app.css';
 	import { afterNavigate } from '$app/navigation';
-	import { clipboard, load, save } from '$lib/stores.js';
+	import { payload, load, save, pb } from '$lib/stores.js';
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
 
-	const
+	const onsend = e => payload.set(Object.fromEntries(fields.map(f => [f.name, ''+f.value]))),
+		login = el => pb.collection('users').authWithPassword('lampa', 'lampaszamlalas')
+			.catch(err => error = err?.response?.message),
+
 		rows = [
 			{label:'Első+hátsó', name:'both' },
 			{label:'Csak első ', name:'front'},
@@ -40,7 +43,7 @@
 	}));
 	fields.forEach((f, i) => load(Object.assign(f, {id: i})));	// add ID and load saved data
 
-	let popup = false // popup is shown above page
+	let error, popup = false // popup is shown above page
 
 	afterNavigate(nav => popup = 1 < nav?.to?.route?.id?.length)
 </script>
@@ -55,11 +58,11 @@
 
 	<Form {meta} />
 
-	<a href=/send class=button role=button data-sveltekit-noscroll on:click={e =>
-		$clipboard = fields.map(f => `${f.name}: ${f.value}`).join('\n')
-	}>
-	 	Küldöm (vágólapra)
-	</a>
+	{#if error}
+		<h3 class=error>Jelenleg nem tudsz adatokat beküldeni.</h3>
+	{:else}
+		<a href=/send class=button role=button data-sveltekit-noscroll use:login on:click={onsend}>Küldöm</a>
+	{/if}
 </form>
 
 <slot />
