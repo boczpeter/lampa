@@ -6,12 +6,12 @@
 </script>
 
 <section>
-  {#each rows as {name, value, cls}}
+  {#each rows as {name, label, value}}
     <output>{value}</output>
     <button type=button on:click={e => value--} disabled={value < 1}>
       <Icon icon=minus/>
     </button>
-    <div class={cls} title={name} role=img>
+    <div class={name} title={label} role=img>
       <InlineSVG src=/bike.svg />
     </div>
     <button type=button on:click={e => value++}>
@@ -20,7 +20,7 @@
   {/each}
   <hr class=full>
 
-  <output title={total.name}>{total.value}</output>
+  <output title={total.label}>{total.value}</output>
 
   <a href=/help title=Help role=button data-sveltekit-noscroll>
     <Icon icon=question-circle/>
@@ -41,6 +41,8 @@
     text-shadow: 0 0 var(--contour) #000;
 		user-select: none;
 		padding-right:var(--gap2x);
+    min-width: 2em;
+    text-align: right;
   }
   output:last-of-type {
 		font-weight: bold;
