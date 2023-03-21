@@ -118,3 +118,6 @@ button .iconify, a .iconify {
 time {
 	font-weight: 600;
 }
+.error {
+	color: var(--red);
+}
