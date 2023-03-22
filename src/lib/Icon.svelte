@@ -1,13 +1,12 @@
 <script>
 	import Icon  from '@iconify/svelte';
-  export let icon, cat = 'fa-solid', wrap = $$slots.default, size = '1em', cls = '';
+  export let icon, cat = 'fa-solid', wrap = $$slots.default, size = '1em', cls = '', style = `width:${size};height:${size}`;
 
   const full = icon?.split(':');
   if (full?.[1]) {
     cat  = full[0];
     icon = full[1];
   }
-  let style = `width:${size};height:${size};`;
 </script>
 
 {#if cat && icon}

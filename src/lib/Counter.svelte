@@ -20,7 +20,7 @@
   {/each}
   <hr class=full>
 
-  <output title={total.label}>{total.value}</output>
+  <output class={total.name} title={total.label}>{total.value}</output>
 
   <a href=/help title=Help role=button data-sveltekit-noscroll>
     <Icon icon=question-circle/>
@@ -44,7 +44,7 @@
     min-width: 2em;
     text-align: right;
   }
-  output:last-of-type {
+  output.total {
 		font-weight: bold;
   }
   div {
@@ -60,6 +60,8 @@
     font-size: var(--bigfont);
 		background-color: var(--green);
 		user-select: none;
+    min-width:  calc(2em + 2 * var(--contour));
+    min-height: calc(2em + 2 * var(--contour));
   }
   button:nth-of-type(odd) {
 		background-color: var(--red);
