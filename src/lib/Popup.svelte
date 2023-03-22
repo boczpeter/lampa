@@ -62,6 +62,9 @@
 		overflow-y: auto;
 		overscroll-behavior: none;
 	}
+	aside.send > output {
+		position: relative;
+	}
 	input {
 		grid-area: button;
 	}

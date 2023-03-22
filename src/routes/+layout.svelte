@@ -4,10 +4,11 @@
 	import { payload, load, save, pb } from '$lib/stores.js';
 	import Counter	from '$lib/Counter.svelte';
 	import Form		  from '$lib/Form.svelte';
+	import Icon			from '$lib/Icon.svelte';
 
 	const onsend = e => payload.set(Object.fromEntries(fields.map(f => [f.name, ''+f.value]))),
 		login = el => pb.collection('users').authWithPassword('lampa', 'lampaszamlalas')
-			.catch(err => error = err?.response?.message),
+			.catch(err => error = true),
 
 		rows = [
 			{label:'Első+hátsó', name:'both' },
@@ -59,7 +60,7 @@
 	<Form {meta} />
 
 	{#if error}
-		<h3 class=error>Jelenleg nem tudsz adatokat beküldeni.</h3>
+		<h3 class=error><Icon icon="bx:error-alt"/>Jelenleg nem tudsz adatokat beküldeni.</h3>
 	{:else}
 		<a href=/send class=button role=button data-sveltekit-noscroll use:login on:click={onsend}>Küldöm</a>
 	{/if}
@@ -79,5 +80,11 @@
 		pointer-events: none;
 		opacity: 0.3;
 		overflow: hidden;
+	}
+	h3 {
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+		font-size: var(--fonterr);
 	}
 </style>
