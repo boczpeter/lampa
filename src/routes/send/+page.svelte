@@ -6,7 +6,7 @@
 
 	const size = 'var(--midfont)', style = `position:absolute;top:0;left:0;width:${size};height:${size}`,
 		title = {
-			pending		: 'Küldés&hellip;',
+			pending		: 'Küldés...',
 			fulfilled	: 'Sikeres beküldés!',
 			rejected	: 'Kapcsolódási hiba!',
 		}
@@ -15,10 +15,9 @@
 
 	function submit() {
 		if (!$payload)	return;	// fixme goto main page
-		// console.log($payload, $pid)
 		const coll = pb.collection('posts'),
-			rec = {json:$payload},
-			promise = $pid ? coll.update($pid, rec) : coll.create(rec)
+			promise = $pid ? coll.update($pid, $payload) : coll.create($payload)
+		console.log($pid, $payload)
 
 		promise.then(record => {
 			state = 'fulfilled'
@@ -36,7 +35,7 @@
 	<h3 use:submit class={state}>{title[state]}</h3>
 
 	{#if state == 'pending'}
-		<Icon icon="eos-icons:loading" size=12em/>
+		<Icon icon="eos-icons:loading" size=12em cls=center/>
 
 	{:else if state == 'fulfilled'}
 		<Icon icon="fa6-regular:thumbs-up" {style}/>
@@ -48,7 +47,7 @@
 			Köszönjük a részvételedet!</p>
 
 	{:else if state == 'rejected'}
-		<Icon icon="bx:error-alt" {style}/>
+		<Icon icon="bx:error-alt" {style} cls=rejected/>
 		{#if msg}
 			<p class=rejected><i>{msg}</i></p>
 		{/if}
@@ -69,11 +68,5 @@
 	p {
 		white-space: pre-line;
 		line-height: 1.5;
-	}
-	.pending {
-		color: var(--off);
-	}
-	.rejected {
-		color: #f55;
 	}
 </style>

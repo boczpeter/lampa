@@ -124,3 +124,14 @@ time {
 .error {
 	color: var(--red);
 }
+.pending {
+	color: var(--off);
+}
+.rejected {
+	color: #f55;
+}
+.center {
+	text-align: center;
+	margin: auto;
+	place-self: center;
+}
