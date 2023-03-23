@@ -6,7 +6,7 @@ const
   version = 202302,
   noop    = () => console.error('No Storage!'),
   session = browser ? localStorage : { getItem:noop, setItem:noop, clear:noop }, // mock storage on server
-  apiURL  = browser && !dev ? location.origin+'/api' : 'http://localhost:8090',
+  apiURL  = browser && !dev ? location.origin : 'http://localhost:8090',
   stored  = session.getItem('version')
 
 export const
