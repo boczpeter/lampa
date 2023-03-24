@@ -1,6 +1,6 @@
 <script>
 	import Icon from '$lib/Icon.svelte'
-  import InlineSVG from 'svelte-inline-svg'
+  import icon_svg from '/static/bike.svg?src'
 
   export let rows = [], total = {}
 </script>
@@ -12,7 +12,7 @@
       <Icon icon=minus/>
     </button>
     <div class={name} title={label} role=img>
-      <InlineSVG src=/bike.svg />
+      {@html icon_svg}
     </div>
     <button type=button on:click={e => value++}>
       <Icon icon=plus/>
@@ -51,7 +51,7 @@
     width : var(--hugefont);
     height: var(--hugefont);
   }
-  div.front :global(.back), div.back :global(.front), div.none :global(g){
+  div.front :global(.b), div.back :global(.f), div.none :global(g){
     stroke: var(--off);
   }
 	button {

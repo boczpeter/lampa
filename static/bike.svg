@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <style>
-    g.back {stroke:#f22}
-    g.front{stroke:#fff}
-    path.r {stroke-linecap:round}
+    .b{stroke:#f22}
+    .f{stroke:#fff}
+    .r{stroke-linecap:round}
   </style>
   <g style="fill:none;stroke:#555;stroke-width:8;stroke-linejoin:round">
-    <g class="back">
+    <g class="b">
       <circle cx="158" cy="117" r="31"/>
       <path d="m140 53 -32 64 -8-8"/>
       <path d="m108 117 50 0 -25-50h-33"/>
       <path d="m148 53h-26" class="r"/>
     </g>
-    <g class="front">
+    <g class="f">
       <circle cx="44" cy="117" r="31"/>
       <path d="m100 67h-31"/>
       <path d="m100 109 -34.5-34.5"/>
