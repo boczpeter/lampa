@@ -4,7 +4,8 @@ import PocketBase from 'pocketbase';
 
 const
   version = 202302,
-  noop    = e => e,
+  prefix  = 'lampa',
+  noop    = e => null,
   session = browser ? localStorage : { getItem:noop, setItem:noop, clear:noop }, // mock storage on server
   apiURL  = browser && !dev ? location.origin : 'http://localhost:8090',
   stored  = session.getItem('version')
@@ -22,11 +23,11 @@ export const
 
   round = n => Number(n).toFixed(5),
 
-  save = obj => session.setItem(obj.id, obj.value),
-  load = obj => obj.value = session.getItem(obj.id) || obj.value;
+  save = obj => session.setItem(prefix+obj.id, obj.value),
+  load = obj => obj.value = session.getItem(prefix+obj.id) || obj.value;
 
 pb || console.error(pb)
-pid.subscribe(value => {session.setItem('pid', value || '')})  // store record id; strings only!
+pid.subscribe(value => session.setItem('pid', value || ''))  // store record id; strings only!
 
 if (browser && version != stored) { // storage should be reset + store new version id
   session.clear()
