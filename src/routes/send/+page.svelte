@@ -6,7 +6,7 @@
 
 	const size = 'var(--midfont)', style = `position:absolute;top:0;left:0;width:${size};height:${size}`,
 		title = {
-			pending		: 'Küldés...',
+			pending		: 'Küldés…',
 			fulfilled	: 'Sikeres beküldés!',
 			rejected	: 'Kapcsolódási hiba!',
 		}

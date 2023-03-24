@@ -4,7 +4,7 @@ import PocketBase from 'pocketbase';
 
 const
   version = 202302,
-  noop    = () => console.error('No Storage!'),
+  noop    = e => e,
   session = browser ? localStorage : { getItem:noop, setItem:noop, clear:noop }, // mock storage on server
   apiURL  = browser && !dev ? location.origin : 'http://localhost:8090',
   stored  = session.getItem('version')
