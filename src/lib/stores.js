@@ -26,7 +26,7 @@ export const
   save = obj => session.setItem(prefix+obj.id, obj.value),
   load = obj => obj.value = session.getItem(prefix+obj.id) || obj.value;
 
-pb || console.error(pb)
+if (!pb) { console.error(pb) }
 pid.subscribe(value => session.setItem('pid', value || ''))  // store record id; strings only!
 
 if (browser && version != stored) { // storage should be reset + store new version id
