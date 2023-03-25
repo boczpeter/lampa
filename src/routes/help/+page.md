@@ -1,9 +1,16 @@
+<script>
+	import Popup from '$lib/Popup.svelte';
+	import Icon from '$lib/Icon.svelte';
+</script>
+
+<Popup type=help>
+
 ### A feladat nagyon rövid és egyszerű:
 
-1. A saját településed tetszőleges, de viszonylag forgalmas pontján<br>
-<time datetime="2022-11-10T19:00:00">november 10-én csütörtökön, 19:00 és 19:20</time><br>
-között kell megszámolni az elhaladó bringásokat és feljegyezni, hányan kerékpároztak kivilágítva.
-2. 20 perces mérésed eredményét [<Icon icon=fa:facebook-square /> hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/1226007047978999/?active_tab=discussion)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
+1. A saját településed tetszőleges, de viszonylag forgalmas pontján <time datetime="2022-11-10T19:00:00">november 10-én csütörtökön, 19:00 és 19:20</time> között kell megszámolni az elhaladó bringásokat és feljegyezni, hányan kerékpároztak kivilágítva.
+
+2. **20 perces** mérésed eredményét [<Icon icon=fa:facebook-square /> hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/1226007047978999/?active_tab=discussion)!
+Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
 
 #### Tudnivalók:
 
@@ -28,10 +35,17 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 - [Csatlakozz a legközelebbi Kerékpárosklub területi szervezethez](https://kerekparosklub.hu/teruleti-szervezetek)!
 - [Támogasd a munkánkat adód 1%-ával!](https://kerekparosklub.hu/1)
 
-<style>
-  h3 { color: #444; }
-</style>
+<img src="/mklogo.png" alt="MK logo">
 
-<script>
-	import Icon from '$lib/Icon.svelte';
-</script>
+</Popup>
+
+<style>
+  h3 {
+    color: #444;
+  }
+  img { /* MK logo */
+    margin: auto;
+    display: block;
+    min-width: calc(10 * var(--font));
+  }
+</style>

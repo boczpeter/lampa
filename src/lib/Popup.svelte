@@ -62,6 +62,11 @@
 		overflow-y: auto;
 		overscroll-behavior: none;
 	}
+	aside.send > output {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+	}
 	input {
 		grid-area: button;
 	}

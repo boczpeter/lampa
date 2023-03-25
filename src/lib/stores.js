@@ -1,15 +1,21 @@
 import { writable } from 'svelte/store';
-import { browser } from '$app/environment';
+import { browser, dev } from '$app/environment';
+import PocketBase from 'pocketbase';
 
 const
   version = 202302,
-  session = browser ? localStorage : null,
-  stored = session?.getItem('version')
+  prefix  = 'lampa',
+  noop    = e => null,
+  session = browser ? localStorage : { getItem:noop, setItem:noop, clear:noop }, // mock storage on server
+  apiURL  = browser && !dev ? location.origin : 'http://localhost:8090',
+  stored  = session.getItem('version')
 
 export const
-  latlng    = writable(''),
-  clipboard = writable(''),
-  zoom      = writable(0),
+  latlng  = writable(''),
+  payload = writable(null),
+  zoom    = writable(0),
+  pid     = writable(session.getItem('pid') || ''),
+  pb      = new PocketBase(apiURL),
 
   // Make node's selected links external to prevent Router from handling them
   externalLink = (node, sel) => node.querySelectorAll(sel).forEach(
@@ -17,14 +23,15 @@ export const
 
   round = n => Number(n).toFixed(5),
 
-  save = obj => session?.setItem(obj.id, obj.value),
-  load = obj => obj.value = session?.getItem(obj.id) || obj.value
-;
+  save = obj => session.setItem(prefix+obj.id, obj.value),
+  load = obj => obj.value = session.getItem(prefix+obj.id) || obj.value;
 
-if (version != stored) { // storage should be reset + store new version id
-  console.log(stored, version)
-  session?.clear()
-  session?.setItem('version', version)
+if (!pb) { console.error(pb) }
+pid.subscribe(value => session.setItem('pid', value || ''))  // store record id; strings only!
+
+if (browser && version != stored) { // storage should be reset + store new version id
+  session.clear()
+  session.setItem('version', version)
+  console.log('storage cleared', stored, version)
 }
-
-clipboard.subscribe(value => browser && value && navigator.clipboard?.writeText(value));
+// payload.subscribe(value => browser && value && navigator.clipboard?.writeText(value)) // also copy to clipboard

@@ -6,9 +6,12 @@
 	--gap			: 3vw;
 	--gap-1		: -3vw;
 	--gap2x		: 6vw;
-	--font    : clamp(2vw, 1em, 4vw);
+	--font    : clamp(2vw, 1rem, 4vw);
+	--font2x  : clamp(4vw, 2rem, 8vw);
+	--midfont : clamp(3vw, 1.5rem, 6vw);
 	--bigfont : min( 8vw, 4rem, 10vh);
 	--hugefont: min(12vw, 6rem, 15vh);
+	--fonterr : max(1em,4vw);
 	--fontdyn : max(1em,5vw);
 	--font2dyn: max(2em,10vw);
 	--radius	: 0.5em;
@@ -117,4 +120,18 @@ button .iconify, a .iconify {
 }
 time {
 	font-weight: 600;
+}
+.error {
+	color: var(--red);
+}
+.pending {
+	color: var(--off);
+}
+.rejected {
+	color: #f55;
+}
+.center {
+	text-align: center;
+	margin: auto;
+	place-self: center;
 }
