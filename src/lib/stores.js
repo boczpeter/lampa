@@ -7,10 +7,10 @@ const
   prefix  = 'lampa',
   noop    = e => null,
   session = browser ? localStorage : { getItem:noop, setItem:noop, clear:noop }, // mock storage on server
-  apiURL  = browser && !dev ? location.origin : 'http://localhost:8190',
   stored  = session.getItem('version')
 
 export const
+  apiURL  = browser && !dev ? location.origin : 'http://localhost:8190',
   latlng  = writable(''),
   payload = writable(null),
   zoom    = writable(0),
