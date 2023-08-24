@@ -1,10 +1,10 @@
 <script>
-	import '../app.css'
-	import { afterNavigate } from '$app/navigation'
-	import { payload, load, save, pb } from '$lib/stores.js'
+	import { page } from '$app/stores'
+	import { payload, load, save, pb, getVersion } from '$lib/stores.js'
 	import Counter	from '$lib/Counter.svelte'
 	import Form		  from '$lib/Form.svelte'
 	import Icon			from '$lib/Icon.svelte'
+	import '$lib/app.css'
 
 	let popup = false // popup is shown above page
 
@@ -25,7 +25,12 @@
 		],
 		fields = [...meta, total, ...rows],
 
-		onsubmit = e => payload.set(Object.fromEntries(fields.map(f => [f.name, ''+f.value])))
+		onsubmit = e => {
+			const rec = Object.fromEntries(fields.map(f => [f.name, ''+f.value]))
+  		rec.version  = getVersion()
+			payload.set(rec)
+		}
+	// const
 
 	// post-process fields
 	rows.forEach(row => Object.defineProperties(row, {
@@ -45,10 +50,9 @@
 	}));
 	fields.forEach((f, i) => load(Object.assign(f, {id: i})));	// add ID and load saved data
 
-	afterNavigate(nav => popup = 1 < nav?.to?.route?.id?.length)
 </script>
 
-<form class:popup data-sveltekit-prefetch>
+<form class:popup={1 < $page.url.pathname.length} data-sveltekit-prefetch>
 	<h1>Lámpaszámlálás</h1>
 	<h2>Számolj…</h2>
 
