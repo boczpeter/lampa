@@ -2,7 +2,6 @@
 	import Popup from '$lib/Popup.svelte';
 	import Icon from '$lib/Icon.svelte';
 	import { payload, pb, pid } from '$lib/stores';
-	// import { goto } from '$app/navigation';
 
 	const size = 'var(--midfont)', style = `position:absolute;top:0;left:0;width:${size};height:${size}`,
 		title = {
@@ -21,7 +20,7 @@
 
 		promise.then(record => {
 			state = 'fulfilled'
-			console.info(record)
+			// console.info(record)
 			$pid = record.id
 		}).catch(err => {
 			state = 'rejected'
