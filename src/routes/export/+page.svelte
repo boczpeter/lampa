@@ -17,17 +17,25 @@
 			filter: 'version='+getVersion(),
 			sort: '-created',
 		})).then(rows => data = rows)
-		// .then(rows => console.info(cols.join(', ')))
-		// .finally(() => console.info(pb.authStore))
   )
 </script>
 
-<h3>Beküldött adatok</h3>
+<main>
+	<h3>Beküldött adatok</h3>
 
-{#if data}
-	<Grid {data} {columns} />
+	{#if data}
+		<Grid {data} {columns} />
 	{/if}
+</main>
 
-<style global>
+<style>
 	@import "https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css";
+
+	main {
+		padding: 1rem;
+	}
+	h3 {
+		font-size: 150%;
+		text-align: center;
+	}
 </style>
