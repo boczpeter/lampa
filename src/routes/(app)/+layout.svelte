@@ -8,7 +8,11 @@
 
 	let popup = false // popup is shown above page
 
-	const coll = 'users',
+	const onsubmit = e => {
+			const rec = Object.fromEntries(fields.map(f => [f.name, ''+f.value]))
+  		rec.version  = getVersion()
+			payload.set(rec)
+		},
 		rows = [
 			{label:'Első+hátsó', name:'both' },
 			{label:'Csak első ', name:'front'},
@@ -23,13 +27,7 @@
 			{value:'', label: 'Helyszín',			name: 'location',		icon:'map'},
 			{value:'', label: 'GPS',					name: 'gps',				icon:'map-marker-alt'},
 		],
-		fields = [...meta, total, ...rows],
-
-		onsubmit = e => {
-			const rec = Object.fromEntries(fields.map(f => [f.name, ''+f.value]))
-  		rec.version  = getVersion()
-			payload.set(rec)
-		}
+		fields = [...meta, total, ...rows]
 	// const
 
 	// post-process fields
@@ -62,10 +60,10 @@
 
 	<Form {meta} />
 
-	{#await pb.collection(coll).authWithPassword('lampa', 'lampaszamlalas') }
+	{#await pb.collection('users').authWithPassword('lampa', 'lampaszamlalas') }
 		<h3>Kapcsolódás…</h3>
 	{:then resp}
-		{#if resp?.record?.collectionName === coll}
+		{#if resp?.record?.role === 'create'}
 			<a href=/send class=button role=button data-sveltekit-noscroll on:click={onsubmit}>Küldöm</a>
 		{:else}
 			<h3 class=error><Icon icon="bx:error-alt"/>Jelenleg nem tudsz adatokat beküldeni.</h3>
