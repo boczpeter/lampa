@@ -49,6 +49,6 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
     min-width: calc(10 * var(--font));
   }
 a, a:visited {
-	color: rgb(0,100,200);
+	color: var(--link);
 }
 </style>
