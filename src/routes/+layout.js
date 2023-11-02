@@ -1,1 +1,1 @@
-export const prerender = true, trailingSlash = 'never'
+export const prerender = true, trailingSlash = 'always'
