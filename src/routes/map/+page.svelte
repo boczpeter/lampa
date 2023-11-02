@@ -14,7 +14,7 @@
       externalLink(node, '.leaflet-control-attribution a')
     });
     map.on('moveend', e => $latlng = map.getCenter())  // update position back to main data
-    map.on('zoomend', e => $zoom   = map.getZoom())
+    map.on('zoomend', e => zoom.set(map.getZoom()))
     map.setZoom($zoom);
     map.setMaxBounds([[40, 5], [55, 35]]);
   }

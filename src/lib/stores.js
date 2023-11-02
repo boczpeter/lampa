@@ -2,7 +2,8 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
 const
-  version = 202302,
+  version = 202311,
+  prefix  = 'lampa',
   session = browser ? localStorage : null,
   stored = session?.getItem('version')
 
@@ -17,8 +18,8 @@ export const
 
   round = n => Number(n).toFixed(5),
 
-  save = obj => session?.setItem(obj.id, obj.value),
-  load = obj => obj.value = session?.getItem(obj.id) || obj.value
+  save = obj => session?.setItem(prefix+obj.id, obj.value),
+  load = obj => obj.value = session?.getItem(prefix+obj.id) || obj.value
 ;
 
 if (version != stored) { // storage should be reset + store new version id

@@ -47,16 +47,16 @@
 
 <form class:popup data-sveltekit-prefetch>
 	<h1>Lámpaszámlálás</h1>
-	<h2>Számolj&hellip;</h2>
+	<h2>Számolj…</h2>
 
 	<Counter {rows} {total} />
 
-	<h2>&hellip;és add meg a további adatokat!</h2>
+	<h2>…és add meg a további adatokat!</h2>
 
 	<Form {meta} />
 
 	<a href=/send class=button role=button data-sveltekit-noscroll on:click={e =>
-		$clipboard = fields.map(f => `${f.name}: ${f.value}`).join('\n')
+		$clipboard = fields.map(f => `${f.label}: ${f.value}`).join('\n')
 	}>
 	 	Küldöm (vágólapra)
 	</a>
