@@ -16,7 +16,7 @@
   {#each meta as m}
     <label class=icon>
       <Icon icon={m.icon}/>
-      <input type=text bind:value={m.value} placeholder={m.label} on:change={e=>save(m)}>
+      <input type=text bind:value={m.value} placeholder={m.label} on:change={e=>save(m)} readonly={m.readonly}>
     </label>
 	{/each}
 	<a href="/map" title="Pozíció lekérése" role=button data-sveltekit-noscroll>

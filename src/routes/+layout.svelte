@@ -18,7 +18,7 @@
 			{value:'', label: 'Város',				name: 'city',				icon:'city'},
 			{value:'', label: 'Lakosságszám',	name: 'population',	icon:'users'},
 			{value:'', label: 'Helyszín',			name: 'location',		icon:'map'},
-			{value:'', label: 'GPS',					name: 'gps',				icon:'map-marker-alt'},
+			{value:'', label: 'GPS',					name: 'gps',				icon:'map-marker-alt', readonly:true},
 		],
 		fields = [...meta, total, ...rows]
 
