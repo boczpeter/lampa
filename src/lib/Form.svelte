@@ -1,6 +1,7 @@
 <script>
 	import { latlng, save, round } from '$lib/stores.js';
 	import Icon from '$lib/Icon.svelte';
+	import { goto } from '$app/navigation';
 
 	export let meta = [];
 
@@ -16,7 +17,7 @@
   {#each meta as m}
     <label class=icon>
       <Icon icon={m.icon}/>
-      <input type=text bind:value={m.value} placeholder={m.label} on:change={e=>save(m)} readonly={m.readonly}>
+      <input type=text bind:value={m.value} placeholder={m.label} on:change={e=>save(m)} readonly={m.readonly} on:click={e=>m.readonly && goto('/map')}>
     </label>
 	{/each}
 	<a href="/map" title="Pozíció lekérése" role=button data-sveltekit-noscroll>
@@ -33,6 +34,9 @@
 	}
 	input {
     flex-grow: 1;
+	}
+	input:read-only {
+		cursor: pointer;
 	}
 	label {
 		display: flex;

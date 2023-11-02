@@ -46,7 +46,6 @@ a[rel^="external"]::after, a[target="_blank"] {	/* thin non-break space included
 }
 
 input, button, label, a.button {
-	cursor: pointer;
 	color: #fff;
 	outline: none;
 	display: inline-block;
