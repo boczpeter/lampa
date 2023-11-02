@@ -9,6 +9,17 @@
 	if (!$clipboard && browser)	goto(base || '/', { replaceState: true });
 </script>
 
+{#if $clipboard}
 <Popup type='plain'>
+	<b>Az alábbi szöveg vágólapra lett másolva:</b>
 	{$clipboard}
 </Popup>
+{/if}
+
+<style>
+	b {
+		font-family: sans-serif;
+		display: block;
+		margin-bottom: 1rem;
+	}
+</style>
