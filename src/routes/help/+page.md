@@ -7,10 +7,9 @@
 
 ### A feladat nagyon rövid és egyszerű:
 
-1. A saját településed tetszőleges, de viszonylag forgalmas pontján <time datetime="2023-11-15T19:00:00">november 15-én szerdán, 19:00 és 19:20</time> között kell megszámolni az elhaladó bringásokat és feljegyezni, hányan kerékpároztak kivilágítva.
+1. A saját településed tetszőleges, de viszonylag forgalmas pontján<br><time datetime="2024-03-28T19:00:00">március&nbsp;28-án&nbsp;csütörtökön, 19:00 és 19:20 között</time><br>kell megszámolni az elhaladó bringásokat és feljegyezni, hányan kerékpároztak kivilágítva.
 
-2. **20 perces** mérésed eredményét [<Icon icon=fa:facebook-square /> hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/1727578621077591/?active_tab=discussion)!
-Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
+2. **20 perces** mérésed eredményét [<Icon icon=fa:facebook-square /> hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/761231492612332/?active_tab=discussion)<br>Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
 
 #### Tudnivalók:
 

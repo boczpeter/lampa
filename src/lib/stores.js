@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
 const
-  version = 202311,
+  version = 202403,
   prefix  = 'lampa',
   session = browser ? localStorage : null,
   stored = session?.getItem('version')

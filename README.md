@@ -4,12 +4,12 @@ Minden év tavasszal és ősszel a Magyar Kerékpárosklub országos lámpaszám
 
 Tavaly a lezárások miatt elmaradt a tavaszi és őszi lámpaszámlálás, most viszont újra elővesszük a papírt és tollat, hogy lássuk a felvilágosodásunk trendjeit. Segíts kideríteni, hogy vajon tényleg sokan bringáznak-e lámpa nélkül! 20 perc az egész, és ott mérhetsz, ahol szeretnél.
 
-November 11-én csütörtökön 19. alkalommal számoljuk meg az ország bringalámpáit. Célunk, hogy felhívjuk a figyelmet a kerékpárok kivilágítására, és adatokkal válaszolhassunk a tévhitekre.
+2024. március 28-án csütörtökön 23. alkalommal számoljuk meg az ország bringalámpáit. Célunk, hogy felhívjuk a figyelmet a kerékpárok kivilágítására, és adatokkal válaszolhassunk a tévhitekre.
 
 A feladat nagyon rövid, és egyszerű:
 
-1. A saját településed tetszőleges, de viszonylag forgalmas pontján november 11-én csütörtökön, **19:00 és 19:20 között** kell megszámolni az elhaladó bringásokat, és feljegyezni, hányan kerékpároztak kivilágítva.
-2. A **20 perces** mérésed eredményét [hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/622147172546653?ref=newsfeed)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
+1. A saját településed tetszőleges, de viszonylag forgalmas pontján március 28-án csütörtökön, **19:00 és 19:20 között** kell megszámolni az elhaladó bringásokat, és feljegyezni, hányan kerékpároztak kivilágítva.
+2. A **20 perces** mérésed eredményét [hozzászólásként küldd be ide az eseménybe](https://www.facebook.com/events/761231492612332/?active_tab=discussion)! Mi táblázatba és infografikába szerkesztjük és közzétesszük az összesítést.
 
 ## Tudnivalók:
 
