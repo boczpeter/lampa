@@ -55,7 +55,7 @@
 
 	<Form {meta} />
 
-	<a href=/send class=button role=button data-sveltekit-noscroll on:click={e =>
+	<a href="/send/" class=button role=button data-sveltekit-noscroll on:click={e =>
 		$clipboard = fields.map(f => `${f.label}: ${f.value}`).join('\n')
 	}>
 	 	Küldöm (vágólapra)

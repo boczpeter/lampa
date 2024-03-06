@@ -20,7 +20,7 @@
       <input type=text bind:value={m.value} placeholder={m.label} on:change={e=>save(m)} readonly={m.readonly} on:click={e=>m.readonly && goto('/map')}>
     </label>
 	{/each}
-	<a href="/map" title="Pozíció lekérése" role=button data-sveltekit-noscroll>
+	<a href="/map/" title="Pozíció lekérése" role=button data-sveltekit-noscroll>
 		<Icon icon=crosshairs/>
 	</a>
 </section>

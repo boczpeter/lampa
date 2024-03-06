@@ -22,7 +22,7 @@
 
   <output class={total.name} title={total.label}>{total.value}</output>
 
-  <a href=/help title=Help role=button data-sveltekit-noscroll>
+  <a href="/help/" title=Help role=button data-sveltekit-noscroll>
     <Icon icon=question-circle/>
   </a>
 </section>
