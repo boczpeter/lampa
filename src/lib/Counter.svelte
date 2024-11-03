@@ -69,8 +69,8 @@
 	a {
     display: flex;
     place-items: center;
-		font-size: var(--font2dyn);
-		grid-column: -3 / -1;
+		font-size: var(--hugefont);
+		grid-column-end: -1;
 		border-radius: 50%;
   	color: #ccc;
   }

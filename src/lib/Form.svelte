@@ -34,6 +34,7 @@
 	}
 	input {
     flex-grow: 1;
+		align-self: stretch;
 	}
 	input:read-only {
 		cursor: pointer;
