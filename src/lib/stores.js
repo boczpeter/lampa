@@ -23,7 +23,7 @@ export const
 ;
 
 if (version != stored) { // storage should be reset + store new version id
-  console.log(stored, version)
+  // console.log(stored, version)
   session?.clear()
   session?.setItem('version', version)
 }

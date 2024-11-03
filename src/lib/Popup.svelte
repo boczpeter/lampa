@@ -37,7 +37,7 @@
 		margin:					var(--gap);
 		border-radius:	var(--gap);
 		max-height: calc(100% - 2 * var(--gap));
-		background-color: #fff;
+		background-color: #eee;
 		box-shadow: 0 0 1rem #000;
     overscroll-behavior: contain;
 	}

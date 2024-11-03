@@ -40,7 +40,7 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
 
 <style>
   h3 {
-    color: #444;
+    color: #333;
   }
   img { /* MK logo */
     margin: auto;

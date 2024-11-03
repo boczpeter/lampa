@@ -50,6 +50,9 @@ input, button, label, a.button {
 	outline: none;
 	display: inline-block;
 }
+input::placeholder {
+	color: #eee;
+}
 input[type="text"]:focus {
 	box-shadow: 0 0 var(--radius) var(--hl);
 }
@@ -122,4 +125,18 @@ time {
 }
 .error {
 	color: var(--red);
+}
+
+/* keep colors in dark mode */
+@media (prefers-color-scheme: dark) {
+body {
+	background-color: #333;
+	color: #eee;
+}
+input, button, label, a.button {
+	color: #fff;
+}
+input::placeholder {
+	color: #eee;
+}
 }
