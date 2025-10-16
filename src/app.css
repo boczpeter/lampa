@@ -63,6 +63,10 @@ input[type="submit"], a.button {
 	border-radius: var(--radius);
 	line-height: var(--bigfont);
 }
+input[type="submit"], input[type="button"], a.button, button {
+	cursor: pointer;
+}
+
 aside :is(input[type="submit"], a.button) {
 	--radius: 0.25em;
 }
