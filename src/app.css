@@ -120,6 +120,11 @@ img {
 	object-fit: cover;
 	max-width: 100%;
 }
+.iconify {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+}
 button .iconify, a .iconify {
 	pointer-events: none;
 	vertical-align: top;
