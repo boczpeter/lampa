@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  pocketbase:
+    image: adaliszk/pocketbase:latest
+    restart: unless-stopped
+    ports:
+      - 8190:8080
+    volumes:
+      - ./data:/data
+
+volumes:
+  data: { }

@@ -1,15 +1,18 @@
 <script>
-	import '../app.css';
-	import { afterNavigate } from '$app/navigation';
-	import { payload, load, save, pb } from '$lib/stores.js';
-	import Counter	from '$lib/Counter.svelte';
-	import Form		  from '$lib/Form.svelte';
-	import Icon			from '$lib/Icon.svelte';
+	import { page } from '$app/stores'
+	import { payload, load, save, pb, getVersion } from '$lib/stores.js'
+	import Counter	from '$lib/Counter.svelte'
+	import Form		  from '$lib/Form.svelte'
+	import Icon			from '$lib/Icon.svelte'
+	import '$lib/app.css'
 
-	const onsend = e => payload.set(Object.fromEntries(fields.map(f => [f.name, ''+f.value]))),
-		login = el => pb.collection('users').authWithPassword('lampa', 'lampaszamlalas')
-			.catch(err => error = true),
+	let popup = false // popup is shown above page
 
+	const onsubmit = e => {
+			const rec = Object.fromEntries(fields.map(f => [f.name, ''+f.value]))
+  		rec.version  = getVersion()
+			payload.set(rec)
+		},
 		rows = [
 			{label:'Első+hátsó', name:'both' },
 			{label:'Csak első ', name:'front'},
@@ -25,6 +28,7 @@
 			{value:'', label: 'GPS',					name: 'gps',				icon:'map-marker-alt'},
 		],
 		fields = [...meta, total, ...rows]
+	// const
 
 	// post-process fields
 	rows.forEach(row => Object.defineProperties(row, {
@@ -44,12 +48,9 @@
 	}));
 	fields.forEach((f, i) => load(Object.assign(f, {id: i})));	// add ID and load saved data
 
-	let error, popup = false // popup is shown above page
-
-	afterNavigate(nav => popup = 1 < nav?.to?.route?.id?.length)
 </script>
 
-<form class:popup data-sveltekit-prefetch>
+<form class:popup={1 < $page.url.pathname.length} data-sveltekit-prefetch>
 	<h1>Lámpaszámlálás</h1>
 	<h2>Számolj…</h2>
 
@@ -59,11 +60,17 @@
 
 	<Form {meta} />
 
-	{#if error}
+	{#await pb.collection('users').authWithPassword('lampa', 'lampaszamlalas') }
+		<h3>Kapcsolódás…</h3>
+	{:then resp}
+		{#if resp?.record?.role === 'create'}
+			<a href=/send class=button role=button data-sveltekit-noscroll on:click={onsubmit}>Küldöm</a>
+		{:else}
+			<h3 class=error><Icon icon="bx:error-alt"/>Jelenleg nem tudsz adatokat beküldeni.</h3>
+		{/if}
+	{:catch error}
 		<h3 class=error><Icon icon="bx:error-alt"/>Jelenleg nem tudsz adatokat beküldeni.</h3>
-	{:else}
-		<a href=/send class=button role=button data-sveltekit-noscroll use:login on:click={onsend}>Küldöm</a>
-	{/if}
+	{/await}
 </form>
 
 <slot />

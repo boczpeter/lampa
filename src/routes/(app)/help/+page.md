@@ -48,4 +48,7 @@ Ha szeretnél, [iratkozz fel](https://forms.gle/ZUV2H4FiXehfxhMN9), hogy emailbe
     display: block;
     min-width: calc(10 * var(--font));
   }
+a, a:visited {
+	color: var(--link);
+}
 </style>
